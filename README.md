@@ -18,7 +18,7 @@ Main topics to be covered include:
 - Applied statistical modelling and interpretation 
 - Written and oral “data storytelling”
 
-The syllabus is available [here](http://github.com).
+The syllabus is available [here](ce599-002_syllabus_s17.pdf).
 
 **Acknowledgements**
 
