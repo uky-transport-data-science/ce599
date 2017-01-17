@@ -1,0 +1,5 @@
+hey whats up I am kinda confused on what is going on.
+
+use the github desktop app to get to a cloned repostetory
+then in the clone you can edit and make changes to the different files.
+You can also add files like this one.
