@@ -14,7 +14,21 @@ Final Report Due: May 4, 2017, 5 pm in OHR 261
 
 **Assignment**
 
-The final assignment for this class is to apply the skills you learn in this class to analyze a data set and learn something about the transportation system.  
+The final assignment for this class is to apply the skills you learn in this class to analyze a data set and learn something about the transportation system.  The range of topics is wide open, so pick something you are interested in.  It should broadly meet the following criteria: 
+
+1. It should involve writing software using the skills you learn in this class (hacking skills). 
+2. It should be defensible from a statistical/data analysis perspective (math & statistics knowledge). 
+3. It provide insight to address an important transportation question (substantive expertise). Have a point!
+
+This should put you at the center of the Data Science Venn Diagram.  
+
+Undergraduate students will complete the work in pairs, and graduate students individually.  
+
+To make sure you have selected an appropriate topic, you will do a 5-minute oral proposal, followed by a question and answer session.  All students should come prepared to ask constructive questions of all proposers.  An interim report is due showing progress to date, and highlighting remaining steps.  Your final grade will be based on the code itself, a final report, and an oral final presentation.  The report should be no more than 7500 words, and should follow the Transportation Research Board manuscript format: 
+
+	http://onlinepubs.trb.org/onlinepubs/AM/InfoForAuthors.pdf 
+
+You are encouraged to ask questions and discuss preliminary results along the way.  It is best to get feedback early and avoid surprises!   
 
 **Code Reviews**
 
