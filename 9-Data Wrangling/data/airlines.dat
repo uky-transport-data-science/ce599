@@ -1,4 +1,3 @@
-AirlineID,Name,Alias,IATA,ICAO,Callsign,Country,Active
 -1,"Unknown",\N,"-","N/A",\N,\N,"Y"
 1,"Private flight",\N,"-","N/A","","","Y"
 2,"135 Airways",\N,"","GNL","GENERAL","United States","N"
