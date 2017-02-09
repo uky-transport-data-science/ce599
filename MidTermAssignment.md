@@ -4,7 +4,7 @@ CE 599-002: Data Science in Transportation
 
 Spring 2017
 
-Due:  March 9, 2017 at 5 pm in OHR 261
+Due:  March 30, 2017 at 5 pm in OHR 261
 
 **Readings**
 
