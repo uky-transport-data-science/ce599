@@ -6,7 +6,7 @@ Spring 2017
 
 Oral Proposals:  March 9, 2017
 
-Interim Project Report Due: April 13, 2017, end of class
+Interim Project Report Due: Monday, April 17, 5 pm in OHR 261 
 
 Final Presentations: April 25 & 27, 2017
 
