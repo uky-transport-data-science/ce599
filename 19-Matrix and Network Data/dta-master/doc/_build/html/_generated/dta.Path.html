@@ -1,0 +1,311 @@
+
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>dta.Path &mdash; DTA Anyway 1.0 documentation</title>
+    
+    <link rel="stylesheet" href="../_static/dta.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '../',
+        VERSION:     '1.0',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+    <script type="text/javascript" src="../_static/jquery.js"></script>
+    <script type="text/javascript" src="../_static/underscore.js"></script>
+    <script type="text/javascript" src="../_static/doctools.js"></script>
+    <link rel="top" title="DTA Anyway 1.0 documentation" href="../index.html" />
+    <link rel="next" title="dta.ShortestPaths" href="dta.ShortestPaths.html" />
+    <link rel="prev" title="dta.Movement" href="dta.Movement.html" /> 
+  </head>
+  <body>
+    <div class="related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../genindex.html" title="General Index"
+             accesskey="I">index</a></li>
+        <li class="right" >
+          <a href="../py-modindex.html" title="Python Module Index"
+             >modules</a> |</li>
+        <li class="right" >
+          <a href="dta.ShortestPaths.html" title="dta.ShortestPaths"
+             accesskey="N">next</a> |</li>
+        <li class="right" >
+          <a href="dta.Movement.html" title="dta.Movement"
+             accesskey="P">previous</a> |</li>
+        <li><a href="../index.html">DTA Anyway 1.0 documentation</a> &raquo;</li> 
+      </ul>
+    </div>  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body">
+            
+  <div class="section" id="dta-path">
+<h1>dta.Path<a class="headerlink" href="#dta-path" title="Permalink to this headline">¶</a></h1>
+<dl class="class">
+<dt id="dta.Path">
+<em class="property">class </em><tt class="descname">Path</tt><big>(</big><em>net</em>, <em>name</em>, <em>iterLinks</em><big>)</big><a class="headerlink" href="#dta.Path" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <tt class="xref py py-class docutils literal"><span class="pre">object</span></tt></p>
+<p>A path in the network represented by a sequence of links
+that are connected to each other</p>
+<p>Constructor that accepts a network, the path name, and a sequence of connected links instances</p>
+<dl class="method">
+<dt id="dta.Path.__init__">
+<tt class="descname">__init__</tt><big>(</big><em>net</em>, <em>name</em>, <em>iterLinks</em><big>)</big><a class="headerlink" href="#dta.Path.__init__" title="Permalink to this definition">¶</a></dt>
+<dd><p>Constructor that accepts a network, the path name, and a sequence of connected links instances</p>
+</dd></dl>
+
+<p class="rubric">Methods</p>
+<table border="1" class="longtable docutils">
+<colgroup>
+<col width="10%" />
+<col width="90%" />
+</colgroup>
+<tbody valign="top">
+<tr class="row-odd"><td><tt class="xref py py-obj docutils literal"><span class="pre">__init__</span></tt>(net,&nbsp;name,&nbsp;iterLinks)</td>
+<td>Constructor that accepts a network, the path name, and a sequence of connected links instances</td>
+</tr>
+<tr class="row-even"><td><tt class="xref py py-obj docutils literal"><span class="pre">createPath</span></tt>(net,&nbsp;name,&nbsp;intersectionList[,&nbsp;cutoff])</td>
+<td>Returns a <a class="reference internal" href="#dta.Path" title="dta.Path"><tt class="xref py py-class docutils literal"><span class="pre">Path</span></tt></a> instance based on a shortest path that goes through all the intersections in the intersection list</td>
+</tr>
+<tr class="row-odd"><td><tt class="xref py py-obj docutils literal"><span class="pre">getCrossStreetName</span></tt>(node)</td>
+<td>Return the cross street name for the node</td>
+</tr>
+<tr class="row-even"><td><tt class="xref py py-obj docutils literal"><span class="pre">getFirstLink</span></tt>()</td>
+<td>Return the first link in the path</td>
+</tr>
+<tr class="row-odd"><td><tt class="xref py py-obj docutils literal"><span class="pre">getFirstNode</span></tt>()</td>
+<td>Get the first node in the path</td>
+</tr>
+<tr class="row-even"><td><tt class="xref py py-obj docutils literal"><span class="pre">getLastLink</span></tt>()</td>
+<td>Return the last link in the path</td>
+</tr>
+<tr class="row-odd"><td><tt class="xref py py-obj docutils literal"><span class="pre">getLastNode</span></tt>()</td>
+<td>Return the last node in the path</td>
+</tr>
+<tr class="row-even"><td><tt class="xref py py-obj docutils literal"><span class="pre">getLengthInFeet</span></tt>()</td>
+<td>Get the length of the path in feet</td>
+</tr>
+<tr class="row-odd"><td><tt class="xref py py-obj docutils literal"><span class="pre">getLengthInMiles</span></tt>()</td>
+<td>Get the length of the path in miles</td>
+</tr>
+<tr class="row-even"><td><tt class="xref py py-obj docutils literal"><span class="pre">getName</span></tt>()</td>
+<td>Get the name of the path</td>
+</tr>
+<tr class="row-odd"><td><tt class="xref py py-obj docutils literal"><span class="pre">getNumLinks</span></tt>()</td>
+<td>Get the number of links in the path</td>
+</tr>
+<tr class="row-even"><td><tt class="xref py py-obj docutils literal"><span class="pre">getSimSpeedInMPH</span></tt>(startTimeInMin,&nbsp;endTimeInMin)</td>
+<td>Get the simulated speed in mph durin the specified interval</td>
+</tr>
+<tr class="row-odd"><td><tt class="xref py py-obj docutils literal"><span class="pre">getSimTTInMin</span></tt>(startTimeInMin,&nbsp;endTimeInMin)</td>
+<td>Return the simulated travel time in minutes for the specified</td>
+</tr>
+<tr class="row-even"><td><tt class="xref py py-obj docutils literal"><span class="pre">getSimTTInMinToLink</span></tt>(endLink,&nbsp;startTimeInMin,&nbsp;...)</td>
+<td>Return the simulated travel time in minutes for the specified</td>
+</tr>
+<tr class="row-odd"><td><tt class="xref py py-obj docutils literal"><span class="pre">iterLinks</span></tt>()</td>
+<td>Return an iterator to the edges of the path</td>
+</tr>
+<tr class="row-even"><td><tt class="xref py py-obj docutils literal"><span class="pre">iterLinksInReverse</span></tt>()</td>
+<td>Return an iterator to the links in the path in reverse order</td>
+</tr>
+<tr class="row-odd"><td><tt class="xref py py-obj docutils literal"><span class="pre">iterNodes</span></tt>()</td>
+<td>Return an iterator to the nodes in the path</td>
+</tr>
+<tr class="row-even"><td><tt class="xref py py-obj docutils literal"><span class="pre">writePathsToShp</span></tt>(paths,&nbsp;outFileName)</td>
+<td>Write the paths as a shapefile</td>
+</tr>
+</tbody>
+</table>
+<dl class="classmethod">
+<dt id="dta.Path.createPath">
+<em class="property">classmethod </em><tt class="descname">createPath</tt><big>(</big><em>net</em>, <em>name</em>, <em>intersectionList</em>, <em>cutoff=0.7</em><big>)</big><a class="headerlink" href="#dta.Path.createPath" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns a <a class="reference internal" href="#dta.Path" title="dta.Path"><tt class="xref py py-class docutils literal"><span class="pre">Path</span></tt></a> instance based on a shortest path that goes through all the intersections in the intersection list</p>
+<ul>
+<li><p class="first"><em>net</em> is a <a class="reference internal" href="dta.Network.html#dta.Network" title="dta.Network"><tt class="xref py py-class docutils literal"><span class="pre">Network</span></tt></a> object</p>
+</li>
+<li><dl class="first docutils">
+<dt><em>intersectionList</em> is a list of at least two intersections that the path will go through having the form:</dt>
+<dd><p class="first last">e.g. : <tt class="docutils literal"><span class="pre">[[&quot;Mission</span> <span class="pre">St&quot;,</span> <span class="pre">&quot;1st</span> <span class="pre">St&quot;],</span> <span class="pre">[&quot;Mission</span> <span class="pre">St&quot;,</span> <span class="pre">&quot;8th</span> <span class="pre">St&quot;]]</span></tt></p>
+</dd>
+</dl>
+</li>
+</ul>
+</dd></dl>
+
+<dl class="method">
+<dt id="dta.Path.getCrossStreetName">
+<tt class="descname">getCrossStreetName</tt><big>(</big><em>node</em><big>)</big><a class="headerlink" href="#dta.Path.getCrossStreetName" title="Permalink to this definition">¶</a></dt>
+<dd><p>Return the cross street name for the node
+that belongs to the path</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="dta.Path.getFirstLink">
+<tt class="descname">getFirstLink</tt><big>(</big><big>)</big><a class="headerlink" href="#dta.Path.getFirstLink" title="Permalink to this definition">¶</a></dt>
+<dd><p>Return the first link in the path</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="dta.Path.getFirstNode">
+<tt class="descname">getFirstNode</tt><big>(</big><big>)</big><a class="headerlink" href="#dta.Path.getFirstNode" title="Permalink to this definition">¶</a></dt>
+<dd><p>Get the first node in the path</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="dta.Path.getLastLink">
+<tt class="descname">getLastLink</tt><big>(</big><big>)</big><a class="headerlink" href="#dta.Path.getLastLink" title="Permalink to this definition">¶</a></dt>
+<dd><p>Return the last link in the path</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="dta.Path.getLastNode">
+<tt class="descname">getLastNode</tt><big>(</big><big>)</big><a class="headerlink" href="#dta.Path.getLastNode" title="Permalink to this definition">¶</a></dt>
+<dd><p>Return the last node in the path</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="dta.Path.getLengthInFeet">
+<tt class="descname">getLengthInFeet</tt><big>(</big><big>)</big><a class="headerlink" href="#dta.Path.getLengthInFeet" title="Permalink to this definition">¶</a></dt>
+<dd><p>Get the length of the path in feet</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="dta.Path.getLengthInMiles">
+<tt class="descname">getLengthInMiles</tt><big>(</big><big>)</big><a class="headerlink" href="#dta.Path.getLengthInMiles" title="Permalink to this definition">¶</a></dt>
+<dd><p>Get the length of the path in miles</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="dta.Path.getName">
+<tt class="descname">getName</tt><big>(</big><big>)</big><a class="headerlink" href="#dta.Path.getName" title="Permalink to this definition">¶</a></dt>
+<dd><p>Get the name of the path</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="dta.Path.getNumLinks">
+<tt class="descname">getNumLinks</tt><big>(</big><big>)</big><a class="headerlink" href="#dta.Path.getNumLinks" title="Permalink to this definition">¶</a></dt>
+<dd><p>Get the number of links in the path</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="dta.Path.getSimSpeedInMPH">
+<tt class="descname">getSimSpeedInMPH</tt><big>(</big><em>startTimeInMin</em>, <em>endTimeInMin</em><big>)</big><a class="headerlink" href="#dta.Path.getSimSpeedInMPH" title="Permalink to this definition">¶</a></dt>
+<dd><p>Get the simulated speed in mph durin the specified interval</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="dta.Path.getSimTTInMin">
+<tt class="descname">getSimTTInMin</tt><big>(</big><em>startTimeInMin</em>, <em>endTimeInMin</em><big>)</big><a class="headerlink" href="#dta.Path.getSimTTInMin" title="Permalink to this definition">¶</a></dt>
+<dd><p>Return the simulated travel time in minutes for the specified 
+time period</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="dta.Path.getSimTTInMinToLink">
+<tt class="descname">getSimTTInMinToLink</tt><big>(</big><em>endLink</em>, <em>startTimeInMin</em>, <em>timeStepInMin</em><big>)</big><a class="headerlink" href="#dta.Path.getSimTTInMinToLink" title="Permalink to this definition">¶</a></dt>
+<dd><p>Return the simulated travel time in minutes for the specified 
+time period</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="dta.Path.iterLinks">
+<tt class="descname">iterLinks</tt><big>(</big><big>)</big><a class="headerlink" href="#dta.Path.iterLinks" title="Permalink to this definition">¶</a></dt>
+<dd><p>Return an iterator to the edges of the path</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="dta.Path.iterLinksInReverse">
+<tt class="descname">iterLinksInReverse</tt><big>(</big><big>)</big><a class="headerlink" href="#dta.Path.iterLinksInReverse" title="Permalink to this definition">¶</a></dt>
+<dd><p>Return an iterator to the links in the path in reverse order</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="dta.Path.iterNodes">
+<tt class="descname">iterNodes</tt><big>(</big><big>)</big><a class="headerlink" href="#dta.Path.iterNodes" title="Permalink to this definition">¶</a></dt>
+<dd><p>Return an iterator to the nodes in the path</p>
+</dd></dl>
+
+<dl class="classmethod">
+<dt id="dta.Path.writePathsToShp">
+<em class="property">classmethod </em><tt class="descname">writePathsToShp</tt><big>(</big><em>paths</em>, <em>outFileName</em><big>)</big><a class="headerlink" href="#dta.Path.writePathsToShp" title="Permalink to this definition">¶</a></dt>
+<dd><p>Write the paths as a shapefile</p>
+</dd></dl>
+
+</dd></dl>
+
+</div>
+
+
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar">
+        <div class="sphinxsidebarwrapper">
+  <h4>Previous topic</h4>
+  <p class="topless"><a href="dta.Movement.html"
+                        title="previous chapter">dta.Movement</a></p>
+  <h4>Next topic</h4>
+  <p class="topless"><a href="dta.ShortestPaths.html"
+                        title="next chapter">dta.ShortestPaths</a></p>
+  <h3>This Page</h3>
+  <ul class="this-page-menu">
+    <li><a href="../_sources/_generated/dta.Path.txt"
+           rel="nofollow">Show Source</a></li>
+  </ul>
+<div id="searchbox" style="display: none">
+  <h3>Quick search</h3>
+    <form class="search" action="../search.html" method="get">
+      <input type="text" name="q" />
+      <input type="submit" value="Go" />
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+    <p class="searchtip" style="font-size: 90%">
+    Enter search terms or a module, class or function name.
+    </p>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../genindex.html" title="General Index"
+             >index</a></li>
+        <li class="right" >
+          <a href="../py-modindex.html" title="Python Module Index"
+             >modules</a> |</li>
+        <li class="right" >
+          <a href="dta.ShortestPaths.html" title="dta.ShortestPaths"
+             >next</a> |</li>
+        <li class="right" >
+          <a href="dta.Movement.html" title="dta.Movement"
+             >previous</a> |</li>
+        <li><a href="../index.html">DTA Anyway 1.0 documentation</a> &raquo;</li> 
+      </ul>
+    </div>
+    <div class="footer">
+        &copy; Copyright 2011-2012, SFCTA Modeling Crew.
+      Created using <a href="http://sphinx.pocoo.org/">Sphinx</a> 1.1.3.
+    </div>
+  </body>
+</html>

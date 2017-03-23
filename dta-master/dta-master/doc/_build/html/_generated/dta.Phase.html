@@ -1,0 +1,310 @@
+
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>dta.Phase &mdash; DTA Anyway 1.0 documentation</title>
+    
+    <link rel="stylesheet" href="../_static/dta.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '../',
+        VERSION:     '1.0',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+    <script type="text/javascript" src="../_static/jquery.js"></script>
+    <script type="text/javascript" src="../_static/underscore.js"></script>
+    <script type="text/javascript" src="../_static/doctools.js"></script>
+    <link rel="top" title="DTA Anyway 1.0 documentation" href="../index.html" />
+    <link rel="next" title="dta.PhaseMovement" href="dta.PhaseMovement.html" />
+    <link rel="prev" title="dta.PlanCollectionInfo" href="dta.PlanCollectionInfo.html" /> 
+  </head>
+  <body>
+    <div class="related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../genindex.html" title="General Index"
+             accesskey="I">index</a></li>
+        <li class="right" >
+          <a href="../py-modindex.html" title="Python Module Index"
+             >modules</a> |</li>
+        <li class="right" >
+          <a href="dta.PhaseMovement.html" title="dta.PhaseMovement"
+             accesskey="N">next</a> |</li>
+        <li class="right" >
+          <a href="dta.PlanCollectionInfo.html" title="dta.PlanCollectionInfo"
+             accesskey="P">previous</a> |</li>
+        <li><a href="../index.html">DTA Anyway 1.0 documentation</a> &raquo;</li> 
+      </ul>
+    </div>  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body">
+            
+  <div class="section" id="dta-phase">
+<h1>dta.Phase<a class="headerlink" href="#dta-phase" title="Permalink to this headline">¶</a></h1>
+<dl class="class">
+<dt id="dta.Phase">
+<em class="property">class </em><tt class="descname">Phase</tt><big>(</big><em>timePlan</em>, <em>green</em>, <em>yellow</em>, <em>red</em>, <em>phaseType=0</em><big>)</big><a class="headerlink" href="#dta.Phase" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <tt class="xref py py-class docutils literal"><span class="pre">object</span></tt></p>
+<p>A phase consists of timing (green, yellow and red times) plus a set of <a class="reference internal" href="dta.PhaseMovement.html#dta.PhaseMovement" title="dta.PhaseMovement"><tt class="xref py py-class docutils literal"><span class="pre">PhaseMovement</span></tt></a> instances
+that are allowed to move during the green time.</p>
+<p>A phase can be Standard, or Custom; the difference being that a custom phase movement can
+specify a subset of the movement lanes that are permitted/protected.</p>
+<p>Right now, Custom phases aren&#8217;t really supported.</p>
+<p>Constructor.</p>
+<ul class="simple">
+<li><em>timeplan</em> is the <a class="reference internal" href="dta.TimePlan.html#dta.TimePlan" title="dta.TimePlan"><tt class="xref py py-class docutils literal"><span class="pre">TimePlan</span></tt></a> instance to which this Phase belongs.</li>
+<li><em>green</em>, <em>red</em>, and <em>yellow</em> are numbers (int or float) representing the number of seconds
+for each light</li>
+</ul>
+<dl class="method">
+<dt id="dta.Phase.__init__">
+<tt class="descname">__init__</tt><big>(</big><em>timePlan</em>, <em>green</em>, <em>yellow</em>, <em>red</em>, <em>phaseType=0</em><big>)</big><a class="headerlink" href="#dta.Phase.__init__" title="Permalink to this definition">¶</a></dt>
+<dd><p>Constructor.</p>
+<ul class="simple">
+<li><em>timeplan</em> is the <a class="reference internal" href="dta.TimePlan.html#dta.TimePlan" title="dta.TimePlan"><tt class="xref py py-class docutils literal"><span class="pre">TimePlan</span></tt></a> instance to which this Phase belongs.</li>
+<li><em>green</em>, <em>red</em>, and <em>yellow</em> are numbers (int or float) representing the number of seconds
+for each light</li>
+</ul>
+</dd></dl>
+
+<p class="rubric">Methods</p>
+<table border="1" class="longtable docutils">
+<colgroup>
+<col width="10%" />
+<col width="90%" />
+</colgroup>
+<tbody valign="top">
+<tr class="row-odd"><td><tt class="xref py py-obj docutils literal"><span class="pre">__init__</span></tt>(timePlan,&nbsp;green,&nbsp;yellow,&nbsp;red[,&nbsp;...])</td>
+<td>Constructor.</td>
+</tr>
+<tr class="row-even"><td><tt class="xref py py-obj docutils literal"><span class="pre">addPhaseMovement</span></tt>(phase_movement)</td>
+<td>Add the input <em>movement</em> (an instance of <a class="reference internal" href="dta.PhaseMovement.html#dta.PhaseMovement" title="dta.PhaseMovement"><tt class="xref py py-class docutils literal"><span class="pre">PhaseMovement</span></tt></a>) to the phase.</td>
+</tr>
+<tr class="row-odd"><td><tt class="xref py py-obj docutils literal"><span class="pre">getDynameqStr</span></tt>()</td>
+<td>Return the Dynameq representation of the phase as a string.  Includes ending newline.</td>
+</tr>
+<tr class="row-even"><td><tt class="xref py py-obj docutils literal"><span class="pre">getGreen</span></tt>()</td>
+<td>Return the green time in seconds (an integer or float)</td>
+</tr>
+<tr class="row-odd"><td><tt class="xref py py-obj docutils literal"><span class="pre">getNumPhaseMovements</span></tt>()</td>
+<td>Return the number of phase movements in the phase</td>
+</tr>
+<tr class="row-even"><td><tt class="xref py py-obj docutils literal"><span class="pre">getPhaseMovement</span></tt>(startNodeId,&nbsp;endNodeId)</td>
+<td>Return the <a class="reference internal" href="dta.PhaseMovement.html#dta.PhaseMovement" title="dta.PhaseMovement"><tt class="xref py py-class docutils literal"><span class="pre">PhaseMovement</span></tt></a> from startNodeId to endNodeId</td>
+</tr>
+<tr class="row-odd"><td><tt class="xref py py-obj docutils literal"><span class="pre">getRed</span></tt>()</td>
+<td>Return the red time in seconds (an integer or float)</td>
+</tr>
+<tr class="row-even"><td><tt class="xref py py-obj docutils literal"><span class="pre">getTimePlan</span></tt>()</td>
+<td>Return the timeplan associated with this phase</td>
+</tr>
+<tr class="row-odd"><td><tt class="xref py py-obj docutils literal"><span class="pre">getYellow</span></tt>()</td>
+<td>Return the yellow time in seconds (an integer or float)</td>
+</tr>
+<tr class="row-even"><td><tt class="xref py py-obj docutils literal"><span class="pre">hasPermittedPhaseMovement</span></tt>(startNodeId,&nbsp;endNodeId)</td>
+<td>Return True if the phase has a permitted movement from</td>
+</tr>
+<tr class="row-odd"><td><tt class="xref py py-obj docutils literal"><span class="pre">hasPhaseMovement</span></tt>(startNodeId,&nbsp;endNodeId)</td>
+<td>Return True iff the phase has the phase movement with the given id</td>
+</tr>
+<tr class="row-even"><td><tt class="xref py py-obj docutils literal"><span class="pre">hasProtectedPhaseMovement</span></tt>(startNodeId,&nbsp;endNodeId)</td>
+<td>Return True if the phase has a protected movement from</td>
+</tr>
+<tr class="row-odd"><td><tt class="xref py py-obj docutils literal"><span class="pre">iterPhaseMovements</span></tt>()</td>
+<td>Return an iterator the the <a class="reference internal" href="dta.PhaseMovement.html#dta.PhaseMovement" title="dta.PhaseMovement"><tt class="xref py py-class docutils literal"><span class="pre">PhaseMovement</span></tt></a> instances for this Phase</td>
+</tr>
+<tr class="row-even"><td><tt class="xref py py-obj docutils literal"><span class="pre">readFromDynameqString</span></tt>(net,&nbsp;timeplan,&nbsp;lineIter)</td>
+<td>Parses the dynameq phase string defined in multiple lines of text and returns a <a class="reference internal" href="#dta.Phase" title="dta.Phase"><tt class="xref py py-class docutils literal"><span class="pre">Phase</span></tt></a> object.</td>
+</tr>
+</tbody>
+</table>
+<p class="rubric">Attributes</p>
+<table border="1" class="longtable docutils">
+<colgroup>
+<col width="10%" />
+<col width="90%" />
+</colgroup>
+<tbody valign="top">
+<tr class="row-odd"><td><tt class="xref py py-obj docutils literal"><span class="pre">TYPE_CUSTOM</span></tt></td>
+<td>int(x[, base]) -&gt; integer</td>
+</tr>
+<tr class="row-even"><td><tt class="xref py py-obj docutils literal"><span class="pre">TYPE_STANDARD</span></tt></td>
+<td>int(x[, base]) -&gt; integer</td>
+</tr>
+</tbody>
+</table>
+<dl class="attribute">
+<dt id="dta.Phase.TYPE_CUSTOM">
+<tt class="descname">TYPE_CUSTOM</tt><em class="property"> = 1</em><a class="headerlink" href="#dta.Phase.TYPE_CUSTOM" title="Permalink to this definition">¶</a></dt>
+<dd><p>Custom phase, where the relevant movements have specified lanes that are permitted/protected</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="dta.Phase.TYPE_STANDARD">
+<tt class="descname">TYPE_STANDARD</tt><em class="property"> = 0</em><a class="headerlink" href="#dta.Phase.TYPE_STANDARD" title="Permalink to this definition">¶</a></dt>
+<dd><p>Standard phase</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="dta.Phase.addPhaseMovement">
+<tt class="descname">addPhaseMovement</tt><big>(</big><em>phase_movement</em><big>)</big><a class="headerlink" href="#dta.Phase.addPhaseMovement" title="Permalink to this definition">¶</a></dt>
+<dd><p>Add the input <em>movement</em> (an instance of <a class="reference internal" href="dta.PhaseMovement.html#dta.PhaseMovement" title="dta.PhaseMovement"><tt class="xref py py-class docutils literal"><span class="pre">PhaseMovement</span></tt></a>) to the phase.</p>
+<p>If the movement already exists a <a class="reference internal" href="dta.DtaError.html#dta.DtaError" title="dta.DtaError"><tt class="xref py py-class docutils literal"><span class="pre">DtaError</span></tt></a> will be raised.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="dta.Phase.getDynameqStr">
+<tt class="descname">getDynameqStr</tt><big>(</big><big>)</big><a class="headerlink" href="#dta.Phase.getDynameqStr" title="Permalink to this definition">¶</a></dt>
+<dd><p>Return the Dynameq representation of the phase as a string.  Includes ending newline.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="dta.Phase.getGreen">
+<tt class="descname">getGreen</tt><big>(</big><big>)</big><a class="headerlink" href="#dta.Phase.getGreen" title="Permalink to this definition">¶</a></dt>
+<dd><p>Return the green time in seconds (an integer or float)</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="dta.Phase.getNumPhaseMovements">
+<tt class="descname">getNumPhaseMovements</tt><big>(</big><big>)</big><a class="headerlink" href="#dta.Phase.getNumPhaseMovements" title="Permalink to this definition">¶</a></dt>
+<dd><p>Return the number of phase movements in the phase</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="dta.Phase.getPhaseMovement">
+<tt class="descname">getPhaseMovement</tt><big>(</big><em>startNodeId</em>, <em>endNodeId</em><big>)</big><a class="headerlink" href="#dta.Phase.getPhaseMovement" title="Permalink to this definition">¶</a></dt>
+<dd><p>Return the <a class="reference internal" href="dta.PhaseMovement.html#dta.PhaseMovement" title="dta.PhaseMovement"><tt class="xref py py-class docutils literal"><span class="pre">PhaseMovement</span></tt></a> from startNodeId to endNodeId</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="dta.Phase.getRed">
+<tt class="descname">getRed</tt><big>(</big><big>)</big><a class="headerlink" href="#dta.Phase.getRed" title="Permalink to this definition">¶</a></dt>
+<dd><p>Return the red time in seconds (an integer or float)</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="dta.Phase.getTimePlan">
+<tt class="descname">getTimePlan</tt><big>(</big><big>)</big><a class="headerlink" href="#dta.Phase.getTimePlan" title="Permalink to this definition">¶</a></dt>
+<dd><p>Return the timeplan associated with this phase</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="dta.Phase.getYellow">
+<tt class="descname">getYellow</tt><big>(</big><big>)</big><a class="headerlink" href="#dta.Phase.getYellow" title="Permalink to this definition">¶</a></dt>
+<dd><p>Return the yellow time in seconds (an integer or float)</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="dta.Phase.hasPermittedPhaseMovement">
+<tt class="descname">hasPermittedPhaseMovement</tt><big>(</big><em>startNodeId</em>, <em>endNodeId</em><big>)</big><a class="headerlink" href="#dta.Phase.hasPermittedPhaseMovement" title="Permalink to this definition">¶</a></dt>
+<dd><p>Return True if the phase has a permitted movement from 
+start node to end node</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="dta.Phase.hasPhaseMovement">
+<tt class="descname">hasPhaseMovement</tt><big>(</big><em>startNodeId</em>, <em>endNodeId</em><big>)</big><a class="headerlink" href="#dta.Phase.hasPhaseMovement" title="Permalink to this definition">¶</a></dt>
+<dd><p>Return True iff the phase has the phase movement with the given id</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="dta.Phase.hasProtectedPhaseMovement">
+<tt class="descname">hasProtectedPhaseMovement</tt><big>(</big><em>startNodeId</em>, <em>endNodeId</em><big>)</big><a class="headerlink" href="#dta.Phase.hasProtectedPhaseMovement" title="Permalink to this definition">¶</a></dt>
+<dd><p>Return True if the phase has a protected movement from 
+input start node to end node</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="dta.Phase.iterPhaseMovements">
+<tt class="descname">iterPhaseMovements</tt><big>(</big><big>)</big><a class="headerlink" href="#dta.Phase.iterPhaseMovements" title="Permalink to this definition">¶</a></dt>
+<dd><p>Return an iterator the the <a class="reference internal" href="dta.PhaseMovement.html#dta.PhaseMovement" title="dta.PhaseMovement"><tt class="xref py py-class docutils literal"><span class="pre">PhaseMovement</span></tt></a> instances for this Phase</p>
+</dd></dl>
+
+<dl class="classmethod">
+<dt id="dta.Phase.readFromDynameqString">
+<em class="property">classmethod </em><tt class="descname">readFromDynameqString</tt><big>(</big><em>net</em>, <em>timeplan</em>, <em>lineIter</em><big>)</big><a class="headerlink" href="#dta.Phase.readFromDynameqString" title="Permalink to this definition">¶</a></dt>
+<dd><p>Parses the dynameq phase string defined in multiple lines of text and returns a <a class="reference internal" href="#dta.Phase" title="dta.Phase"><tt class="xref py py-class docutils literal"><span class="pre">Phase</span></tt></a> object.</p>
+<ul class="simple">
+<li><em>lineIter</em> is an iterator over the lines of a text file containing the Dynameq phase info.</li>
+<li><em>net</em> is an instance of <a class="reference internal" href="dta.DynameqNetwork.html#dta.DynameqNetwork" title="dta.DynameqNetwork"><tt class="xref py py-class docutils literal"><span class="pre">DynameqNetwork</span></tt></a></li>
+<li><em>timePlan</em> is an instance of <a class="reference internal" href="dta.TimePlan.html#dta.TimePlan" title="dta.TimePlan"><tt class="xref py py-class docutils literal"><span class="pre">TimePlan</span></tt></a></li>
+</ul>
+</dd></dl>
+
+</dd></dl>
+
+</div>
+
+
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar">
+        <div class="sphinxsidebarwrapper">
+  <h4>Previous topic</h4>
+  <p class="topless"><a href="dta.PlanCollectionInfo.html"
+                        title="previous chapter">dta.PlanCollectionInfo</a></p>
+  <h4>Next topic</h4>
+  <p class="topless"><a href="dta.PhaseMovement.html"
+                        title="next chapter">dta.PhaseMovement</a></p>
+  <h3>This Page</h3>
+  <ul class="this-page-menu">
+    <li><a href="../_sources/_generated/dta.Phase.txt"
+           rel="nofollow">Show Source</a></li>
+  </ul>
+<div id="searchbox" style="display: none">
+  <h3>Quick search</h3>
+    <form class="search" action="../search.html" method="get">
+      <input type="text" name="q" />
+      <input type="submit" value="Go" />
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+    <p class="searchtip" style="font-size: 90%">
+    Enter search terms or a module, class or function name.
+    </p>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../genindex.html" title="General Index"
+             >index</a></li>
+        <li class="right" >
+          <a href="../py-modindex.html" title="Python Module Index"
+             >modules</a> |</li>
+        <li class="right" >
+          <a href="dta.PhaseMovement.html" title="dta.PhaseMovement"
+             >next</a> |</li>
+        <li class="right" >
+          <a href="dta.PlanCollectionInfo.html" title="dta.PlanCollectionInfo"
+             >previous</a> |</li>
+        <li><a href="../index.html">DTA Anyway 1.0 documentation</a> &raquo;</li> 
+      </ul>
+    </div>
+    <div class="footer">
+        &copy; Copyright 2011-2012, SFCTA Modeling Crew.
+      Created using <a href="http://sphinx.pocoo.org/">Sphinx</a> 1.1.3.
+    </div>
+  </body>
+</html>

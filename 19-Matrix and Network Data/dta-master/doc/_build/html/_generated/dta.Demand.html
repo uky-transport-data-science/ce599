@@ -1,0 +1,315 @@
+
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>dta.Demand &mdash; DTA Anyway 1.0 documentation</title>
+    
+    <link rel="stylesheet" href="../_static/dta.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '../',
+        VERSION:     '1.0',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+    <script type="text/javascript" src="../_static/jquery.js"></script>
+    <script type="text/javascript" src="../_static/underscore.js"></script>
+    <script type="text/javascript" src="../_static/doctools.js"></script>
+    <link rel="top" title="DTA Anyway 1.0 documentation" href="../index.html" />
+    <link rel="next" title="dta.DtaError" href="dta.DtaError.html" />
+    <link rel="prev" title="dta.CountsVsVolumes" href="dta.CountsVsVolumes.html" /> 
+  </head>
+  <body>
+    <div class="related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../genindex.html" title="General Index"
+             accesskey="I">index</a></li>
+        <li class="right" >
+          <a href="../py-modindex.html" title="Python Module Index"
+             >modules</a> |</li>
+        <li class="right" >
+          <a href="dta.DtaError.html" title="dta.DtaError"
+             accesskey="N">next</a> |</li>
+        <li class="right" >
+          <a href="dta.CountsVsVolumes.html" title="dta.CountsVsVolumes"
+             accesskey="P">previous</a> |</li>
+        <li><a href="../index.html">DTA Anyway 1.0 documentation</a> &raquo;</li> 
+      </ul>
+    </div>  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body">
+            
+  <div class="section" id="dta-demand">
+<h1>dta.Demand<a class="headerlink" href="#dta-demand" title="Permalink to this headline">¶</a></h1>
+<dl class="class">
+<dt id="dta.Demand">
+<em class="property">class </em><tt class="descname">Demand</tt><big>(</big><em>net</em>, <em>vehClassName</em>, <em>startTime</em>, <em>endTime</em>, <em>timeStep</em><big>)</big><a class="headerlink" href="#dta.Demand" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <tt class="xref py py-class docutils literal"><span class="pre">object</span></tt></p>
+<p>Class that represents the demand matrix for a <a class="reference internal" href="dta.Network.html#dta.Network" title="dta.Network"><tt class="xref py py-class docutils literal"><span class="pre">Network</span></tt></a></p>
+<p>Constructor that initializes an empty Demand table that has three dimensions:
+time, origin taz, destination taz.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
+<li><strong>net</strong> (a <a class="reference internal" href="dta.Network.html#dta.Network" title="dta.Network"><tt class="xref py py-class docutils literal"><span class="pre">Network</span></tt></a> instance) &#8211; the Network for which this demand is relevant, used to get TAZ numbers.</li>
+<li><strong>vehClassName</strong> &#8211; a string that must match the relevant <tt class="xref py py-class docutils literal"><span class="pre">VehicleClass</span></tt> exactly (it&#8217;s case-sensitive!)</li>
+<li><strong>startTime</strong> (a <a class="reference internal" href="dta.Utils.html#dta.Utils.Time" title="dta.Utils.Time"><tt class="xref py py-class docutils literal"><span class="pre">dta.Utils.Time</span></tt></a> instance) &#8211; the simulation start time for when this demand will get added to the network.</li>
+<li><strong>endTime</strong> (a <a class="reference internal" href="dta.Utils.html#dta.Utils.Time" title="dta.Utils.Time"><tt class="xref py py-class docutils literal"><span class="pre">dta.Utils.Time</span></tt></a> instance) &#8211; the simulation end time for this demand will stop being added to the network.</li>
+<li><strong>timeStep</strong> (a <a class="reference internal" href="dta.Utils.html#dta.Utils.Time" title="dta.Utils.Time"><tt class="xref py py-class docutils literal"><span class="pre">dta.Utils.Time</span></tt></a> instance) &#8211; the granularity of time steps at which the demand is represented.</li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+<dl class="method">
+<dt id="dta.Demand.__init__">
+<tt class="descname">__init__</tt><big>(</big><em>net</em>, <em>vehClassName</em>, <em>startTime</em>, <em>endTime</em>, <em>timeStep</em><big>)</big><a class="headerlink" href="#dta.Demand.__init__" title="Permalink to this definition">¶</a></dt>
+<dd><p>Constructor that initializes an empty Demand table that has three dimensions:
+time, origin taz, destination taz.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
+<li><strong>net</strong> (a <a class="reference internal" href="dta.Network.html#dta.Network" title="dta.Network"><tt class="xref py py-class docutils literal"><span class="pre">Network</span></tt></a> instance) &#8211; the Network for which this demand is relevant, used to get TAZ numbers.</li>
+<li><strong>vehClassName</strong> &#8211; a string that must match the relevant <tt class="xref py py-class docutils literal"><span class="pre">VehicleClass</span></tt> exactly (it&#8217;s case-sensitive!)</li>
+<li><strong>startTime</strong> (a <a class="reference internal" href="dta.Utils.html#dta.Utils.Time" title="dta.Utils.Time"><tt class="xref py py-class docutils literal"><span class="pre">dta.Utils.Time</span></tt></a> instance) &#8211; the simulation start time for when this demand will get added to the network.</li>
+<li><strong>endTime</strong> (a <a class="reference internal" href="dta.Utils.html#dta.Utils.Time" title="dta.Utils.Time"><tt class="xref py py-class docutils literal"><span class="pre">dta.Utils.Time</span></tt></a> instance) &#8211; the simulation end time for this demand will stop being added to the network.</li>
+<li><strong>timeStep</strong> (a <a class="reference internal" href="dta.Utils.html#dta.Utils.Time" title="dta.Utils.Time"><tt class="xref py py-class docutils literal"><span class="pre">dta.Utils.Time</span></tt></a> instance) &#8211; the granularity of time steps at which the demand is represented.</li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<p class="rubric">Methods</p>
+<table border="1" class="longtable docutils">
+<colgroup>
+<col width="10%" />
+<col width="90%" />
+</colgroup>
+<tbody valign="top">
+<tr class="row-odd"><td><tt class="xref py py-obj docutils literal"><span class="pre">__init__</span></tt>(net,&nbsp;vehClassName,&nbsp;startTime,&nbsp;...)</td>
+<td>Constructor that initializes an empty Demand table that has three dimensions:</td>
+</tr>
+<tr class="row-even"><td><tt class="xref py py-obj docutils literal"><span class="pre">applyTimeOfDayFactors</span></tt>(factorsInAList)</td>
+<td>Apply the given time of day factors to the existing  demand object and return a new demand object with as many  time slices as the number of factors.</td>
+</tr>
+<tr class="row-odd"><td><tt class="xref py py-obj docutils literal"><span class="pre">getNumSlices</span></tt>()</td>
+<td>Return the number of time slices the demand has been split</td>
+</tr>
+<tr class="row-even"><td><tt class="xref py py-obj docutils literal"><span class="pre">getTotalNumTrips</span></tt>()</td>
+<td>Return the total number of trips for all time periods</td>
+</tr>
+<tr class="row-odd"><td><tt class="xref py py-obj docutils literal"><span class="pre">getValue</span></tt>(timeLabel,&nbsp;origin,&nbsp;destination)</td>
+<td>Return the value of the given time period, origin, and destination</td>
+</tr>
+<tr class="row-even"><td><tt class="xref py py-obj docutils literal"><span class="pre">iterTimePeriods</span></tt>()</td>
+<td>Return an iterator to the time periods associated with the demand time slices</td>
+</tr>
+<tr class="row-odd"><td><tt class="xref py py-obj docutils literal"><span class="pre">readCubeODTable</span></tt>(fileName,&nbsp;net,&nbsp;...)</td>
+<td>Reads the demand (linear format) from the input csv file and returns a demand instance.</td>
+</tr>
+<tr class="row-even"><td><tt class="xref py py-obj docutils literal"><span class="pre">readDynameqTable</span></tt>(net,&nbsp;fileName)</td>
+<td>Read the dynameq demand stored in the <em>fileName</em> that pertains to <em>net</em>, a <a class="reference internal" href="dta.Network.html#dta.Network" title="dta.Network"><tt class="xref py py-class docutils literal"><span class="pre">Network</span></tt></a> instance.</td>
+</tr>
+<tr class="row-odd"><td><tt class="xref py py-obj docutils literal"><span class="pre">removeInvalidODPairs</span></tt>()</td>
+<td>Examine all the OD interchanges and remove those for which</td>
+</tr>
+<tr class="row-even"><td><tt class="xref py py-obj docutils literal"><span class="pre">setValue</span></tt>(timeLabel,&nbsp;origin,&nbsp;destination,&nbsp;value)</td>
+<td>Set the value of the given timeLabel, origin, and destination</td>
+</tr>
+<tr class="row-odd"><td><tt class="xref py py-obj docutils literal"><span class="pre">writeDynameqDemandHeader</span></tt>(outputStream,&nbsp;...)</td>
+<td>Write the demand header in the dynameq format ..</td>
+</tr>
+<tr class="row-even"><td><tt class="xref py py-obj docutils literal"><span class="pre">writeDynameqTable</span></tt>(outputStream[,&nbsp;format])</td>
+<td>Write the demand in Dynameq format</td>
+</tr>
+</tbody>
+</table>
+<dl class="method">
+<dt id="dta.Demand._getTimePeriods">
+<tt class="descname">_getTimePeriods</tt><big>(</big><em>startTime</em>, <em>endTime</em>, <em>timeStep</em><big>)</big><a class="headerlink" href="#dta.Demand._getTimePeriods" title="Permalink to this definition">¶</a></dt>
+<dd><p>Return the time labels of the different time slices as a list of <a class="reference internal" href="dta.Utils.html#dta.Utils.Time" title="dta.Utils.Time"><tt class="xref py py-class docutils literal"><span class="pre">dta.Utils.Time</span></tt></a> instances.
+Each time in the list is the <em>end</em> of the time slice.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="dta.Demand._timeInMin">
+<tt class="descname">_timeInMin</tt><big>(</big><em>time</em><big>)</big><a class="headerlink" href="#dta.Demand._timeInMin" title="Permalink to this definition">¶</a></dt>
+<dd><p>Return input time in minutes. Input time should be a datetime.datetime or 
+datetime.timedelta object</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="dta.Demand.applyTimeOfDayFactors">
+<tt class="descname">applyTimeOfDayFactors</tt><big>(</big><em>factorsInAList</em><big>)</big><a class="headerlink" href="#dta.Demand.applyTimeOfDayFactors" title="Permalink to this definition">¶</a></dt>
+<dd><p>Apply the given time of day factors to the existing 
+demand object and return a new demand object with as many 
+time slices as the number of factors. Each time slice is 
+the result of the original table multiplied by a factor 
+in the list.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="dta.Demand.getNumSlices">
+<tt class="descname">getNumSlices</tt><big>(</big><big>)</big><a class="headerlink" href="#dta.Demand.getNumSlices" title="Permalink to this definition">¶</a></dt>
+<dd><p>Return the number of time slices the demand has been split</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="dta.Demand.getTotalNumTrips">
+<tt class="descname">getTotalNumTrips</tt><big>(</big><big>)</big><a class="headerlink" href="#dta.Demand.getTotalNumTrips" title="Permalink to this definition">¶</a></dt>
+<dd><p>Return the total number of trips for all time periods</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="dta.Demand.getValue">
+<tt class="descname">getValue</tt><big>(</big><em>timeLabel</em>, <em>origin</em>, <em>destination</em><big>)</big><a class="headerlink" href="#dta.Demand.getValue" title="Permalink to this definition">¶</a></dt>
+<dd><p>Return the value of the given time period, origin, and destination</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="dta.Demand.iterTimePeriods">
+<tt class="descname">iterTimePeriods</tt><big>(</big><big>)</big><a class="headerlink" href="#dta.Demand.iterTimePeriods" title="Permalink to this definition">¶</a></dt>
+<dd><p>Return an iterator to the time periods associated with the demand time slices</p>
+</dd></dl>
+
+<dl class="classmethod">
+<dt id="dta.Demand.readCubeODTable">
+<em class="property">classmethod </em><tt class="descname">readCubeODTable</tt><big>(</big><em>fileName</em>, <em>net</em>, <em>vehicleClassName</em>, <em>startTime</em>, <em>endTime</em>, <em>timeStep</em>, <em>demandPortion</em><big>)</big><a class="headerlink" href="#dta.Demand.readCubeODTable" title="Permalink to this definition">¶</a></dt>
+<dd><p>Reads the demand (linear format) from the input csv file and returns a demand instance.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
+<li><strong>fileName</strong> &#8211; the file containing the demand; this will be a CSV containing 
+<tt class="docutils literal"><span class="pre">Origin,</span> <span class="pre">Destination,</span> <span class="pre">VehicleClassDemand1,</span> <span class="pre">VehicleClassDemand2,</span> <span class="pre">...</span></tt>.  The header line will be used
+to determine which column is relevant to which Vehicle Class.</li>
+<li><strong>net</strong> (a <a class="reference internal" href="dta.Network.html#dta.Network" title="dta.Network"><tt class="xref py py-class docutils literal"><span class="pre">Network</span></tt></a> instance) &#8211; the Network for which this demand is relevant, used to get TAZ numbers.</li>
+<li><strong>vehClassName</strong> &#8211; a string that must match the relevant <tt class="xref py py-class docutils literal"><span class="pre">VehicleClass</span></tt> exactly (it&#8217;s case-sensitive!)</li>
+<li><strong>startTime</strong> (a <a class="reference internal" href="dta.Utils.html#dta.Utils.Time" title="dta.Utils.Time"><tt class="xref py py-class docutils literal"><span class="pre">dta.Utils.Time</span></tt></a> instance) &#8211; the simulation start time for when this demand will get added to the network.</li>
+<li><strong>endTime</strong> (a <a class="reference internal" href="dta.Utils.html#dta.Utils.Time" title="dta.Utils.Time"><tt class="xref py py-class docutils literal"><span class="pre">dta.Utils.Time</span></tt></a> instance) &#8211; the simulation end time for this demand will stop being added to the network.</li>
+<li><strong>timeStep</strong> (a <a class="reference internal" href="dta.Utils.html#dta.Utils.Time" title="dta.Utils.Time"><tt class="xref py py-class docutils literal"><span class="pre">dta.Utils.Time</span></tt></a> instance) &#8211; the granularity of time steps at which the demand is represented.</li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="classmethod">
+<dt id="dta.Demand.readDynameqTable">
+<em class="property">classmethod </em><tt class="descname">readDynameqTable</tt><big>(</big><em>net</em>, <em>fileName</em><big>)</big><a class="headerlink" href="#dta.Demand.readDynameqTable" title="Permalink to this definition">¶</a></dt>
+<dd><p>Read the dynameq demand stored in the <em>fileName</em> that pertains to <em>net</em>, a <a class="reference internal" href="dta.Network.html#dta.Network" title="dta.Network"><tt class="xref py py-class docutils literal"><span class="pre">Network</span></tt></a> instance.
+This method reads only rectangular demand tables.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="dta.Demand.removeInvalidODPairs">
+<tt class="descname">removeInvalidODPairs</tt><big>(</big><big>)</big><a class="headerlink" href="#dta.Demand.removeInvalidODPairs" title="Permalink to this definition">¶</a></dt>
+<dd><p>Examine all the OD interchanges and remove those for which 
+a path does not exist from origin to destination</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="dta.Demand.setValue">
+<tt class="descname">setValue</tt><big>(</big><em>timeLabel</em>, <em>origin</em>, <em>destination</em>, <em>value</em><big>)</big><a class="headerlink" href="#dta.Demand.setValue" title="Permalink to this definition">¶</a></dt>
+<dd><p>Set the value of the given timeLabel, origin, and destination</p>
+</dd></dl>
+
+<dl class="classmethod">
+<dt id="dta.Demand.writeDynameqDemandHeader">
+<em class="property">classmethod </em><tt class="descname">writeDynameqDemandHeader</tt><big>(</big><em>outputStream</em>, <em>startTime</em>, <em>endTime</em>, <em>vehClassName</em>, <em>format='full'</em><big>)</big><a class="headerlink" href="#dta.Demand.writeDynameqDemandHeader" title="Permalink to this definition">¶</a></dt>
+<dd><p>Write the demand header in the dynameq format
+.. todo:: implement linear writing</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="dta.Demand.writeDynameqTable">
+<tt class="descname">writeDynameqTable</tt><big>(</big><em>outputStream</em>, <em>format='full'</em><big>)</big><a class="headerlink" href="#dta.Demand.writeDynameqTable" title="Permalink to this definition">¶</a></dt>
+<dd><p>Write the demand in Dynameq format
+.. todo:: implement linear writing</p>
+</dd></dl>
+
+</dd></dl>
+
+</div>
+
+
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar">
+        <div class="sphinxsidebarwrapper">
+  <h4>Previous topic</h4>
+  <p class="topless"><a href="dta.CountsVsVolumes.html"
+                        title="previous chapter">dta.CountsVsVolumes</a></p>
+  <h4>Next topic</h4>
+  <p class="topless"><a href="dta.DtaError.html"
+                        title="next chapter">dta.DtaError</a></p>
+  <h3>This Page</h3>
+  <ul class="this-page-menu">
+    <li><a href="../_sources/_generated/dta.Demand.txt"
+           rel="nofollow">Show Source</a></li>
+  </ul>
+<div id="searchbox" style="display: none">
+  <h3>Quick search</h3>
+    <form class="search" action="../search.html" method="get">
+      <input type="text" name="q" />
+      <input type="submit" value="Go" />
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+    <p class="searchtip" style="font-size: 90%">
+    Enter search terms or a module, class or function name.
+    </p>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../genindex.html" title="General Index"
+             >index</a></li>
+        <li class="right" >
+          <a href="../py-modindex.html" title="Python Module Index"
+             >modules</a> |</li>
+        <li class="right" >
+          <a href="dta.DtaError.html" title="dta.DtaError"
+             >next</a> |</li>
+        <li class="right" >
+          <a href="dta.CountsVsVolumes.html" title="dta.CountsVsVolumes"
+             >previous</a> |</li>
+        <li><a href="../index.html">DTA Anyway 1.0 documentation</a> &raquo;</li> 
+      </ul>
+    </div>
+    <div class="footer">
+        &copy; Copyright 2011-2012, SFCTA Modeling Crew.
+      Created using <a href="http://sphinx.pocoo.org/">Sphinx</a> 1.1.3.
+    </div>
+  </body>
+</html>

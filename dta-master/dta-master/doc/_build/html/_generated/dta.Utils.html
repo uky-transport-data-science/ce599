@@ -1,0 +1,513 @@
+
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>dta.Utils &mdash; DTA Anyway 1.0 documentation</title>
+    
+    <link rel="stylesheet" href="../_static/dta.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '../',
+        VERSION:     '1.0',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+    <script type="text/javascript" src="../_static/jquery.js"></script>
+    <script type="text/javascript" src="../_static/underscore.js"></script>
+    <script type="text/javascript" src="../_static/doctools.js"></script>
+    <link rel="top" title="DTA Anyway 1.0 documentation" href="../index.html" />
+    <link rel="prev" title="dta.Time" href="dta.Time.html" /> 
+  </head>
+  <body>
+    <div class="related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../genindex.html" title="General Index"
+             accesskey="I">index</a></li>
+        <li class="right" >
+          <a href="../py-modindex.html" title="Python Module Index"
+             >modules</a> |</li>
+        <li class="right" >
+          <a href="dta.Time.html" title="dta.Time"
+             accesskey="P">previous</a> |</li>
+        <li><a href="../index.html">DTA Anyway 1.0 documentation</a> &raquo;</li> 
+      </ul>
+    </div>  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body">
+            
+  <div class="section" id="module-dta.Utils">
+<span id="dta-utils"></span><h1>dta.Utils<a class="headerlink" href="#module-dta.Utils" title="Permalink to this headline">¶</a></h1>
+<p>Utility functions for use throughout DTA Anyway.</p>
+<p class="rubric">Functions</p>
+<table border="1" class="longtable docutils">
+<colgroup>
+<col width="10%" />
+<col width="90%" />
+</colgroup>
+<tbody valign="top">
+<tr class="row-odd"><td><a class="reference internal" href="#dta.Utils.bucketRounding" title="dta.Utils.bucketRounding"><tt class="xref py py-obj docutils literal"><span class="pre">bucketRounding</span></tt></a>(matrix,&nbsp;decimalPosition)</td>
+<td>This method applies bucket rounding to the input numpy matrix in place.</td>
+</tr>
+<tr class="row-even"><td><a class="reference internal" href="#dta.Utils.crossProduct" title="dta.Utils.crossProduct"><tt class="xref py py-obj docutils literal"><span class="pre">crossProduct</span></tt></a>(v1,&nbsp;v2)</td>
+<td>Assuming the two vectors <em>v1</em> and <em>v2</em> are on the z=0 plane, returns the z-component of the cross product between <em>v1</em> and <em>v2</em>.</td>
+</tr>
+<tr class="row-odd"><td><a class="reference internal" href="#dta.Utils.direction" title="dta.Utils.direction"><tt class="xref py py-obj docutils literal"><span class="pre">direction</span></tt></a>(point0,&nbsp;point1,&nbsp;point2)</td>
+<td>Returns the <tt class="xref py py-func docutils literal"><span class="pre">dta.crossProduct()</span></tt> result of the two vectors</td>
+</tr>
+<tr class="row-even"><td><a class="reference internal" href="#dta.Utils.getMidPoint" title="dta.Utils.getMidPoint"><tt class="xref py py-obj docutils literal"><span class="pre">getMidPoint</span></tt></a>(p1,&nbsp;p2)</td>
+<td>Return the the point in the middle of p1 and p2 as a (x,y) tuple.</td>
+</tr>
+<tr class="row-odd"><td><a class="reference internal" href="#dta.Utils.getNumZeroEntries" title="dta.Utils.getNumZeroEntries"><tt class="xref py py-obj docutils literal"><span class="pre">getNumZeroEntries</span></tt></a>(matrix)</td>
+<td>Return the number of cells(=OD Pairs) in the input matrix with zero values</td>
+</tr>
+<tr class="row-even"><td><a class="reference internal" href="#dta.Utils.getReverseNetwork" title="dta.Utils.getReverseNetwork"><tt class="xref py py-obj docutils literal"><span class="pre">getReverseNetwork</span></tt></a>(net)</td>
+<td>Returns a network copy that has all the links reversed</td>
+</tr>
+<tr class="row-odd"><td><a class="reference internal" href="#dta.Utils.isRightTurn" title="dta.Utils.isRightTurn"><tt class="xref py py-obj docutils literal"><span class="pre">isRightTurn</span></tt></a>(pi,&nbsp;pj,&nbsp;pk)</td>
+<td></td>
+</tr>
+<tr class="row-even"><td><a class="reference internal" href="#dta.Utils.lineSegmentsCross" title="dta.Utils.lineSegmentsCross"><tt class="xref py py-obj docutils literal"><span class="pre">lineSegmentsCross</span></tt></a>(p1,&nbsp;p2,&nbsp;p3,&nbsp;p4[,&nbsp;...])</td>
+<td>Helper function that determines if two line segments,  defined as a sequence of pairs of points, (<em>p1</em>, <em>p2</em>) and (<em>p3</em>, <em>p4</em>) intersect.</td>
+</tr>
+<tr class="row-odd"><td><a class="reference internal" href="#dta.Utils.militaryTimeToDateTime" title="dta.Utils.militaryTimeToDateTime"><tt class="xref py py-obj docutils literal"><span class="pre">militaryTimeToDateTime</span></tt></a>(militaryTime)</td>
+<td>Return a datetime.time object that corresponds</td>
+</tr>
+<tr class="row-even"><td><a class="reference internal" href="#dta.Utils.onSegment" title="dta.Utils.onSegment"><tt class="xref py py-obj docutils literal"><span class="pre">onSegment</span></tt></a>(pi,&nbsp;pj,&nbsp;pk)</td>
+<td>Assuming that point <em>pk</em> is known to be collinear with a segment (<em>pi</em>, <em>pj</em>), this function determines if <em>pk</em> lies <strong>on</strong> segment (<em>pi</em>, <em>pj</em>).</td>
+</tr>
+<tr class="row-odd"><td><tt class="xref py py-obj docutils literal"><span class="pre">parseString</span></tt>(string[,&nbsp;parser])</td>
+<td>Parse a file into a DOM from a string.</td>
+</tr>
+<tr class="row-even"><td><a class="reference internal" href="#dta.Utils.parseTextRecord" title="dta.Utils.parseTextRecord"><tt class="xref py py-obj docutils literal"><span class="pre">parseTextRecord</span></tt></a>(iterable[,&nbsp;is_separator,&nbsp;...])</td>
+<td>Read a text file record by record where a record is defined in multiple sequential lines and return a string concatenating  all the lines of a record into one line.</td>
+</tr>
+<tr class="row-odd"><td><a class="reference internal" href="#dta.Utils.plotSignalAttributes" title="dta.Utils.plotSignalAttributes"><tt class="xref py py-obj docutils literal"><span class="pre">plotSignalAttributes</span></tt></a>(net,&nbsp;militaryStartTime,&nbsp;...)</td>
+<td>plot signal attributes</td>
+</tr>
+<tr class="row-even"><td><a class="reference internal" href="#dta.Utils.plotTripHistogram" title="dta.Utils.plotTripHistogram"><tt class="xref py py-obj docutils literal"><span class="pre">plotTripHistogram</span></tt></a>(matrix,&nbsp;outputFile)</td>
+<td>Plot a histogram of the cell values and write the result in the outputFile</td>
+</tr>
+<tr class="row-odd"><td><a class="reference internal" href="#dta.Utils.polylinesCross" title="dta.Utils.polylinesCross"><tt class="xref py py-obj docutils literal"><span class="pre">polylinesCross</span></tt></a>(polyline1,&nbsp;polyline2)</td>
+<td>Return True if the two polylines cross.</td>
+</tr>
+<tr class="row-even"><td><a class="reference internal" href="#dta.Utils.writePoints" title="dta.Utils.writePoints"><tt class="xref py py-obj docutils literal"><span class="pre">writePoints</span></tt></a>(iterPoints,&nbsp;fileName)</td>
+<td>Write the input points to a shapefile.</td>
+</tr>
+<tr class="row-odd"><td><a class="reference internal" href="#dta.Utils.writePolygon" title="dta.Utils.writePolygon"><tt class="xref py py-obj docutils literal"><span class="pre">writePolygon</span></tt></a>(listOfPoints,&nbsp;fileName)</td>
+<td>Write the input points as a polygon.</td>
+</tr>
+</tbody>
+</table>
+<p class="rubric">Classes</p>
+<table border="1" class="longtable docutils">
+<colgroup>
+<col width="10%" />
+<col width="90%" />
+</colgroup>
+<tbody valign="top">
+<tr class="row-odd"><td><a class="reference internal" href="#dta.Utils.NetworkMapping" title="dta.Utils.NetworkMapping"><tt class="xref py py-obj docutils literal"><span class="pre">NetworkMapping</span></tt></a>(netOne,&nbsp;netTwo)</td>
+<td>Contains the node and link mappings of two network objects</td>
+</tr>
+<tr class="row-even"><td><a class="reference internal" href="#dta.Utils.Time" title="dta.Utils.Time"><tt class="xref py py-obj docutils literal"><span class="pre">Time</span></tt></a>(hour,&nbsp;minute[,&nbsp;second])</td>
+<td>Class that represents a time (without a specific date).</td>
+</tr>
+<tr class="row-odd"><td><tt class="xref py py-obj docutils literal"><span class="pre">defaultdict</span></tt></td>
+<td>defaultdict(default_factory) &#8211;&gt; dict with default factory</td>
+</tr>
+<tr class="row-even"><td><tt class="xref py py-obj docutils literal"><span class="pre">izip</span></tt></td>
+<td>izip(iter1 [,iter2 [...]]) &#8211;&gt; izip object</td>
+</tr>
+</tbody>
+</table>
+<p class="rubric">Exceptions</p>
+<table border="1" class="longtable docutils">
+<colgroup>
+<col width="10%" />
+<col width="90%" />
+</colgroup>
+<tbody valign="top">
+<tr class="row-odd"><td><a class="reference internal" href="#dta.Utils.MappingError" title="dta.Utils.MappingError"><tt class="xref py py-obj docutils literal"><span class="pre">MappingError</span></tt></a></td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<dl class="exception">
+<dt id="dta.Utils.MappingError">
+<em class="property">exception </em><tt class="descname">MappingError</tt><a class="reference internal" href="../_modules/dta/Utils.html#MappingError"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#dta.Utils.MappingError" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <tt class="xref py py-class docutils literal"><span class="pre">exceptions.Exception</span></tt></p>
+<dl class="attribute">
+<dt id="dta.Utils.MappingError.args">
+<tt class="descname">args</tt><a class="headerlink" href="#dta.Utils.MappingError.args" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="dta.Utils.MappingError.message">
+<tt class="descname">message</tt><a class="headerlink" href="#dta.Utils.MappingError.message" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="dta.Utils.NetworkMapping">
+<em class="property">class </em><tt class="descname">NetworkMapping</tt><big>(</big><em>netOne</em>, <em>netTwo</em><big>)</big><a class="reference internal" href="../_modules/dta/Utils.html#NetworkMapping"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#dta.Utils.NetworkMapping" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <tt class="xref py py-class docutils literal"><span class="pre">object</span></tt></p>
+<p>Contains the node and link mappings of two network objects</p>
+<p>netOne and netTwo are the two network objects to be mapped</p>
+<dl class="method">
+<dt id="dta.Utils.NetworkMapping.getMappedLink">
+<tt class="descname">getMappedLink</tt><big>(</big><em>node</em>, <em>link</em><big>)</big><a class="reference internal" href="../_modules/dta/Utils.html#NetworkMapping.getMappedLink"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#dta.Utils.NetworkMapping.getMappedLink" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="dta.Utils.NetworkMapping.getMappedNode">
+<tt class="descname">getMappedNode</tt><big>(</big><em>node</em><big>)</big><a class="reference internal" href="../_modules/dta/Utils.html#NetworkMapping.getMappedNode"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#dta.Utils.NetworkMapping.getMappedNode" title="Permalink to this definition">¶</a></dt>
+<dd><p>Return the mapped node. If the input node is from networkOne the
+corresponding node from network two is being returned and vice
+versa</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="dta.Utils.NetworkMapping.mapLinksByOrientation">
+<tt class="descname">mapLinksByOrientation</tt><big>(</big><em>maxAngle</em><big>)</big><a class="reference internal" href="../_modules/dta/Utils.html#NetworkMapping.mapLinksByOrientation"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#dta.Utils.NetworkMapping.mapLinksByOrientation" title="Permalink to this definition">¶</a></dt>
+<dd><p>Map the links based on the input maxAngle for all the
+pair of nodes that have already been mapped</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="dta.Utils.NetworkMapping.mapNodesById">
+<tt class="descname">mapNodesById</tt><big>(</big><big>)</big><a class="reference internal" href="../_modules/dta/Utils.html#NetworkMapping.mapNodesById"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#dta.Utils.NetworkMapping.mapNodesById" title="Permalink to this definition">¶</a></dt>
+<dd><p>Map the nodes of the two objects based on node ids</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="dta.Utils.NetworkMapping.setMappedLink">
+<tt class="descname">setMappedLink</tt><big>(</big><em>nodeOne</em>, <em>linkOne</em>, <em>nodeTwo</em>, <em>linkTwo</em><big>)</big><a class="reference internal" href="../_modules/dta/Utils.html#NetworkMapping.setMappedLink"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#dta.Utils.NetworkMapping.setMappedLink" title="Permalink to this definition">¶</a></dt>
+<dd><p>Map linkOne attached to nodeOne to linkTwo attached to nodeTwo</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="dta.Utils.NetworkMapping.setMappedNode">
+<tt class="descname">setMappedNode</tt><big>(</big><em>nodeOne</em>, <em>nodeTwo</em><big>)</big><a class="reference internal" href="../_modules/dta/Utils.html#NetworkMapping.setMappedNode"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#dta.Utils.NetworkMapping.setMappedNode" title="Permalink to this definition">¶</a></dt>
+<dd><p>Map the two input nodes to each other. A one to one mapping is
+being created for the two nodes.</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="dta.Utils.Time">
+<em class="property">class </em><tt class="descname">Time</tt><big>(</big><em>hour</em>, <em>minute</em>, <em>second=0</em><big>)</big><a class="reference internal" href="../_modules/dta/Utils.html#Time"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#dta.Utils.Time" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <tt class="xref py py-class docutils literal"><span class="pre">datetime.time</span></tt></p>
+<p>Class that represents a time (without a specific date).
+Adds a few simple methods to the standard python datetime.time class.</p>
+<dl class="method">
+<dt id="dta.Utils.Time.dst">
+<tt class="descname">dst</tt><big>(</big><big>)</big><a class="headerlink" href="#dta.Utils.Time.dst" title="Permalink to this definition">¶</a></dt>
+<dd><p>Return self.tzinfo.dst(self).</p>
+</dd></dl>
+
+<dl class="classmethod">
+<dt id="dta.Utils.Time.fromMinutes">
+<em class="property">classmethod </em><tt class="descname">fromMinutes</tt><big>(</big><em>minutes</em><big>)</big><a class="reference internal" href="../_modules/dta/Utils.html#Time.fromMinutes"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#dta.Utils.Time.fromMinutes" title="Permalink to this definition">¶</a></dt>
+<dd><p>Return a Time object that has the same number of minutes and the input arguments</p>
+</dd></dl>
+
+<dl class="classmethod">
+<dt id="dta.Utils.Time.fromSeconds">
+<em class="property">classmethod </em><tt class="descname">fromSeconds</tt><big>(</big><em>seconds</em><big>)</big><a class="reference internal" href="../_modules/dta/Utils.html#Time.fromSeconds"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#dta.Utils.Time.fromSeconds" title="Permalink to this definition">¶</a></dt>
+<dd><p>Return a Time object that assuming <em>seconds</em> represents seconds after midnight.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="dta.Utils.Time.getMinutes">
+<tt class="descname">getMinutes</tt><big>(</big><big>)</big><a class="reference internal" href="../_modules/dta/Utils.html#Time.getMinutes"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#dta.Utils.Time.getMinutes" title="Permalink to this definition">¶</a></dt>
+<dd><p>Return the number of minutes from 0:00AM that
+correspond to the hours and minutes of this
+object.</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="dta.Utils.Time.hour">
+<tt class="descname">hour</tt><a class="headerlink" href="#dta.Utils.Time.hour" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="dta.Utils.Time.isoformat">
+<tt class="descname">isoformat</tt><big>(</big><big>)</big><a class="headerlink" href="#dta.Utils.Time.isoformat" title="Permalink to this definition">¶</a></dt>
+<dd><p>Return string in ISO 8601 format, HH:MM:SS[.mmmmmm][+HH:MM].</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="dta.Utils.Time.max">
+<tt class="descname">max</tt><em class="property"> = datetime.time(23, 59, 59, 999999)</em><a class="headerlink" href="#dta.Utils.Time.max" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="dta.Utils.Time.microsecond">
+<tt class="descname">microsecond</tt><a class="headerlink" href="#dta.Utils.Time.microsecond" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="dta.Utils.Time.min">
+<tt class="descname">min</tt><em class="property"> = datetime.time(0, 0)</em><a class="headerlink" href="#dta.Utils.Time.min" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="dta.Utils.Time.minute">
+<tt class="descname">minute</tt><a class="headerlink" href="#dta.Utils.Time.minute" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="classmethod">
+<dt id="dta.Utils.Time.readFromString">
+<em class="property">classmethod </em><tt class="descname">readFromString</tt><big>(</big><em>timeAsString</em><big>)</big><a class="reference internal" href="../_modules/dta/Utils.html#Time.readFromString"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#dta.Utils.Time.readFromString" title="Permalink to this definition">¶</a></dt>
+<dd><p>Read a string representing time in the format %H:%M or %H:%M:%S e.g. 16:30
+and return a time object</p>
+</dd></dl>
+
+<dl class="classmethod">
+<dt id="dta.Utils.Time.readFromStringWithoutColon">
+<em class="property">classmethod </em><tt class="descname">readFromStringWithoutColon</tt><big>(</big><em>timeAsString</em><big>)</big><a class="reference internal" href="../_modules/dta/Utils.html#Time.readFromStringWithoutColon"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#dta.Utils.Time.readFromStringWithoutColon" title="Permalink to this definition">¶</a></dt>
+<dd><p>Read a string representing time in the format %H:%M e.g. 1630
+and return a time object</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="dta.Utils.Time.replace">
+<tt class="descname">replace</tt><big>(</big><big>)</big><a class="headerlink" href="#dta.Utils.Time.replace" title="Permalink to this definition">¶</a></dt>
+<dd><p>Return time with new specified fields.</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="dta.Utils.Time.resolution">
+<tt class="descname">resolution</tt><em class="property"> = datetime.timedelta(0, 0, 1)</em><a class="headerlink" href="#dta.Utils.Time.resolution" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="dta.Utils.Time.second">
+<tt class="descname">second</tt><a class="headerlink" href="#dta.Utils.Time.second" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="dta.Utils.Time.strftime">
+<tt class="descname">strftime</tt><big>(</big><big>)</big><a class="headerlink" href="#dta.Utils.Time.strftime" title="Permalink to this definition">¶</a></dt>
+<dd><p>format -&gt; strftime() style string.</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="dta.Utils.Time.tzinfo">
+<tt class="descname">tzinfo</tt><a class="headerlink" href="#dta.Utils.Time.tzinfo" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="dta.Utils.Time.tzname">
+<tt class="descname">tzname</tt><big>(</big><big>)</big><a class="headerlink" href="#dta.Utils.Time.tzname" title="Permalink to this definition">¶</a></dt>
+<dd><p>Return self.tzinfo.tzname(self).</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="dta.Utils.Time.utcoffset">
+<tt class="descname">utcoffset</tt><big>(</big><big>)</big><a class="headerlink" href="#dta.Utils.Time.utcoffset" title="Permalink to this definition">¶</a></dt>
+<dd><p>Return self.tzinfo.utcoffset(self).</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="function">
+<dt id="dta.Utils.bucketRounding">
+<tt class="descname">bucketRounding</tt><big>(</big><em>matrix</em>, <em>decimalPosition</em><big>)</big><a class="reference internal" href="../_modules/dta/Utils.html#bucketRounding"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#dta.Utils.bucketRounding" title="Permalink to this definition">¶</a></dt>
+<dd><p>This method applies bucket rounding to the input numpy matrix in place.
+The decimal position is identified by the the input integer decimalPosition
+The matrix rounding algorithm will preserve row sums but will not preserve
+column sums</p>
+</dd></dl>
+
+<dl class="function">
+<dt id="dta.Utils.crossProduct">
+<tt class="descname">crossProduct</tt><big>(</big><em>v1</em>, <em>v2</em><big>)</big><a class="reference internal" href="../_modules/dta/Utils.html#crossProduct"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#dta.Utils.crossProduct" title="Permalink to this definition">¶</a></dt>
+<dd><p>Assuming the two vectors <em>v1</em> and <em>v2</em> are on the z=0 plane, returns
+the z-component of the cross product between <em>v1</em> and <em>v2</em>.</p>
+<p>The magnitude of this value is the area of the parallelogram with <em>v1</em> and <em>v2</em> as sides,
+and is therefore 0 when the vectors are collinear.</p>
+</dd></dl>
+
+<dl class="function">
+<dt id="dta.Utils.direction">
+<tt class="descname">direction</tt><big>(</big><em>point0</em>, <em>point1</em>, <em>point2</em><big>)</big><a class="reference internal" href="../_modules/dta/Utils.html#direction"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#dta.Utils.direction" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns the <tt class="xref py py-func docutils literal"><span class="pre">dta.crossProduct()</span></tt> result of the two vectors
+&lt;<em>point2</em>-<em>point0</em>, <em>point1</em>-<em>point0</em>&gt;
+e.g. the vectors emanating from point0 to point2 and point1.</p>
+<p>All arguments should be 2-tuple points of floats.</p>
+</dd></dl>
+
+<dl class="function">
+<dt id="dta.Utils.getMidPoint">
+<tt class="descname">getMidPoint</tt><big>(</big><em>p1</em>, <em>p2</em><big>)</big><a class="reference internal" href="../_modules/dta/Utils.html#getMidPoint"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#dta.Utils.getMidPoint" title="Permalink to this definition">¶</a></dt>
+<dd><p>Return the the point in the middle of p1 and p2 as a (x,y) tuple.</p>
+</dd></dl>
+
+<dl class="function">
+<dt id="dta.Utils.getNumZeroEntries">
+<tt class="descname">getNumZeroEntries</tt><big>(</big><em>matrix</em><big>)</big><a class="reference internal" href="../_modules/dta/Utils.html#getNumZeroEntries"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#dta.Utils.getNumZeroEntries" title="Permalink to this definition">¶</a></dt>
+<dd><p>Return the number of cells(=OD Pairs) in the input matrix with zero values</p>
+</dd></dl>
+
+<dl class="function">
+<dt id="dta.Utils.getReverseNetwork">
+<tt class="descname">getReverseNetwork</tt><big>(</big><em>net</em><big>)</big><a class="reference internal" href="../_modules/dta/Utils.html#getReverseNetwork"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#dta.Utils.getReverseNetwork" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns a network copy that has all the links reversed</p>
+</dd></dl>
+
+<dl class="function">
+<dt id="dta.Utils.isRightTurn">
+<tt class="descname">isRightTurn</tt><big>(</big><em>pi</em>, <em>pj</em>, <em>pk</em><big>)</big><a class="reference internal" href="../_modules/dta/Utils.html#isRightTurn"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#dta.Utils.isRightTurn" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="function">
+<dt id="dta.Utils.lineSegmentsCross">
+<tt class="descname">lineSegmentsCross</tt><big>(</big><em>p1</em>, <em>p2</em>, <em>p3</em>, <em>p4</em>, <em>checkBoundaryConditions=False</em><big>)</big><a class="reference internal" href="../_modules/dta/Utils.html#lineSegmentsCross"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#dta.Utils.lineSegmentsCross" title="Permalink to this definition">¶</a></dt>
+<dd><p>Helper function that determines if two line segments, 
+defined as a sequence of pairs of points, (<em>p1</em>, <em>p2</em>) and (<em>p3</em>, <em>p4</em>) intersect. 
+If so it returns True, otherwise False. If the two 
+line segments touch each other the method will 
+return False.</p>
+<p>If <em>checkBoundaryConditions</em> is True, then if one point collinear with the other segment, we return
+True if and only if the point is <strong>on</strong> the other segment.</p>
+<p>If <em>checkBoundaryConditions</em> is False, we don&#8217;t care about this case, and return False.</p>
+</dd></dl>
+
+<dl class="function">
+<dt id="dta.Utils.militaryTimeToDateTime">
+<tt class="descname">militaryTimeToDateTime</tt><big>(</big><em>militaryTime</em><big>)</big><a class="reference internal" href="../_modules/dta/Utils.html#militaryTimeToDateTime"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#dta.Utils.militaryTimeToDateTime" title="Permalink to this definition">¶</a></dt>
+<dd><p>Return a datetime.time object that corresponds
+to the military time</p>
+</dd></dl>
+
+<dl class="function">
+<dt id="dta.Utils.onSegment">
+<tt class="descname">onSegment</tt><big>(</big><em>pi</em>, <em>pj</em>, <em>pk</em><big>)</big><a class="reference internal" href="../_modules/dta/Utils.html#onSegment"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#dta.Utils.onSegment" title="Permalink to this definition">¶</a></dt>
+<dd><p>Assuming that point <em>pk</em> is known to be collinear with a segment (<em>pi</em>, <em>pj</em>),
+this function determines if <em>pk</em> lies <strong>on</strong> segment (<em>pi</em>, <em>pj</em>).
+It does so by examining if point <em>pk</em> is inside the boundary box of segment (<em>pi</em>,*pj*)</p>
+<p><em>pi</em>, <em>pj</em>, <em>pk</em> are 2-tuples of floats (x,y).</p>
+</dd></dl>
+
+<dl class="function">
+<dt id="dta.Utils.parseTextRecord">
+<tt class="descname">parseTextRecord</tt><big>(</big><em>iterable</em>, <em>is_separator=&lt;_sre.SRE_Pattern object at 0x02DB23E0&gt;</em>, <em>is_comment=&lt;_sre.SRE_Pattern object at 0x02DB2460&gt;</em>, <em>joiner=&lt;function &lt;lambda&gt; at 0x02DC5FB0&gt;</em><big>)</big><a class="reference internal" href="../_modules/dta/Utils.html#parseTextRecord"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#dta.Utils.parseTextRecord" title="Permalink to this definition">¶</a></dt>
+<dd><p>Read a text file record by record where a record is defined
+in multiple sequential lines and return a string concatenating 
+all the lines of a record into one line.</p>
+<ul class="simple">
+<li><em>is_separator</em> is a regex instance that identifies the lines which separate records.</li>
+<li><em>is_comment</em> is a regex instance that identifies comment lines that ought to 
+be bypassed.</li>
+<li><em>joiner</em>  is a function used on the list of strings</li>
+</ul>
+<p>Yields the result of <em>joiner</em> on the list of strings.</p>
+</dd></dl>
+
+<dl class="function">
+<dt id="dta.Utils.plotSignalAttributes">
+<tt class="descname">plotSignalAttributes</tt><big>(</big><em>net</em>, <em>militaryStartTime</em>, <em>militaryEndTime</em>, <em>outputFile</em><big>)</big><a class="reference internal" href="../_modules/dta/Utils.html#plotSignalAttributes"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#dta.Utils.plotSignalAttributes" title="Permalink to this definition">¶</a></dt>
+<dd><p>plot signal attributes</p>
+</dd></dl>
+
+<dl class="function">
+<dt id="dta.Utils.plotTripHistogram">
+<tt class="descname">plotTripHistogram</tt><big>(</big><em>matrix</em>, <em>outputFile</em><big>)</big><a class="reference internal" href="../_modules/dta/Utils.html#plotTripHistogram"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#dta.Utils.plotTripHistogram" title="Permalink to this definition">¶</a></dt>
+<dd><p>Plot a histogram of the cell values and write the result in the outputFile
+<em>matrix</em> is a numpy array .</p>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last">Requires <a class="reference external" href="http://www.scipy.org/PyLab">pylab</a> module.</p>
+</div>
+</dd></dl>
+
+<dl class="function">
+<dt id="dta.Utils.polylinesCross">
+<tt class="descname">polylinesCross</tt><big>(</big><em>polyline1</em>, <em>polyline2</em><big>)</big><a class="reference internal" href="../_modules/dta/Utils.html#polylinesCross"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#dta.Utils.polylinesCross" title="Permalink to this definition">¶</a></dt>
+<dd><p>Return True if the two polylines cross.
+Each polyline is should be a list of two point tuples</p>
+</dd></dl>
+
+<dl class="function">
+<dt id="dta.Utils.writePoints">
+<tt class="descname">writePoints</tt><big>(</big><em>iterPoints</em>, <em>fileName</em><big>)</big><a class="reference internal" href="../_modules/dta/Utils.html#writePoints"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#dta.Utils.writePoints" title="Permalink to this definition">¶</a></dt>
+<dd><p>Write the input points to a shapefile. Each point should be a tuple of (x, y) floats</p>
+</dd></dl>
+
+<dl class="function">
+<dt id="dta.Utils.writePolygon">
+<tt class="descname">writePolygon</tt><big>(</big><em>listOfPoints</em>, <em>fileName</em><big>)</big><a class="reference internal" href="../_modules/dta/Utils.html#writePolygon"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#dta.Utils.writePolygon" title="Permalink to this definition">¶</a></dt>
+<dd><p>Write the input points as a polygon. Each point should be a tuple of (x,y) coordinates</p>
+</dd></dl>
+
+</div>
+
+
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar">
+        <div class="sphinxsidebarwrapper">
+  <h4>Previous topic</h4>
+  <p class="topless"><a href="dta.Time.html"
+                        title="previous chapter">dta.Time</a></p>
+  <h3>This Page</h3>
+  <ul class="this-page-menu">
+    <li><a href="../_sources/_generated/dta.Utils.txt"
+           rel="nofollow">Show Source</a></li>
+  </ul>
+<div id="searchbox" style="display: none">
+  <h3>Quick search</h3>
+    <form class="search" action="../search.html" method="get">
+      <input type="text" name="q" />
+      <input type="submit" value="Go" />
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+    <p class="searchtip" style="font-size: 90%">
+    Enter search terms or a module, class or function name.
+    </p>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../genindex.html" title="General Index"
+             >index</a></li>
+        <li class="right" >
+          <a href="../py-modindex.html" title="Python Module Index"
+             >modules</a> |</li>
+        <li class="right" >
+          <a href="dta.Time.html" title="dta.Time"
+             >previous</a> |</li>
+        <li><a href="../index.html">DTA Anyway 1.0 documentation</a> &raquo;</li> 
+      </ul>
+    </div>
+    <div class="footer">
+        &copy; Copyright 2011-2012, SFCTA Modeling Crew.
+      Created using <a href="http://sphinx.pocoo.org/">Sphinx</a> 1.1.3.
+    </div>
+  </body>
+</html>

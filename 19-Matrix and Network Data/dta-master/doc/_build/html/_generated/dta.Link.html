@@ -1,0 +1,296 @@
+
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>dta.Link &mdash; DTA Anyway 1.0 documentation</title>
+    
+    <link rel="stylesheet" href="../_static/dta.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '../',
+        VERSION:     '1.0',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+    <script type="text/javascript" src="../_static/jquery.js"></script>
+    <script type="text/javascript" src="../_static/underscore.js"></script>
+    <script type="text/javascript" src="../_static/doctools.js"></script>
+    <link rel="top" title="DTA Anyway 1.0 documentation" href="../index.html" />
+    <link rel="next" title="dta.RoadLink" href="dta.RoadLink.html" />
+    <link rel="prev" title="dta.Centroid" href="dta.Centroid.html" /> 
+  </head>
+  <body>
+    <div class="related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../genindex.html" title="General Index"
+             accesskey="I">index</a></li>
+        <li class="right" >
+          <a href="../py-modindex.html" title="Python Module Index"
+             >modules</a> |</li>
+        <li class="right" >
+          <a href="dta.RoadLink.html" title="dta.RoadLink"
+             accesskey="N">next</a> |</li>
+        <li class="right" >
+          <a href="dta.Centroid.html" title="dta.Centroid"
+             accesskey="P">previous</a> |</li>
+        <li><a href="../index.html">DTA Anyway 1.0 documentation</a> &raquo;</li> 
+      </ul>
+    </div>  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body">
+            
+  <div class="section" id="dta-link">
+<h1>dta.Link<a class="headerlink" href="#dta-link" title="Permalink to this headline">¶</a></h1>
+<dl class="class">
+<dt id="dta.Link">
+<em class="property">class </em><tt class="descname">Link</tt><big>(</big><em>id</em>, <em>startNode</em>, <em>endNode</em>, <em>label</em><big>)</big><a class="headerlink" href="#dta.Link" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <tt class="xref py py-class docutils literal"><span class="pre">object</span></tt></p>
+<p>Base class that represents a link in a network.</p>
+<p>Constructor.</p>
+<blockquote>
+<div><ul class="simple">
+<li><em>id</em> is a unique identifier (unique within the containing network), an integer, or None</li>
+<li><em>startNode</em>, <em>endNode</em> are Nodes</li>
+<li><em>label</em> is a string. If None passed, will use default.</li>
+</ul>
+</div></blockquote>
+<dl class="method">
+<dt id="dta.Link.__init__">
+<tt class="descname">__init__</tt><big>(</big><em>id</em>, <em>startNode</em>, <em>endNode</em>, <em>label</em><big>)</big><a class="headerlink" href="#dta.Link.__init__" title="Permalink to this definition">¶</a></dt>
+<dd><p>Constructor.</p>
+<ul class="simple">
+<li><em>id</em> is a unique identifier (unique within the containing network), an integer, or None</li>
+<li><em>startNode</em>, <em>endNode</em> are Nodes</li>
+<li><em>label</em> is a string. If None passed, will use default.</li>
+</ul>
+</dd></dl>
+
+<p class="rubric">Methods</p>
+<table border="1" class="longtable docutils">
+<colgroup>
+<col width="10%" />
+<col width="90%" />
+</colgroup>
+<tbody valign="top">
+<tr class="row-odd"><td><tt class="xref py py-obj docutils literal"><span class="pre">__init__</span></tt>(id,&nbsp;startNode,&nbsp;endNode,&nbsp;label)</td>
+<td>Constructor.</td>
+</tr>
+<tr class="row-even"><td><tt class="xref py py-obj docutils literal"><span class="pre">euclideanLength</span></tt>([includeShape])</td>
+<td>Calculates the length based on simple Euclidean distance.</td>
+</tr>
+<tr class="row-odd"><td><tt class="xref py py-obj docutils literal"><span class="pre">getEndNode</span></tt>()</td>
+<td>Accessor for endNode</td>
+</tr>
+<tr class="row-even"><td><tt class="xref py py-obj docutils literal"><span class="pre">getEndNodeId</span></tt>()</td>
+<td>Return the id of the end node</td>
+</tr>
+<tr class="row-odd"><td><tt class="xref py py-obj docutils literal"><span class="pre">getId</span></tt>()</td>
+<td>Return the link id</td>
+</tr>
+<tr class="row-even"><td><tt class="xref py py-obj docutils literal"><span class="pre">getIid</span></tt>()</td>
+<td>Return a pair representing the start and end node ids</td>
+</tr>
+<tr class="row-odd"><td><tt class="xref py py-obj docutils literal"><span class="pre">getLabel</span></tt>()</td>
+<td>Return the link label</td>
+</tr>
+<tr class="row-even"><td><tt class="xref py py-obj docutils literal"><span class="pre">getOtherEnd</span></tt>(node)</td>
+<td>Return the other end node than the one provided.</td>
+</tr>
+<tr class="row-odd"><td><tt class="xref py py-obj docutils literal"><span class="pre">getReferenceAngle</span></tt>()</td>
+<td>Visualizing the link as a straight vector from (0,0), returns the angle between &lt;1,0&gt; and this link.</td>
+</tr>
+<tr class="row-even"><td><tt class="xref py py-obj docutils literal"><span class="pre">getReferenceAngleInDegrees</span></tt>()</td>
+<td>Return the Reference angle in degrees</td>
+</tr>
+<tr class="row-odd"><td><tt class="xref py py-obj docutils literal"><span class="pre">getStartNode</span></tt>()</td>
+<td>Accessor for startNode</td>
+</tr>
+<tr class="row-even"><td><tt class="xref py py-obj docutils literal"><span class="pre">getStartNodeId</span></tt>()</td>
+<td>Return the id of the start node</td>
+</tr>
+<tr class="row-odd"><td><tt class="xref py py-obj docutils literal"><span class="pre">hasSameAttributes</span></tt>(other)</td>
+<td>Return True if the two links have the same attributes return True</td>
+</tr>
+<tr class="row-even"><td><tt class="xref py py-obj docutils literal"><span class="pre">setLabel</span></tt>(label)</td>
+<td>Set the link label</td>
+</tr>
+</tbody>
+</table>
+<p class="rubric">Attributes</p>
+<table border="1" class="longtable docutils">
+<colgroup>
+<col width="10%" />
+<col width="90%" />
+</colgroup>
+<tbody valign="top">
+<tr class="row-odd"><td><tt class="xref py py-obj docutils literal"><span class="pre">DEFAULT_LABEL</span></tt></td>
+<td>str(object) -&gt; string</td>
+</tr>
+</tbody>
+</table>
+<dl class="attribute">
+<dt id="dta.Link.DEFAULT_LABEL">
+<tt class="descname">DEFAULT_LABEL</tt><em class="property"> = ''</em><a class="headerlink" href="#dta.Link.DEFAULT_LABEL" title="Permalink to this definition">¶</a></dt>
+<dd><p>Default label is an empty string</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="dta.Link.euclideanLength">
+<tt class="descname">euclideanLength</tt><big>(</big><em>includeShape=False</em><big>)</big><a class="headerlink" href="#dta.Link.euclideanLength" title="Permalink to this definition">¶</a></dt>
+<dd><p>Calculates the length based on simple Euclidean distance.</p>
+<p>This will be in the units specified by <a class="reference internal" href="dta.Node.html#dta.Node.COORDINATE_UNITS" title="dta.Node.COORDINATE_UNITS"><tt class="xref py py-attr docutils literal"><span class="pre">Node.COORDINATE_UNITS</span></tt></a>.</p>
+<p><em>includeShape</em> is ignored in the generic case; the <a class="reference internal" href="dta.RoadLink.html#dta.RoadLink" title="dta.RoadLink"><tt class="xref py py-class docutils literal"><span class="pre">RoadLink</span></tt></a> will use that arg.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="dta.Link.getEndNode">
+<tt class="descname">getEndNode</tt><big>(</big><big>)</big><a class="headerlink" href="#dta.Link.getEndNode" title="Permalink to this definition">¶</a></dt>
+<dd><p>Accessor for endNode</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="dta.Link.getEndNodeId">
+<tt class="descname">getEndNodeId</tt><big>(</big><big>)</big><a class="headerlink" href="#dta.Link.getEndNodeId" title="Permalink to this definition">¶</a></dt>
+<dd><p>Return the id of the end node</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="dta.Link.getId">
+<tt class="descname">getId</tt><big>(</big><big>)</big><a class="headerlink" href="#dta.Link.getId" title="Permalink to this definition">¶</a></dt>
+<dd><p>Return the link id</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="dta.Link.getIid">
+<tt class="descname">getIid</tt><big>(</big><big>)</big><a class="headerlink" href="#dta.Link.getIid" title="Permalink to this definition">¶</a></dt>
+<dd><p>Return a pair representing the start and end node ids</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="dta.Link.getLabel">
+<tt class="descname">getLabel</tt><big>(</big><big>)</big><a class="headerlink" href="#dta.Link.getLabel" title="Permalink to this definition">¶</a></dt>
+<dd><p>Return the link label</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="dta.Link.getOtherEnd">
+<tt class="descname">getOtherEnd</tt><big>(</big><em>node</em><big>)</big><a class="headerlink" href="#dta.Link.getOtherEnd" title="Permalink to this definition">¶</a></dt>
+<dd><p>Return the other end node than the one provided.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="dta.Link.getReferenceAngle">
+<tt class="descname">getReferenceAngle</tt><big>(</big><big>)</big><a class="headerlink" href="#dta.Link.getReferenceAngle" title="Permalink to this definition">¶</a></dt>
+<dd><p>Visualizing the link as a straight vector from (0,0), returns the angle between &lt;1,0&gt; and this link.</p>
+<p>So returns a number in [0,2pi), increasing clockwise.</p>
+<p>These are based on the euclidean length of the link, so assumes a straight line.  If the link has no length,
+returns 0.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="dta.Link.getReferenceAngleInDegrees">
+<tt class="descname">getReferenceAngleInDegrees</tt><big>(</big><big>)</big><a class="headerlink" href="#dta.Link.getReferenceAngleInDegrees" title="Permalink to this definition">¶</a></dt>
+<dd><p>Return the Reference angle in degrees</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="dta.Link.getStartNode">
+<tt class="descname">getStartNode</tt><big>(</big><big>)</big><a class="headerlink" href="#dta.Link.getStartNode" title="Permalink to this definition">¶</a></dt>
+<dd><p>Accessor for startNode</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="dta.Link.getStartNodeId">
+<tt class="descname">getStartNodeId</tt><big>(</big><big>)</big><a class="headerlink" href="#dta.Link.getStartNodeId" title="Permalink to this definition">¶</a></dt>
+<dd><p>Return the id of the start node</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="dta.Link.hasSameAttributes">
+<tt class="descname">hasSameAttributes</tt><big>(</big><em>other</em><big>)</big><a class="headerlink" href="#dta.Link.hasSameAttributes" title="Permalink to this definition">¶</a></dt>
+<dd><p>Return True if the two links have the same attributes return True</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="dta.Link.setLabel">
+<tt class="descname">setLabel</tt><big>(</big><em>label</em><big>)</big><a class="headerlink" href="#dta.Link.setLabel" title="Permalink to this definition">¶</a></dt>
+<dd><p>Set the link label</p>
+</dd></dl>
+
+</dd></dl>
+
+</div>
+
+
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar">
+        <div class="sphinxsidebarwrapper">
+  <h4>Previous topic</h4>
+  <p class="topless"><a href="dta.Centroid.html"
+                        title="previous chapter">dta.Centroid</a></p>
+  <h4>Next topic</h4>
+  <p class="topless"><a href="dta.RoadLink.html"
+                        title="next chapter">dta.RoadLink</a></p>
+  <h3>This Page</h3>
+  <ul class="this-page-menu">
+    <li><a href="../_sources/_generated/dta.Link.txt"
+           rel="nofollow">Show Source</a></li>
+  </ul>
+<div id="searchbox" style="display: none">
+  <h3>Quick search</h3>
+    <form class="search" action="../search.html" method="get">
+      <input type="text" name="q" />
+      <input type="submit" value="Go" />
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+    <p class="searchtip" style="font-size: 90%">
+    Enter search terms or a module, class or function name.
+    </p>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../genindex.html" title="General Index"
+             >index</a></li>
+        <li class="right" >
+          <a href="../py-modindex.html" title="Python Module Index"
+             >modules</a> |</li>
+        <li class="right" >
+          <a href="dta.RoadLink.html" title="dta.RoadLink"
+             >next</a> |</li>
+        <li class="right" >
+          <a href="dta.Centroid.html" title="dta.Centroid"
+             >previous</a> |</li>
+        <li><a href="../index.html">DTA Anyway 1.0 documentation</a> &raquo;</li> 
+      </ul>
+    </div>
+    <div class="footer">
+        &copy; Copyright 2011-2012, SFCTA Modeling Crew.
+      Created using <a href="http://sphinx.pocoo.org/">Sphinx</a> 1.1.3.
+    </div>
+  </body>
+</html>

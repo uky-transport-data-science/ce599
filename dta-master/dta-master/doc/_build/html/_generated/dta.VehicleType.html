@@ -1,0 +1,178 @@
+
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>dta.VehicleType &mdash; DTA Anyway 1.0 documentation</title>
+    
+    <link rel="stylesheet" href="../_static/dta.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '../',
+        VERSION:     '1.0',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+    <script type="text/javascript" src="../_static/jquery.js"></script>
+    <script type="text/javascript" src="../_static/underscore.js"></script>
+    <script type="text/javascript" src="../_static/doctools.js"></script>
+    <link rel="top" title="DTA Anyway 1.0 documentation" href="../index.html" />
+    <link rel="next" title="dta.VehicleClassGroup" href="dta.VehicleClassGroup.html" />
+    <link rel="prev" title="dta.DynameqScenario" href="dta.DynameqScenario.html" /> 
+  </head>
+  <body>
+    <div class="related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../genindex.html" title="General Index"
+             accesskey="I">index</a></li>
+        <li class="right" >
+          <a href="../py-modindex.html" title="Python Module Index"
+             >modules</a> |</li>
+        <li class="right" >
+          <a href="dta.VehicleClassGroup.html" title="dta.VehicleClassGroup"
+             accesskey="N">next</a> |</li>
+        <li class="right" >
+          <a href="dta.DynameqScenario.html" title="dta.DynameqScenario"
+             accesskey="P">previous</a> |</li>
+        <li><a href="../index.html">DTA Anyway 1.0 documentation</a> &raquo;</li> 
+      </ul>
+    </div>  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body">
+            
+  <div class="section" id="dta-vehicletype">
+<h1>dta.VehicleType<a class="headerlink" href="#dta-vehicletype" title="Permalink to this headline">¶</a></h1>
+<dl class="class">
+<dt id="dta.VehicleType">
+<em class="property">class </em><tt class="descname">VehicleType</tt><big>(</big><em>name</em>, <em>className</em>, <em>length</em>, <em>responseTime</em>, <em>maxSpeed</em>, <em>speedRatio</em><big>)</big><a class="headerlink" href="#dta.VehicleType" title="Permalink to this definition">¶</a></dt>
+<dd><p>Class that represents a vehicle type.</p>
+<p>Constructor.</p>
+<ul class="simple">
+<li><em>name</em> is the vehicle type name, e.g. <tt class="docutils literal"><span class="pre">small_truck</span></tt></li>
+<li><em>className</em> a broader class, e.g. <tt class="docutils literal"><span class="pre">truck</span></tt></li>
+<li><em>length</em> is the effective length (units?)</li>
+<li><em>responseTime</em> is the response time of the vehicle in seconds</li>
+<li><em>maxSpeed</em> is the maximum speed of the vehicle, in km/hour or miles/hr depending on the project units.</li>
+<li><em>speedRatio</em> is the ratio of this vehicle type&#8217;s speed over the link speed (times 100?!)</li>
+</ul>
+<dl class="method">
+<dt id="dta.VehicleType.__init__">
+<tt class="descname">__init__</tt><big>(</big><em>name</em>, <em>className</em>, <em>length</em>, <em>responseTime</em>, <em>maxSpeed</em>, <em>speedRatio</em><big>)</big><a class="headerlink" href="#dta.VehicleType.__init__" title="Permalink to this definition">¶</a></dt>
+<dd><p>Constructor.</p>
+<ul class="simple">
+<li><em>name</em> is the vehicle type name, e.g. <tt class="docutils literal"><span class="pre">small_truck</span></tt></li>
+<li><em>className</em> a broader class, e.g. <tt class="docutils literal"><span class="pre">truck</span></tt></li>
+<li><em>length</em> is the effective length (units?)</li>
+<li><em>responseTime</em> is the response time of the vehicle in seconds</li>
+<li><em>maxSpeed</em> is the maximum speed of the vehicle, in km/hour or miles/hr depending on the project units.</li>
+<li><em>speedRatio</em> is the ratio of this vehicle type&#8217;s speed over the link speed (times 100?!)</li>
+</ul>
+</dd></dl>
+
+<p class="rubric">Methods</p>
+<table border="1" class="longtable docutils">
+<colgroup>
+<col width="10%" />
+<col width="90%" />
+</colgroup>
+<tbody valign="top">
+<tr class="row-odd"><td><tt class="xref py py-obj docutils literal"><span class="pre">__init__</span></tt>(name,&nbsp;className,&nbsp;length,&nbsp;...)</td>
+<td>Constructor.</td>
+</tr>
+</tbody>
+</table>
+<p class="rubric">Attributes</p>
+<table border="1" class="longtable docutils">
+<colgroup>
+<col width="10%" />
+<col width="90%" />
+</colgroup>
+<tbody valign="top">
+<tr class="row-odd"><td><tt class="xref py py-obj docutils literal"><span class="pre">LENGTH_UNITS</span></tt></td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<dl class="attribute">
+<dt id="dta.VehicleType.LENGTH_UNITS">
+<tt class="descname">LENGTH_UNITS</tt><em class="property"> = None</em><a class="headerlink" href="#dta.VehicleType.LENGTH_UNITS" title="Permalink to this definition">¶</a></dt>
+<dd><p>Static variable representing the units for length
+Should be <tt class="docutils literal"><span class="pre">meters</span></tt> or <tt class="docutils literal"><span class="pre">feet</span></tt></p>
+</dd></dl>
+
+</dd></dl>
+
+</div>
+
+
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar">
+        <div class="sphinxsidebarwrapper">
+  <h4>Previous topic</h4>
+  <p class="topless"><a href="dta.DynameqScenario.html"
+                        title="previous chapter">dta.DynameqScenario</a></p>
+  <h4>Next topic</h4>
+  <p class="topless"><a href="dta.VehicleClassGroup.html"
+                        title="next chapter">dta.VehicleClassGroup</a></p>
+  <h3>This Page</h3>
+  <ul class="this-page-menu">
+    <li><a href="../_sources/_generated/dta.VehicleType.txt"
+           rel="nofollow">Show Source</a></li>
+  </ul>
+<div id="searchbox" style="display: none">
+  <h3>Quick search</h3>
+    <form class="search" action="../search.html" method="get">
+      <input type="text" name="q" />
+      <input type="submit" value="Go" />
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+    <p class="searchtip" style="font-size: 90%">
+    Enter search terms or a module, class or function name.
+    </p>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../genindex.html" title="General Index"
+             >index</a></li>
+        <li class="right" >
+          <a href="../py-modindex.html" title="Python Module Index"
+             >modules</a> |</li>
+        <li class="right" >
+          <a href="dta.VehicleClassGroup.html" title="dta.VehicleClassGroup"
+             >next</a> |</li>
+        <li class="right" >
+          <a href="dta.DynameqScenario.html" title="dta.DynameqScenario"
+             >previous</a> |</li>
+        <li><a href="../index.html">DTA Anyway 1.0 documentation</a> &raquo;</li> 
+      </ul>
+    </div>
+    <div class="footer">
+        &copy; Copyright 2011-2012, SFCTA Modeling Crew.
+      Created using <a href="http://sphinx.pocoo.org/">Sphinx</a> 1.1.3.
+    </div>
+  </body>
+</html>

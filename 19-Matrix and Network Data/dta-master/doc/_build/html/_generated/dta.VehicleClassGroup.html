@@ -1,0 +1,234 @@
+
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>dta.VehicleClassGroup &mdash; DTA Anyway 1.0 documentation</title>
+    
+    <link rel="stylesheet" href="../_static/dta.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '../',
+        VERSION:     '1.0',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+    <script type="text/javascript" src="../_static/jquery.js"></script>
+    <script type="text/javascript" src="../_static/underscore.js"></script>
+    <script type="text/javascript" src="../_static/doctools.js"></script>
+    <link rel="top" title="DTA Anyway 1.0 documentation" href="../index.html" />
+    <link rel="next" title="dta.Node" href="dta.Node.html" />
+    <link rel="prev" title="dta.VehicleType" href="dta.VehicleType.html" /> 
+  </head>
+  <body>
+    <div class="related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../genindex.html" title="General Index"
+             accesskey="I">index</a></li>
+        <li class="right" >
+          <a href="../py-modindex.html" title="Python Module Index"
+             >modules</a> |</li>
+        <li class="right" >
+          <a href="dta.Node.html" title="dta.Node"
+             accesskey="N">next</a> |</li>
+        <li class="right" >
+          <a href="dta.VehicleType.html" title="dta.VehicleType"
+             accesskey="P">previous</a> |</li>
+        <li><a href="../index.html">DTA Anyway 1.0 documentation</a> &raquo;</li> 
+      </ul>
+    </div>  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body">
+            
+  <div class="section" id="dta-vehicleclassgroup">
+<h1>dta.VehicleClassGroup<a class="headerlink" href="#dta-vehicleclassgroup" title="Permalink to this headline">¶</a></h1>
+<dl class="class">
+<dt id="dta.VehicleClassGroup">
+<em class="property">class </em><tt class="descname">VehicleClassGroup</tt><big>(</big><em>name</em>, <em>classDefinitionString</em>, <em>colorCode</em><big>)</big><a class="headerlink" href="#dta.VehicleClassGroup" title="Permalink to this definition">¶</a></dt>
+<dd><p>Represents a group (or a set) of VehicleClasses, which are the classNames in <a class="reference internal" href="dta.VehicleType.html#dta.VehicleType" title="dta.VehicleType"><tt class="xref py py-class docutils literal"><span class="pre">VehicleType</span></tt></a>.</p>
+<p>Constructor.</p>
+<blockquote>
+<div><ul class="simple">
+<li><em>name</em> is the vehicle class group name (e.g. <tt class="docutils literal"><span class="pre">All</span></tt>, <tt class="docutils literal"><span class="pre">No_Trucks</span></tt>)</li>
+<li><em>classDefinitionString</em> defines the class (either <tt class="docutils literal"><span class="pre">-</span></tt>, <tt class="docutils literal"><span class="pre">*</span></tt>, or a pipe-delimited set of vehicle classes</li>
+<li><em>colorCode</em> is a hex color code for drawing (e.g. <tt class="docutils literal"><span class="pre">#ffff00</span></tt>)</li>
+</ul>
+</div></blockquote>
+<dl class="method">
+<dt id="dta.VehicleClassGroup.__init__">
+<tt class="descname">__init__</tt><big>(</big><em>name</em>, <em>classDefinitionString</em>, <em>colorCode</em><big>)</big><a class="headerlink" href="#dta.VehicleClassGroup.__init__" title="Permalink to this definition">¶</a></dt>
+<dd><p>Constructor.</p>
+<ul class="simple">
+<li><em>name</em> is the vehicle class group name (e.g. <tt class="docutils literal"><span class="pre">All</span></tt>, <tt class="docutils literal"><span class="pre">No_Trucks</span></tt>)</li>
+<li><em>classDefinitionString</em> defines the class (either <tt class="docutils literal"><span class="pre">-</span></tt>, <tt class="docutils literal"><span class="pre">*</span></tt>, or a pipe-delimited set of vehicle classes</li>
+<li><em>colorCode</em> is a hex color code for drawing (e.g. <tt class="docutils literal"><span class="pre">#ffff00</span></tt>)</li>
+</ul>
+</dd></dl>
+
+<p class="rubric">Methods</p>
+<table border="1" class="longtable docutils">
+<colgroup>
+<col width="10%" />
+<col width="90%" />
+</colgroup>
+<tbody valign="top">
+<tr class="row-odd"><td><tt class="xref py py-obj docutils literal"><span class="pre">__init__</span></tt>(name,&nbsp;classDefinitionString,&nbsp;colorCode)</td>
+<td>Constructor.</td>
+</tr>
+<tr class="row-even"><td><tt class="xref py py-obj docutils literal"><span class="pre">allowsAll</span></tt>()</td>
+<td>Return True if the vehicle class group allows all vehicle classes</td>
+</tr>
+<tr class="row-odd"><td><tt class="xref py py-obj docutils literal"><span class="pre">allowsNone</span></tt>()</td>
+<td>Return True if the vehicle class group allows all vehicle classes</td>
+</tr>
+<tr class="row-even"><td><tt class="xref py py-obj docutils literal"><span class="pre">allowsTransit</span></tt>()</td>
+<td>Returns True if the vehicle class group allows transit</td>
+</tr>
+<tr class="row-odd"><td><tt class="xref py py-obj docutils literal"><span class="pre">getProhibited</span></tt>()</td>
+<td>Return a vehicle class group object that prohibits all movements</td>
+</tr>
+<tr class="row-even"><td><tt class="xref py py-obj docutils literal"><span class="pre">prohibitAllMovementsButTransit</span></tt>()</td>
+<td>Return a vehicle class group object that prohibits all movements</td>
+</tr>
+</tbody>
+</table>
+<p class="rubric">Attributes</p>
+<table border="1" class="longtable docutils">
+<colgroup>
+<col width="10%" />
+<col width="90%" />
+</colgroup>
+<tbody valign="top">
+<tr class="row-odd"><td><tt class="xref py py-obj docutils literal"><span class="pre">CLASSDEFINITION_ALL</span></tt></td>
+<td>str(object) -&gt; string</td>
+</tr>
+<tr class="row-even"><td><tt class="xref py py-obj docutils literal"><span class="pre">CLASSDEFINITION_PROHIBITED</span></tt></td>
+<td>str(object) -&gt; string</td>
+</tr>
+<tr class="row-odd"><td><tt class="xref py py-obj docutils literal"><span class="pre">CLASSDEFINITION_TRANSIT</span></tt></td>
+<td>str(object) -&gt; string</td>
+</tr>
+</tbody>
+</table>
+<dl class="attribute">
+<dt id="dta.VehicleClassGroup.CLASSDEFINITION_ALL">
+<tt class="descname">CLASSDEFINITION_ALL</tt><em class="property"> = 'All'</em><a class="headerlink" href="#dta.VehicleClassGroup.CLASSDEFINITION_ALL" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="dta.VehicleClassGroup.CLASSDEFINITION_PROHIBITED">
+<tt class="descname">CLASSDEFINITION_PROHIBITED</tt><em class="property"> = 'Prohibited'</em><a class="headerlink" href="#dta.VehicleClassGroup.CLASSDEFINITION_PROHIBITED" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="dta.VehicleClassGroup.CLASSDEFINITION_TRANSIT">
+<tt class="descname">CLASSDEFINITION_TRANSIT</tt><em class="property"> = 'Transit'</em><a class="headerlink" href="#dta.VehicleClassGroup.CLASSDEFINITION_TRANSIT" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="dta.VehicleClassGroup.allowsAll">
+<tt class="descname">allowsAll</tt><big>(</big><big>)</big><a class="headerlink" href="#dta.VehicleClassGroup.allowsAll" title="Permalink to this definition">¶</a></dt>
+<dd><p>Return True if the vehicle class group allows all vehicle classes</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="dta.VehicleClassGroup.allowsNone">
+<tt class="descname">allowsNone</tt><big>(</big><big>)</big><a class="headerlink" href="#dta.VehicleClassGroup.allowsNone" title="Permalink to this definition">¶</a></dt>
+<dd><p>Return True if the vehicle class group allows all vehicle classes</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="dta.VehicleClassGroup.allowsTransit">
+<tt class="descname">allowsTransit</tt><big>(</big><big>)</big><a class="headerlink" href="#dta.VehicleClassGroup.allowsTransit" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns True if the vehicle class group allows transit</p>
+</dd></dl>
+
+<dl class="classmethod">
+<dt id="dta.VehicleClassGroup.getProhibited">
+<em class="property">classmethod </em><tt class="descname">getProhibited</tt><big>(</big><big>)</big><a class="headerlink" href="#dta.VehicleClassGroup.getProhibited" title="Permalink to this definition">¶</a></dt>
+<dd><p>Return a vehicle class group object that prohibits all movements</p>
+</dd></dl>
+
+<dl class="classmethod">
+<dt id="dta.VehicleClassGroup.prohibitAllMovementsButTransit">
+<em class="property">classmethod </em><tt class="descname">prohibitAllMovementsButTransit</tt><big>(</big><big>)</big><a class="headerlink" href="#dta.VehicleClassGroup.prohibitAllMovementsButTransit" title="Permalink to this definition">¶</a></dt>
+<dd><p>Return a vehicle class group object that prohibits all movements
+but the transit ones.</p>
+</dd></dl>
+
+</dd></dl>
+
+</div>
+
+
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar">
+        <div class="sphinxsidebarwrapper">
+  <h4>Previous topic</h4>
+  <p class="topless"><a href="dta.VehicleType.html"
+                        title="previous chapter">dta.VehicleType</a></p>
+  <h4>Next topic</h4>
+  <p class="topless"><a href="dta.Node.html"
+                        title="next chapter">dta.Node</a></p>
+  <h3>This Page</h3>
+  <ul class="this-page-menu">
+    <li><a href="../_sources/_generated/dta.VehicleClassGroup.txt"
+           rel="nofollow">Show Source</a></li>
+  </ul>
+<div id="searchbox" style="display: none">
+  <h3>Quick search</h3>
+    <form class="search" action="../search.html" method="get">
+      <input type="text" name="q" />
+      <input type="submit" value="Go" />
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+    <p class="searchtip" style="font-size: 90%">
+    Enter search terms or a module, class or function name.
+    </p>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../genindex.html" title="General Index"
+             >index</a></li>
+        <li class="right" >
+          <a href="../py-modindex.html" title="Python Module Index"
+             >modules</a> |</li>
+        <li class="right" >
+          <a href="dta.Node.html" title="dta.Node"
+             >next</a> |</li>
+        <li class="right" >
+          <a href="dta.VehicleType.html" title="dta.VehicleType"
+             >previous</a> |</li>
+        <li><a href="../index.html">DTA Anyway 1.0 documentation</a> &raquo;</li> 
+      </ul>
+    </div>
+    <div class="footer">
+        &copy; Copyright 2011-2012, SFCTA Modeling Crew.
+      Created using <a href="http://sphinx.pocoo.org/">Sphinx</a> 1.1.3.
+    </div>
+  </body>
+</html>

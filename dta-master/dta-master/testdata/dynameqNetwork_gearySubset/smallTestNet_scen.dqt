@@ -1,0 +1,21 @@
+<DYNAMEQ>
+<VERSION_1.5>
+<SCENARIO_FILE>
+* CREATED Wed Jul 20 11:50:02 2011
+STUDY_PERIOD
+*   start     end       
+    00:00   12:00       
+EVENTS
+*    time                                                    desc                                                       
+VEH_CLASSES
+*      class_name               
+VEH_TYPES
+*  class_name   type_name  length res_timemax_speed speed_ratio           
+VEH_CLASS_GROUPS
+*       name   class     color         
+  Prohibited       -   #ffff00         
+         All       *   #bebebe         
+     Transit Transit   #55ff00         
+GENERALIZED_COSTS
+*         name   units                                                 turn_expr link_expr  desc     
+  Expression_0 Seconds ptime+(left_turn_pc*left_turn)+(right_turn_pc*right_turn)         0           

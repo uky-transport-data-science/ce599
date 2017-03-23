@@ -1,0 +1,1139 @@
+
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>dta.RoadLink &mdash; DTA Anyway 1.0 documentation</title>
+    
+    <link rel="stylesheet" href="../_static/dta.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '../',
+        VERSION:     '1.0',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+    <script type="text/javascript" src="../_static/jquery.js"></script>
+    <script type="text/javascript" src="../_static/underscore.js"></script>
+    <script type="text/javascript" src="../_static/doctools.js"></script>
+    <link rel="top" title="DTA Anyway 1.0 documentation" href="../index.html" />
+    <link rel="next" title="dta.VirtualLink" href="dta.VirtualLink.html" />
+    <link rel="prev" title="dta.Link" href="dta.Link.html" /> 
+  </head>
+  <body>
+    <div class="related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../genindex.html" title="General Index"
+             accesskey="I">index</a></li>
+        <li class="right" >
+          <a href="../py-modindex.html" title="Python Module Index"
+             >modules</a> |</li>
+        <li class="right" >
+          <a href="dta.VirtualLink.html" title="dta.VirtualLink"
+             accesskey="N">next</a> |</li>
+        <li class="right" >
+          <a href="dta.Link.html" title="dta.Link"
+             accesskey="P">previous</a> |</li>
+        <li><a href="../index.html">DTA Anyway 1.0 documentation</a> &raquo;</li> 
+      </ul>
+    </div>  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body">
+            
+  <div class="section" id="dta-roadlink">
+<h1>dta.RoadLink<a class="headerlink" href="#dta-roadlink" title="Permalink to this headline">¶</a></h1>
+<dl class="class">
+<dt id="dta.RoadLink">
+<em class="property">class </em><tt class="descname">RoadLink</tt><big>(</big><em>id</em>, <em>startNode</em>, <em>endNode</em>, <em>reverseAttachedLinkId</em>, <em>facilityType</em>, <em>length</em>, <em>freeflowSpeed</em>, <em>effectiveLengthFactor</em>, <em>responseTimeFactor</em>, <em>numLanes</em>, <em>roundAbout</em>, <em>level</em>, <em>label</em>, <em>group</em><big>)</big><a class="headerlink" href="#dta.RoadLink" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <tt class="xref py py-class docutils literal"><span class="pre">dta.Link.Link</span></tt></p>
+<p>A RoadLink in a network.  Both nodes must be RoadNodes.</p>
+<p>Constructor.</p>
+<blockquote>
+<div><ul class="simple">
+<li><em>id</em> is a unique identifier (unique within the containing network), an integer</li>
+<li><em>startNode</em>, <em>endNode</em> are Nodes</li>
+<li><em>reverseAttachedId</em> is the id of the reverse link, if attached; pass None if not
+attached</li>
+<li><em>facilityType</em> is a non-negative integer indicating the category of facility such
+as a freeway, arterial, collector, etc.  A lower number indicates a facility of
+higher priority, that is, higher capacity and speed.</li>
+<li><em>length</em> is the link length, in <a class="reference internal" href="#dta.RoadLink.LENGTH_UNITS" title="dta.RoadLink.LENGTH_UNITS"><tt class="xref py py-attr docutils literal"><span class="pre">RoadLink.LENGTH_UNITS</span></tt></a>. Pass None to automatically calculate it.</li>
+<li><em>freeflowSpeed</em> is in km/h or mi/h</li>
+<li><em>effectiveLengthFactor</em> is applied to the effective length of a vehicle while it is
+on the link.  May vary over time with LinkEvents</li>
+<li><em>responseTimeFactor</em> is the applied to the response time of the vehicle while it is
+on the link.  May vary over time with LinkEvents</li>
+<li><em>numLanes</em> is an integer</li>
+<li><em>roundAbout</em> is true/false or 1/0</li>
+<li><em>level</em> is an indicator to attribute vertical alignment/elevation. If None passed, will use default.</li>
+<li><em>label</em> is a link label. If None passed, will use default.</li>
+<li><em>group</em> is an integer that identifies one or more links; groups are used for calculation of approach
+delay to an intersection.  So all vehicles approaching on the links in one group experience the
+same approach delay.  (todo: example of how this should be used?)  If -1 is passed, no group will be
+used.</li>
+</ul>
+</div></blockquote>
+<dl class="method">
+<dt id="dta.RoadLink.__init__">
+<tt class="descname">__init__</tt><big>(</big><em>id</em>, <em>startNode</em>, <em>endNode</em>, <em>reverseAttachedLinkId</em>, <em>facilityType</em>, <em>length</em>, <em>freeflowSpeed</em>, <em>effectiveLengthFactor</em>, <em>responseTimeFactor</em>, <em>numLanes</em>, <em>roundAbout</em>, <em>level</em>, <em>label</em>, <em>group</em><big>)</big><a class="headerlink" href="#dta.RoadLink.__init__" title="Permalink to this definition">¶</a></dt>
+<dd><p>Constructor.</p>
+<ul class="simple">
+<li><em>id</em> is a unique identifier (unique within the containing network), an integer</li>
+<li><em>startNode</em>, <em>endNode</em> are Nodes</li>
+<li><em>reverseAttachedId</em> is the id of the reverse link, if attached; pass None if not
+attached</li>
+<li><em>facilityType</em> is a non-negative integer indicating the category of facility such
+as a freeway, arterial, collector, etc.  A lower number indicates a facility of
+higher priority, that is, higher capacity and speed.</li>
+<li><em>length</em> is the link length, in <a class="reference internal" href="#dta.RoadLink.LENGTH_UNITS" title="dta.RoadLink.LENGTH_UNITS"><tt class="xref py py-attr docutils literal"><span class="pre">RoadLink.LENGTH_UNITS</span></tt></a>. Pass None to automatically calculate it.</li>
+<li><em>freeflowSpeed</em> is in km/h or mi/h</li>
+<li><em>effectiveLengthFactor</em> is applied to the effective length of a vehicle while it is
+on the link.  May vary over time with LinkEvents</li>
+<li><em>responseTimeFactor</em> is the applied to the response time of the vehicle while it is
+on the link.  May vary over time with LinkEvents</li>
+<li><em>numLanes</em> is an integer</li>
+<li><em>roundAbout</em> is true/false or 1/0</li>
+<li><em>level</em> is an indicator to attribute vertical alignment/elevation. If None passed, will use default.</li>
+<li><em>label</em> is a link label. If None passed, will use default.</li>
+<li><em>group</em> is an integer that identifies one or more links; groups are used for calculation of approach
+delay to an intersection.  So all vehicles approaching on the links in one group experience the
+same approach delay.  (todo: example of how this should be used?)  If -1 is passed, no group will be
+used.</li>
+</ul>
+</dd></dl>
+
+<p class="rubric">Methods</p>
+<table border="1" class="longtable docutils">
+<colgroup>
+<col width="10%" />
+<col width="90%" />
+</colgroup>
+<tbody valign="top">
+<tr class="row-odd"><td><tt class="xref py py-obj docutils literal"><span class="pre">__init__</span></tt>(id,&nbsp;startNode,&nbsp;endNode,&nbsp;...)</td>
+<td>Constructor.</td>
+</tr>
+<tr class="row-even"><td><tt class="xref py py-obj docutils literal"><span class="pre">addLanePermission</span></tt>(laneId,&nbsp;vehicleClassGroup)</td>
+<td>Adds the lane permissions for the lane numbered by <em>laneId</em> (outside lane is lane 0, increases towards inside edge.)</td>
+</tr>
+<tr class="row-odd"><td><tt class="xref py py-obj docutils literal"><span class="pre">addOutgoingMovement</span></tt>(movement)</td>
+<td>Adds the given movement.</td>
+</tr>
+<tr class="row-even"><td><tt class="xref py py-obj docutils literal"><span class="pre">addShapePoint</span></tt>(x,&nbsp;y)</td>
+<td>Append a shape point to the link.</td>
+</tr>
+<tr class="row-odd"><td><tt class="xref py py-obj docutils literal"><span class="pre">addShifts</span></tt>(startShift,&nbsp;endShift[,&nbsp;addShapepoints])</td>
+<td>Adds a shift to the start and/or end of the roadlink, to change the alignment of either end by one (or more) lane(s).</td>
+</tr>
+<tr class="row-even"><td><tt class="xref py py-obj docutils literal"><span class="pre">allowsAll</span></tt>()</td>
+<td>Is there a lane on this link that allows all?</td>
+</tr>
+<tr class="row-odd"><td><tt class="xref py py-obj docutils literal"><span class="pre">coordinatesAlongLink</span></tt>(fromStart,&nbsp;distance[,&nbsp;...])</td>
+<td>Like <a class="reference internal" href="#dta.RoadLink.coordinatesAndShapePointIdxAlongLink" title="dta.RoadLink.coordinatesAndShapePointIdxAlongLink"><tt class="xref py py-meth docutils literal"><span class="pre">RoadLink.coordinatesAndShapePointIdxAlongLink()</span></tt></a> but only returns the</td>
+</tr>
+<tr class="row-even"><td><tt class="xref py py-obj docutils literal"><span class="pre">coordinatesAndShapePointIdxAlongLink</span></tt>(...[,&nbsp;...])</td>
+<td>Returns the 3-tuple (<em>x</em>,*y*,*idx*) where (<em>x</em>,*y*) is the point along this link given by</td>
+</tr>
+<tr class="row-odd"><td><tt class="xref py py-obj docutils literal"><span class="pre">createReverseLink</span></tt>(newid)</td>
+<td>Instantiate and return a new link that is the reverse of this one.</td>
+</tr>
+<tr class="row-even"><td><tt class="xref py py-obj docutils literal"><span class="pre">disallowSplitForConnector</span></tt>(...)</td>
+<td>Returns True if this road link should <em>not</em> be split for a <a class="reference internal" href="dta.Connector.html#dta.Connector" title="dta.Connector"><tt class="xref py py-class docutils literal"><span class="pre">Connector</span></tt></a>.</td>
+</tr>
+<tr class="row-odd"><td><tt class="xref py py-obj docutils literal"><span class="pre">euclideanLength</span></tt>([includeShape])</td>
+<td>Calculates the length based on simple Euclidean distance.</td>
+</tr>
+<tr class="row-even"><td><tt class="xref py py-obj docutils literal"><span class="pre">euclideanLengthInLengthUnits</span></tt>([includeShape])</td>
+<td>Return the length of the link in <a class="reference internal" href="#dta.RoadLink.LENGTH_UNITS" title="dta.RoadLink.LENGTH_UNITS"><tt class="xref py py-attr docutils literal"><span class="pre">RoadLink.LENGTH_UNITS</span></tt></a> units.</td>
+</tr>
+<tr class="row-odd"><td><tt class="xref py py-obj docutils literal"><span class="pre">findOutgoingMovement</span></tt>(nodeId)</td>
+<td>Returns the outgoing movement ending in the given <em>nodeId</em>.</td>
+</tr>
+<tr class="row-even"><td><tt class="xref py py-obj docutils literal"><span class="pre">getAngle</span></tt>(other[,&nbsp;usingShapepoints])</td>
+<td>Return the angle in degrees (in the range (-180, 180]) between this link and <em>other</em>,</td>
+</tr>
+<tr class="row-odd"><td><tt class="xref py py-obj docutils literal"><span class="pre">getCenterLine</span></tt>([atStart,&nbsp;atEnd,&nbsp;...])</td>
+<td>Offset the link to the right 0.5*numLanes*:py:attr:<cite>RoadLink.DEFAULT_LANE_WIDTH</cite> and</td>
+</tr>
+<tr class="row-even"><td><tt class="xref py py-obj docutils literal"><span class="pre">getDirection</span></tt>([atEnd])</td>
+<td>Returns the direction of the link as one of <a class="reference internal" href="#dta.RoadLink.DIR_EB" title="dta.RoadLink.DIR_EB"><tt class="xref py py-attr docutils literal"><span class="pre">RoadLink.DIR_EB</span></tt></a>,  <a class="reference internal" href="#dta.RoadLink.DIR_NB" title="dta.RoadLink.DIR_NB"><tt class="xref py py-attr docutils literal"><span class="pre">RoadLink.DIR_NB</span></tt></a>,</td>
+</tr>
+<tr class="row-odd"><td><tt class="xref py py-obj docutils literal"><span class="pre">getDistanceFromPoint</span></tt>(x,&nbsp;y)</td>
+<td>Projects (<em>x</em>, <em>y</em>) onto the road link center line (including the shape points).</td>
+</tr>
+<tr class="row-even"><td><tt class="xref py py-obj docutils literal"><span class="pre">getEndNode</span></tt>()</td>
+<td>Accessor for endNode</td>
+</tr>
+<tr class="row-odd"><td><tt class="xref py py-obj docutils literal"><span class="pre">getEndNodeId</span></tt>()</td>
+<td>Return the id of the end node</td>
+</tr>
+<tr class="row-even"><td><tt class="xref py py-obj docutils literal"><span class="pre">getFacilityType</span></tt>()</td>
+<td>Returns the facility type; see <a class="reference internal" href="#dta.RoadLink.__init__" title="dta.RoadLink.__init__"><tt class="xref py py-meth docutils literal"><span class="pre">RoadLink.__init__()</span></tt></a> for more on that variable.</td>
+</tr>
+<tr class="row-odd"><td><tt class="xref py py-obj docutils literal"><span class="pre">getFreeFlowSpeedInMPH</span></tt>()</td>
+<td>Return the free flow speed in MPH</td>
+</tr>
+<tr class="row-even"><td><tt class="xref py py-obj docutils literal"><span class="pre">getFreeFlowTTInMin</span></tt>()</td>
+<td>Return the free flow travel time in minutes</td>
+</tr>
+<tr class="row-odd"><td><tt class="xref py py-obj docutils literal"><span class="pre">getGroup</span></tt>()</td>
+<td>Return the group number for the link</td>
+</tr>
+<tr class="row-even"><td><tt class="xref py py-obj docutils literal"><span class="pre">getId</span></tt>()</td>
+<td>Return the link id</td>
+</tr>
+<tr class="row-odd"><td><tt class="xref py py-obj docutils literal"><span class="pre">getIid</span></tt>()</td>
+<td>Return a pair representing the start and end node ids</td>
+</tr>
+<tr class="row-even"><td><tt class="xref py py-obj docutils literal"><span class="pre">getLabel</span></tt>()</td>
+<td>Return the link label</td>
+</tr>
+<tr class="row-odd"><td><tt class="xref py py-obj docutils literal"><span class="pre">getLanePermission</span></tt>(laneId)</td>
+<td>Accessor for the <a class="reference internal" href="dta.VehicleClassGroup.html#dta.VehicleClassGroup" title="dta.VehicleClassGroup"><tt class="xref py py-class docutils literal"><span class="pre">VehicleClassGroup</span></tt></a> that uses the given lane.</td>
+</tr>
+<tr class="row-even"><td><tt class="xref py py-obj docutils literal"><span class="pre">getLeftTurn</span></tt>()</td>
+<td>Return the left turn movement of the link or raise an error if it does not exist</td>
+</tr>
+<tr class="row-odd"><td><tt class="xref py py-obj docutils literal"><span class="pre">getLength</span></tt>()</td>
+<td>Return the length of the link in <a class="reference internal" href="#dta.RoadLink.LENGTH_UNITS" title="dta.RoadLink.LENGTH_UNITS"><tt class="xref py py-attr docutils literal"><span class="pre">RoadLink.LENGTH_UNITS</span></tt></a> units.</td>
+</tr>
+<tr class="row-even"><td><tt class="xref py py-obj docutils literal"><span class="pre">getLengthInCoordinateUnits</span></tt>()</td>
+<td>Returns the length of the link in <a class="reference internal" href="dta.Node.html#dta.Node.COORDINATE_UNITS" title="dta.Node.COORDINATE_UNITS"><tt class="xref py py-attr docutils literal"><span class="pre">Node.COORDINATE_UNITS</span></tt></a> units.</td>
+</tr>
+<tr class="row-odd"><td><tt class="xref py py-obj docutils literal"><span class="pre">getMidPoint</span></tt>()</td>
+<td>Return the midpoint of the link&#8217;s centerline as a tuple of two floats</td>
+</tr>
+<tr class="row-even"><td><tt class="xref py py-obj docutils literal"><span class="pre">getNumIncomingMovements</span></tt>()</td>
+<td>Returns the number of incoming movements</td>
+</tr>
+<tr class="row-odd"><td><tt class="xref py py-obj docutils literal"><span class="pre">getNumLanes</span></tt>()</td>
+<td>Return the number of lanes.</td>
+</tr>
+<tr class="row-even"><td><tt class="xref py py-obj docutils literal"><span class="pre">getNumOutgoingMovements</span></tt>()</td>
+<td>Returns the number of outgoing movements</td>
+</tr>
+<tr class="row-odd"><td><tt class="xref py py-obj docutils literal"><span class="pre">getNumShapePoints</span></tt>()</td>
+<td>Return the number of shape points this link has</td>
+</tr>
+<tr class="row-even"><td><tt class="xref py py-obj docutils literal"><span class="pre">getObsCount</span></tt>(startTimeInMin,&nbsp;endTimeInMin)</td>
+<td>Return the number of vehicles traversing the</td>
+</tr>
+<tr class="row-odd"><td><tt class="xref py py-obj docutils literal"><span class="pre">getObsMeanTT</span></tt>(startTimeInMin,&nbsp;endTimeInMin)</td>
+<td>Get the observed mean travel time of the link in minutes</td>
+</tr>
+<tr class="row-even"><td><tt class="xref py py-obj docutils literal"><span class="pre">getObsSpeedInMPH</span></tt>(startTimeInMin,&nbsp;endTimeInMin)</td>
+<td>Get the observed speed of specified time period</td>
+</tr>
+<tr class="row-odd"><td><tt class="xref py py-obj docutils literal"><span class="pre">getOrientation</span></tt>([atEnd,&nbsp;usingShapepoints])</td>
+<td>Returns the angle of the link in degrees from the North</td>
+</tr>
+<tr class="row-even"><td><tt class="xref py py-obj docutils literal"><span class="pre">getOtherEnd</span></tt>(node)</td>
+<td>Return the other end node than the one provided.</td>
+</tr>
+<tr class="row-odd"><td><tt class="xref py py-obj docutils literal"><span class="pre">getOutgoingMovement</span></tt>(nodeId)</td>
+<td>Returns the outgoing movement with an end node specified by the given <em>nodeId</em></td>
+</tr>
+<tr class="row-even"><td><tt class="xref py py-obj docutils literal"><span class="pre">getOutgoingMovementForLinkId</span></tt>(linkId)</td>
+<td>Returns the outgoing movement with the outgoing link specified by the given <em>linkId</em></td>
+</tr>
+<tr class="row-odd"><td><tt class="xref py py-obj docutils literal"><span class="pre">getOutline</span></tt>([scale])</td>
+<td>Return the outline of the link as a linearRing of points</td>
+</tr>
+<tr class="row-even"><td><tt class="xref py py-obj docutils literal"><span class="pre">getReferenceAngle</span></tt>()</td>
+<td>Visualizing the link as a straight vector from (0,0), returns the angle between &lt;1,0&gt; and this link.</td>
+</tr>
+<tr class="row-odd"><td><tt class="xref py py-obj docutils literal"><span class="pre">getReferenceAngleInDegrees</span></tt>()</td>
+<td>Return the Reference angle in degrees</td>
+</tr>
+<tr class="row-even"><td><tt class="xref py py-obj docutils literal"><span class="pre">getRightTurn</span></tt>()</td>
+<td>Return the thru movement of the link or raise an error if it does not exist</td>
+</tr>
+<tr class="row-odd"><td><tt class="xref py py-obj docutils literal"><span class="pre">getShapePoints</span></tt>()</td>
+<td>Accessor for the shape points.</td>
+</tr>
+<tr class="row-even"><td><tt class="xref py py-obj docutils literal"><span class="pre">getShifts</span></tt>()</td>
+<td>Returns the <em>startShift</em> and <em>endShift</em> ordered pair, or (None,None) if it wasn&#8217;t set.</td>
+</tr>
+<tr class="row-odd"><td><tt class="xref py py-obj docutils literal"><span class="pre">getSimInFlow</span></tt>(startTimeInMin,&nbsp;endTimeInMin)</td>
+<td>Get the simulated incoming flow in vph</td>
+</tr>
+<tr class="row-even"><td><tt class="xref py py-obj docutils literal"><span class="pre">getSimInVolume</span></tt>(startTimeInMin,&nbsp;endTimeInMin)</td>
+<td>Return the incoming volume on the link from startTimeInMin to endTimeInMin</td>
+</tr>
+<tr class="row-odd"><td><tt class="xref py py-obj docutils literal"><span class="pre">getSimOutFlow</span></tt>(startTimeInMin,&nbsp;endTimeInMin)</td>
+<td>Get the simulated flow in vph</td>
+</tr>
+<tr class="row-even"><td><tt class="xref py py-obj docutils literal"><span class="pre">getSimOutVolume</span></tt>(startTimeInMin,&nbsp;endTimeInMin)</td>
+<td>Return the volume on the link from startTimeInMin to endTimeInMin</td>
+</tr>
+<tr class="row-odd"><td><tt class="xref py py-obj docutils literal"><span class="pre">getSimSpeedInMPH</span></tt>(startTimeInMin,&nbsp;endTimeInMin)</td>
+<td></td>
+</tr>
+<tr class="row-even"><td><tt class="xref py py-obj docutils literal"><span class="pre">getSimTTInMin</span></tt>(startTimeInMin,&nbsp;endTimeInMin)</td>
+<td>Get the average travel time of the vehicles traversing the link</td>
+</tr>
+<tr class="row-odd"><td><tt class="xref py py-obj docutils literal"><span class="pre">getStartNode</span></tt>()</td>
+<td>Accessor for startNode</td>
+</tr>
+<tr class="row-even"><td><tt class="xref py py-obj docutils literal"><span class="pre">getStartNodeId</span></tt>()</td>
+<td>Return the id of the start node</td>
+</tr>
+<tr class="row-odd"><td><tt class="xref py py-obj docutils literal"><span class="pre">getSumOfAllMovementCounts</span></tt>(startTimeInMin,&nbsp;...)</td>
+<td>Return the sum of all outgoing movement counts</td>
+</tr>
+<tr class="row-even"><td><tt class="xref py py-obj docutils literal"><span class="pre">getThruTurn</span></tt>()</td>
+<td>Return the thru movement of the link or raise an error if it does not exist</td>
+</tr>
+<tr class="row-odd"><td><tt class="xref py py-obj docutils literal"><span class="pre">hasAllMovementCounts</span></tt>(startTimeInMin,&nbsp;...)</td>
+<td>Return True if there is a count for all outgoing movements</td>
+</tr>
+<tr class="row-even"><td><tt class="xref py py-obj docutils literal"><span class="pre">hasCountInfo</span></tt>()</td>
+<td>Return True if the link contains count information else false</td>
+</tr>
+<tr class="row-odd"><td><tt class="xref py py-obj docutils literal"><span class="pre">hasDirection</span></tt>(dir[,&nbsp;atEnd])</td>
+<td>Returns True if the link is going in that direction at all.  That is, if a link is oriented to the</td>
+</tr>
+<tr class="row-even"><td><tt class="xref py py-obj docutils literal"><span class="pre">hasLeftTurn</span></tt>()</td>
+<td>Return True if the link has a through turn</td>
+</tr>
+<tr class="row-odd"><td><tt class="xref py py-obj docutils literal"><span class="pre">hasMovementCountInfo</span></tt>()</td>
+<td>Return True if any outgoing movement on the link</td>
+</tr>
+<tr class="row-even"><td><tt class="xref py py-obj docutils literal"><span class="pre">hasObsCount</span></tt>(startTimeInMin,&nbsp;endTimeInMin)</td>
+<td>Return True if there is a count for the input time period</td>
+</tr>
+<tr class="row-odd"><td><tt class="xref py py-obj docutils literal"><span class="pre">hasOutgoingMovement</span></tt>(nodeId[,&nbsp;vehicleClassGroup])</td>
+<td>Return True if the link has an outgoing movement towards nodeId.</td>
+</tr>
+<tr class="row-even"><td><tt class="xref py py-obj docutils literal"><span class="pre">hasRightTurn</span></tt>()</td>
+<td>Return True if the link has a through turn</td>
+</tr>
+<tr class="row-odd"><td><tt class="xref py py-obj docutils literal"><span class="pre">hasSameAttributes</span></tt>(other)</td>
+<td>Return True if the two links have the same attributes return True</td>
+</tr>
+<tr class="row-even"><td><tt class="xref py py-obj docutils literal"><span class="pre">hasThruTurn</span></tt>()</td>
+<td>Return True if the link has a through turn</td>
+</tr>
+<tr class="row-odd"><td><tt class="xref py py-obj docutils literal"><span class="pre">isConnector</span></tt>()</td>
+<td>Return True if this Link is a Connector</td>
+</tr>
+<tr class="row-even"><td><tt class="xref py py-obj docutils literal"><span class="pre">isOverlapping</span></tt>(other[,&nbsp;usingShapepoints])</td>
+<td>Return True if the given link and <em>other</em> overlap.  Assumes they share an endpoint.</td>
+</tr>
+<tr class="row-odd"><td><tt class="xref py py-obj docutils literal"><span class="pre">isRoadLink</span></tt>()</td>
+<td>Return True this Link is RoadLink</td>
+</tr>
+<tr class="row-even"><td><tt class="xref py py-obj docutils literal"><span class="pre">isVirtualLink</span></tt>()</td>
+<td>Return True if this LInk is a VirtualLink</td>
+</tr>
+<tr class="row-odd"><td><tt class="xref py py-obj docutils literal"><span class="pre">iterIncidentMovements</span></tt>()</td>
+<td>Return an iterator to all the incident movemements</td>
+</tr>
+<tr class="row-even"><td><tt class="xref py py-obj docutils literal"><span class="pre">iterIncomingMovements</span></tt>()</td>
+<td>Iterator for the incoming movements of this link</td>
+</tr>
+<tr class="row-odd"><td><tt class="xref py py-obj docutils literal"><span class="pre">iterOutgoingMovements</span></tt>()</td>
+<td>Iterator for the outgoing movements of this link</td>
+</tr>
+<tr class="row-even"><td><tt class="xref py py-obj docutils literal"><span class="pre">prohibitOutgoingMovement</span></tt>(movementToProhibit)</td>
+<td>Prohibit the input movement</td>
+</tr>
+<tr class="row-odd"><td><tt class="xref py py-obj docutils literal"><span class="pre">setGroup</span></tt>(group)</td>
+<td>Set the group number for the link</td>
+</tr>
+<tr class="row-even"><td><tt class="xref py py-obj docutils literal"><span class="pre">setLabel</span></tt>(label)</td>
+<td>Set the link label</td>
+</tr>
+<tr class="row-odd"><td><tt class="xref py py-obj docutils literal"><span class="pre">setLength</span></tt>(newLength)</td>
+<td>Sets the asserted length of this link; the <em>newLength</em> should be in units specified by <cite>RoadLink.LENGTH_UNITS</cite></td>
+</tr>
+<tr class="row-even"><td><tt class="xref py py-obj docutils literal"><span class="pre">setNumLanes</span></tt>(numLanes)</td>
+<td>Sets the number of lanes to the given value</td>
+</tr>
+<tr class="row-odd"><td><tt class="xref py py-obj docutils literal"><span class="pre">setObsCount</span></tt>(startTimeInMin,&nbsp;endTimeInMin,&nbsp;count)</td>
+<td>Set the number of vehicles Traversing the link</td>
+</tr>
+<tr class="row-even"><td><tt class="xref py py-obj docutils literal"><span class="pre">setResTimeFac</span></tt>(newResFac)</td>
+<td>Sets the response time factor to the given value</td>
+</tr>
+<tr class="row-odd"><td><tt class="xref py py-obj docutils literal"><span class="pre">setSimOutVolume</span></tt>(startTimeInMin,&nbsp;...)</td>
+<td>Set the simulated volume on the edge provided that the edge</td>
+</tr>
+<tr class="row-even"><td><tt class="xref py py-obj docutils literal"><span class="pre">setSimTTInMin</span></tt>(startTimeInMin,&nbsp;endTimeInMin,&nbsp;...)</td>
+<td>Set the simulated travel time on the link for the particular input period</td>
+</tr>
+</tbody>
+</table>
+<p class="rubric">Attributes</p>
+<table border="1" class="longtable docutils">
+<colgroup>
+<col width="10%" />
+<col width="90%" />
+</colgroup>
+<tbody valign="top">
+<tr class="row-odd"><td><tt class="xref py py-obj docutils literal"><span class="pre">DEFAULT_LABEL</span></tt></td>
+<td>str(object) -&gt; string</td>
+</tr>
+<tr class="row-even"><td><tt class="xref py py-obj docutils literal"><span class="pre">DEFAULT_LANE_WIDTH</span></tt></td>
+<td>int(x[, base]) -&gt; integer</td>
+</tr>
+<tr class="row-odd"><td><tt class="xref py py-obj docutils literal"><span class="pre">DEFAULT_LEVEL</span></tt></td>
+<td>int(x[, base]) -&gt; integer</td>
+</tr>
+<tr class="row-even"><td><tt class="xref py py-obj docutils literal"><span class="pre">DIR_EB</span></tt></td>
+<td>str(object) -&gt; string</td>
+</tr>
+<tr class="row-odd"><td><tt class="xref py py-obj docutils literal"><span class="pre">DIR_NB</span></tt></td>
+<td>str(object) -&gt; string</td>
+</tr>
+<tr class="row-even"><td><tt class="xref py py-obj docutils literal"><span class="pre">DIR_SB</span></tt></td>
+<td>str(object) -&gt; string</td>
+</tr>
+<tr class="row-odd"><td><tt class="xref py py-obj docutils literal"><span class="pre">DIR_WB</span></tt></td>
+<td>str(object) -&gt; string</td>
+</tr>
+<tr class="row-even"><td><tt class="xref py py-obj docutils literal"><span class="pre">LENGTH_UNITS</span></tt></td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<dl class="attribute">
+<dt id="dta.RoadLink.DEFAULT_LABEL">
+<tt class="descname">DEFAULT_LABEL</tt><em class="property"> = ''</em><a class="headerlink" href="#dta.RoadLink.DEFAULT_LABEL" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="dta.RoadLink.DEFAULT_LANE_WIDTH">
+<tt class="descname">DEFAULT_LANE_WIDTH</tt><em class="property"> = 12</em><a class="headerlink" href="#dta.RoadLink.DEFAULT_LANE_WIDTH" title="Permalink to this definition">¶</a></dt>
+<dd><p>default lane width in <a class="reference internal" href="dta.Node.html#dta.Node.COORDINATE_UNITS" title="dta.Node.COORDINATE_UNITS"><tt class="xref py py-attr docutils literal"><span class="pre">Node.COORDINATE_UNITS</span></tt></a></p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="dta.RoadLink.DEFAULT_LEVEL">
+<tt class="descname">DEFAULT_LEVEL</tt><em class="property"> = 0</em><a class="headerlink" href="#dta.RoadLink.DEFAULT_LEVEL" title="Permalink to this definition">¶</a></dt>
+<dd><p>default level value</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="dta.RoadLink.DIR_EB">
+<tt class="descname">DIR_EB</tt><em class="property"> = 'EB'</em><a class="headerlink" href="#dta.RoadLink.DIR_EB" title="Permalink to this definition">¶</a></dt>
+<dd><p>Eastbound return value for <a class="reference internal" href="#dta.RoadLink.getDirection" title="dta.RoadLink.getDirection"><tt class="xref py py-meth docutils literal"><span class="pre">RoadLink.getDirection()</span></tt></a></p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="dta.RoadLink.DIR_NB">
+<tt class="descname">DIR_NB</tt><em class="property"> = 'NB'</em><a class="headerlink" href="#dta.RoadLink.DIR_NB" title="Permalink to this definition">¶</a></dt>
+<dd><p>Northbound return value for <a class="reference internal" href="#dta.RoadLink.getDirection" title="dta.RoadLink.getDirection"><tt class="xref py py-meth docutils literal"><span class="pre">RoadLink.getDirection()</span></tt></a></p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="dta.RoadLink.DIR_SB">
+<tt class="descname">DIR_SB</tt><em class="property"> = 'SB'</em><a class="headerlink" href="#dta.RoadLink.DIR_SB" title="Permalink to this definition">¶</a></dt>
+<dd><p>Southbound return value for <a class="reference internal" href="#dta.RoadLink.getDirection" title="dta.RoadLink.getDirection"><tt class="xref py py-meth docutils literal"><span class="pre">RoadLink.getDirection()</span></tt></a></p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="dta.RoadLink.DIR_WB">
+<tt class="descname">DIR_WB</tt><em class="property"> = 'WB'</em><a class="headerlink" href="#dta.RoadLink.DIR_WB" title="Permalink to this definition">¶</a></dt>
+<dd><p>Westbound return value for <a class="reference internal" href="#dta.RoadLink.getDirection" title="dta.RoadLink.getDirection"><tt class="xref py py-meth docutils literal"><span class="pre">RoadLink.getDirection()</span></tt></a></p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="dta.RoadLink.LENGTH_UNITS">
+<tt class="descname">LENGTH_UNITS</tt><em class="property"> = None</em><a class="headerlink" href="#dta.RoadLink.LENGTH_UNITS" title="Permalink to this definition">¶</a></dt>
+<dd><p>Static variable representing the units of the length variable
+Should be <tt class="docutils literal"><span class="pre">kilometers</span></tt> or <tt class="docutils literal"><span class="pre">miles</span></tt></p>
+</dd></dl>
+
+<dl class="method">
+<dt id="dta.RoadLink._checkInputTimeStep">
+<tt class="descname">_checkInputTimeStep</tt><big>(</big><em>startTimeInMin</em>, <em>endTimeInMin</em><big>)</big><a class="headerlink" href="#dta.RoadLink._checkInputTimeStep" title="Permalink to this definition">¶</a></dt>
+<dd><p>Checks if the difference of the input times is equal to the simulation time step</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="dta.RoadLink._checkOutputTimeStep">
+<tt class="descname">_checkOutputTimeStep</tt><big>(</big><em>startTimeInMin</em>, <em>endTimeInMin</em><big>)</big><a class="headerlink" href="#dta.RoadLink._checkOutputTimeStep" title="Permalink to this definition">¶</a></dt>
+<dd><p>Check that the difference of the input times is in multiples of the simulation time step</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="dta.RoadLink._hasMovementVolumes">
+<tt class="descname">_hasMovementVolumes</tt><big>(</big><em>startTimeInMin</em>, <em>endTimeInMin</em><big>)</big><a class="headerlink" href="#dta.RoadLink._hasMovementVolumes" title="Permalink to this definition">¶</a></dt>
+<dd><p>Return True if at least one movement has a volume 
+greater than 0</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="dta.RoadLink._removeOutgoingMovement">
+<tt class="descname">_removeOutgoingMovement</tt><big>(</big><em>movementToRemove</em><big>)</big><a class="headerlink" href="#dta.RoadLink._removeOutgoingMovement" title="Permalink to this definition">¶</a></dt>
+<dd><p>Delete the input movement</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="dta.RoadLink._validateInputTimes">
+<tt class="descname">_validateInputTimes</tt><big>(</big><em>startTimeInMin</em>, <em>endTimeInMin</em><big>)</big><a class="headerlink" href="#dta.RoadLink._validateInputTimes" title="Permalink to this definition">¶</a></dt>
+<dd><p>Checks that the input times belong to the simulation window</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="dta.RoadLink.addLanePermission">
+<tt class="descname">addLanePermission</tt><big>(</big><em>laneId</em>, <em>vehicleClassGroup</em><big>)</big><a class="headerlink" href="#dta.RoadLink.addLanePermission" title="Permalink to this definition">¶</a></dt>
+<dd><p>Adds the lane permissions for the lane numbered by <em>laneId</em> (outside lane is lane 0, increases towards inside edge.)</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="dta.RoadLink.addOutgoingMovement">
+<tt class="descname">addOutgoingMovement</tt><big>(</big><em>movement</em><big>)</big><a class="headerlink" href="#dta.RoadLink.addOutgoingMovement" title="Permalink to this definition">¶</a></dt>
+<dd><p>Adds the given movement.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="dta.RoadLink.addShapePoint">
+<tt class="descname">addShapePoint</tt><big>(</big><em>x</em>, <em>y</em><big>)</big><a class="headerlink" href="#dta.RoadLink.addShapePoint" title="Permalink to this definition">¶</a></dt>
+<dd><p>Append a shape point to the link.
+Shape points are not actual nodes, but additional coordinates that inform the geometry of a link,
+such as showing curvature.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="dta.RoadLink.addShifts">
+<tt class="descname">addShifts</tt><big>(</big><em>startShift</em>, <em>endShift</em>, <em>addShapepoints=False</em><big>)</big><a class="headerlink" href="#dta.RoadLink.addShifts" title="Permalink to this definition">¶</a></dt>
+<dd><p>Adds a shift to the start and/or end of the roadlink, to change the alignment of either end by one (or more) lane(s).</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
+<li><strong>startShift</strong> &#8211; the shift value of the first segment of the link, that is, the number of lanes from
+the center line of the roadway that the first segment is shifted.</li>
+<li><strong>endShift</strong> &#8211; End-shift: the shift value of the last segment of the link, that is, the number of 
+lanes from the center line of the roadway that the last segment is shifted.</li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+<p>Dynameq software requires the link to have at least 2 shape points in order to use these shifts.
+Thus, this method will also add the required shape points, if they&#8217;re lacking (just a linear interpolation
+1/3 and 2/3 along the line via <a class="reference internal" href="#dta.RoadLink.coordinatesAlongLink" title="dta.RoadLink.coordinatesAlongLink"><tt class="xref py py-meth docutils literal"><span class="pre">RoadLink.coordinatesAlongLink()</span></tt></a> if <em>addShapepoints</em> is True.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="dta.RoadLink.allowsAll">
+<tt class="descname">allowsAll</tt><big>(</big><big>)</big><a class="headerlink" href="#dta.RoadLink.allowsAll" title="Permalink to this definition">¶</a></dt>
+<dd><p>Is there a lane on this link that allows all?</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="dta.RoadLink.coordinatesAlongLink">
+<tt class="descname">coordinatesAlongLink</tt><big>(</big><em>fromStart</em>, <em>distance</em>, <em>goPastEnd=False</em><big>)</big><a class="headerlink" href="#dta.RoadLink.coordinatesAlongLink" title="Permalink to this definition">¶</a></dt>
+<dd><p>Like <a class="reference internal" href="#dta.RoadLink.coordinatesAndShapePointIdxAlongLink" title="dta.RoadLink.coordinatesAndShapePointIdxAlongLink"><tt class="xref py py-meth docutils literal"><span class="pre">RoadLink.coordinatesAndShapePointIdxAlongLink()</span></tt></a> but only returns the
+coordinates 2-tuple (<em>x</em>,*y*).  For backwards compatibility.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="dta.RoadLink.coordinatesAndShapePointIdxAlongLink">
+<tt class="descname">coordinatesAndShapePointIdxAlongLink</tt><big>(</big><em>fromStart</em>, <em>distance</em>, <em>goPastEnd=False</em><big>)</big><a class="headerlink" href="#dta.RoadLink.coordinatesAndShapePointIdxAlongLink" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns the 3-tuple (<em>x</em>,*y*,*idx*) where (<em>x</em>,*y*) is the point along this link given by
+<em>distance</em>, which is in <a class="reference internal" href="dta.Node.html#dta.Node.COORDINATE_UNITS" title="dta.Node.COORDINATE_UNITS"><tt class="xref py py-attr docutils literal"><span class="pre">Node.COORDINATE_UNITS</span></tt></a>.  <em>idx</em> is the index into the
+point array (including the start point, intermediate shape points, and end point) where
+the (<em>x</em>,*y*) was ultimately found (useful for splitting links and allocating the shape points).</p>
+<p>If <em>fromStart</em>, starts at start, otherwise at end.</p>
+<p>Takes shape points into account.</p>
+<p>If <em>distance</em> is longer than the euclidean distance of the link, and not <em>goPastEnd</em> raises
+a <a class="reference internal" href="dta.DtaError.html#dta.DtaError" title="dta.DtaError"><tt class="xref py py-class docutils literal"><span class="pre">DtaError</span></tt></a>.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="dta.RoadLink.createReverseLink">
+<tt class="descname">createReverseLink</tt><big>(</big><em>newid</em><big>)</big><a class="headerlink" href="#dta.RoadLink.createReverseLink" title="Permalink to this definition">¶</a></dt>
+<dd><p>Instantiate and return a new link that is the reverse of this one.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="dta.RoadLink.disallowSplitForConnector">
+<tt class="descname">disallowSplitForConnector</tt><big>(</big><em>disallowConnectorEvalStr</em><big>)</big><a class="headerlink" href="#dta.RoadLink.disallowSplitForConnector" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns True if this road link should <em>not</em> be split for a <a class="reference internal" href="dta.Connector.html#dta.Connector" title="dta.Connector"><tt class="xref py py-class docutils literal"><span class="pre">Connector</span></tt></a>.</p>
+<p>Used by <a class="reference internal" href="dta.RoadNode.html#dta.RoadNode.getCandidateLinksForSplitting" title="dta.RoadNode.getCandidateLinksForSplitting"><tt class="xref py py-meth docutils literal"><span class="pre">RoadNode.getCandidateLinksForSplitting()</span></tt></a>, which is used by
+<a class="reference internal" href="dta.Network.html#dta.Network.moveCentroidConnectorsFromIntersectionsToMidblocks" title="dta.Network.moveCentroidConnectorsFromIntersectionsToMidblocks"><tt class="xref py py-meth docutils literal"><span class="pre">Network.moveCentroidConnectorsFromIntersectionsToMidblocks()</span></tt></a>.</p>
+<p>Basically this DTA Anyway user defines this functionality by passing in <em>disallowConnectorEvalStr</em>.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="dta.RoadLink.euclideanLength">
+<tt class="descname">euclideanLength</tt><big>(</big><em>includeShape=False</em><big>)</big><a class="headerlink" href="#dta.RoadLink.euclideanLength" title="Permalink to this definition">¶</a></dt>
+<dd><p>Calculates the length based on simple Euclidean distance.</p>
+<p>If this link has shape points and <em>includeShape</em> is True, then the shape is taken into account.</p>
+<p>This will be in the units specified by <a class="reference internal" href="dta.Node.html#dta.Node.COORDINATE_UNITS" title="dta.Node.COORDINATE_UNITS"><tt class="xref py py-attr docutils literal"><span class="pre">Node.COORDINATE_UNITS</span></tt></a>.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="dta.RoadLink.euclideanLengthInLengthUnits">
+<tt class="descname">euclideanLengthInLengthUnits</tt><big>(</big><em>includeShape=False</em><big>)</big><a class="headerlink" href="#dta.RoadLink.euclideanLengthInLengthUnits" title="Permalink to this definition">¶</a></dt>
+<dd><p>Return the length of the link in <a class="reference internal" href="#dta.RoadLink.LENGTH_UNITS" title="dta.RoadLink.LENGTH_UNITS"><tt class="xref py py-attr docutils literal"><span class="pre">RoadLink.LENGTH_UNITS</span></tt></a> units.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="dta.RoadLink.findOutgoingMovement">
+<tt class="descname">findOutgoingMovement</tt><big>(</big><em>nodeId</em><big>)</big><a class="headerlink" href="#dta.RoadLink.findOutgoingMovement" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns the outgoing movement ending in the given <em>nodeId</em>.</p>
+<p>If None found, returns None.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="dta.RoadLink.getAngle">
+<tt class="descname">getAngle</tt><big>(</big><em>other</em>, <em>usingShapepoints=False</em><big>)</big><a class="headerlink" href="#dta.RoadLink.getAngle" title="Permalink to this definition">¶</a></dt>
+<dd><p>Return the angle in degrees (in the range (-180, 180]) between this link and <em>other</em>, 
+an instance of <a class="reference internal" href="dta.Link.html#dta.Link" title="dta.Link"><tt class="xref py py-class docutils literal"><span class="pre">Link</span></tt></a> (where positive angles means the other is clockwise from this,
+and negative angles means the other is counter-clockwise from self.)</p>
+<p>If <em>usingShapepoints</em>, links must have a node in common, and the section of the link involving
+that common node is examined.</p>
+<p>If <em>usingShapepoints</em> is False, both links are considered as vectors from the
+start node to end node.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="dta.RoadLink.getCenterLine">
+<tt class="descname">getCenterLine</tt><big>(</big><em>atStart=False</em>, <em>atEnd=False</em>, <em>wholeLineShapePoints=False</em><big>)</big><a class="headerlink" href="#dta.RoadLink.getCenterLine" title="Permalink to this definition">¶</a></dt>
+<dd><p>Offset the link to the right 0.5*numLanes*:py:attr:<cite>RoadLink.DEFAULT_LANE_WIDTH</cite> and 
+return a tuple of two points (each one being a tuple of two floats) representing the centerline</p>
+<p>If <em>atStart</em> is True, then shapepoints are included and the first section of the line is used.
+If <em>atEnd</em> is True, then shapepoints are included and the last section of the line is used.</p>
+<p>If neither is True, then shapepoints are included iff <em>wholeLineShapePoints</em> (and a list is
+returned rather than a tuple of two points).</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="dta.RoadLink.getDirection">
+<tt class="descname">getDirection</tt><big>(</big><em>atEnd=True</em><big>)</big><a class="headerlink" href="#dta.RoadLink.getDirection" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns the direction of the link as one of <a class="reference internal" href="#dta.RoadLink.DIR_EB" title="dta.RoadLink.DIR_EB"><tt class="xref py py-attr docutils literal"><span class="pre">RoadLink.DIR_EB</span></tt></a>,  <a class="reference internal" href="#dta.RoadLink.DIR_NB" title="dta.RoadLink.DIR_NB"><tt class="xref py py-attr docutils literal"><span class="pre">RoadLink.DIR_NB</span></tt></a>,
+<a class="reference internal" href="#dta.RoadLink.DIR_WB" title="dta.RoadLink.DIR_WB"><tt class="xref py py-attr docutils literal"><span class="pre">RoadLink.DIR_WB</span></tt></a> or <a class="reference internal" href="#dta.RoadLink.DIR_SB" title="dta.RoadLink.DIR_SB"><tt class="xref py py-attr docutils literal"><span class="pre">RoadLink.DIR_SB</span></tt></a>.  Uses <a class="reference internal" href="#dta.RoadLink.getOrientation" title="dta.RoadLink.getOrientation"><tt class="xref py py-meth docutils literal"><span class="pre">getOrientation()</span></tt></a> so the
+shape points are used with the <em>atEnd</em> argument.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="dta.RoadLink.getDistanceFromPoint">
+<tt class="descname">getDistanceFromPoint</tt><big>(</big><em>x</em>, <em>y</em><big>)</big><a class="headerlink" href="#dta.RoadLink.getDistanceFromPoint" title="Permalink to this definition">¶</a></dt>
+<dd><p>Projects (<em>x</em>, <em>y</em>) onto the road link center line (including the shape points).
+Returns (distance, t) where t is in [0,1] and indicates how far between the
+road links start point and end point lies the closest point to (<em>x</em>, <em>y</em>).</p>
+<p><em>x</em>,*y* are in <a class="reference internal" href="dta.Node.html#dta.Node.COORDINATE_UNITS" title="dta.Node.COORDINATE_UNITS"><tt class="xref py py-attr docutils literal"><span class="pre">Node.COORDINATE_UNITS</span></tt></a></p>
+</dd></dl>
+
+<dl class="method">
+<dt id="dta.RoadLink.getEndNode">
+<tt class="descname">getEndNode</tt><big>(</big><big>)</big><a class="headerlink" href="#dta.RoadLink.getEndNode" title="Permalink to this definition">¶</a></dt>
+<dd><p>Accessor for endNode</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="dta.RoadLink.getEndNodeId">
+<tt class="descname">getEndNodeId</tt><big>(</big><big>)</big><a class="headerlink" href="#dta.RoadLink.getEndNodeId" title="Permalink to this definition">¶</a></dt>
+<dd><p>Return the id of the end node</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="dta.RoadLink.getFacilityType">
+<tt class="descname">getFacilityType</tt><big>(</big><big>)</big><a class="headerlink" href="#dta.RoadLink.getFacilityType" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns the facility type; see <a class="reference internal" href="#dta.RoadLink.__init__" title="dta.RoadLink.__init__"><tt class="xref py py-meth docutils literal"><span class="pre">RoadLink.__init__()</span></tt></a> for more on that variable.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="dta.RoadLink.getFreeFlowSpeedInMPH">
+<tt class="descname">getFreeFlowSpeedInMPH</tt><big>(</big><big>)</big><a class="headerlink" href="#dta.RoadLink.getFreeFlowSpeedInMPH" title="Permalink to this definition">¶</a></dt>
+<dd><p>Return the free flow speed in MPH</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="dta.RoadLink.getFreeFlowTTInMin">
+<tt class="descname">getFreeFlowTTInMin</tt><big>(</big><big>)</big><a class="headerlink" href="#dta.RoadLink.getFreeFlowTTInMin" title="Permalink to this definition">¶</a></dt>
+<dd><p>Return the free flow travel time in minutes</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="dta.RoadLink.getGroup">
+<tt class="descname">getGroup</tt><big>(</big><big>)</big><a class="headerlink" href="#dta.RoadLink.getGroup" title="Permalink to this definition">¶</a></dt>
+<dd><p>Return the group number for the link</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="dta.RoadLink.getId">
+<tt class="descname">getId</tt><big>(</big><big>)</big><a class="headerlink" href="#dta.RoadLink.getId" title="Permalink to this definition">¶</a></dt>
+<dd><p>Return the link id</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="dta.RoadLink.getIid">
+<tt class="descname">getIid</tt><big>(</big><big>)</big><a class="headerlink" href="#dta.RoadLink.getIid" title="Permalink to this definition">¶</a></dt>
+<dd><p>Return a pair representing the start and end node ids</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="dta.RoadLink.getLabel">
+<tt class="descname">getLabel</tt><big>(</big><big>)</big><a class="headerlink" href="#dta.RoadLink.getLabel" title="Permalink to this definition">¶</a></dt>
+<dd><p>Return the link label</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="dta.RoadLink.getLanePermission">
+<tt class="descname">getLanePermission</tt><big>(</big><em>laneId</em><big>)</big><a class="headerlink" href="#dta.RoadLink.getLanePermission" title="Permalink to this definition">¶</a></dt>
+<dd><p>Accessor for the <a class="reference internal" href="dta.VehicleClassGroup.html#dta.VehicleClassGroup" title="dta.VehicleClassGroup"><tt class="xref py py-class docutils literal"><span class="pre">VehicleClassGroup</span></tt></a> that uses the given lane.</p>
+<p>Returns None if nothing is set.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="dta.RoadLink.getLeftTurn">
+<tt class="descname">getLeftTurn</tt><big>(</big><big>)</big><a class="headerlink" href="#dta.RoadLink.getLeftTurn" title="Permalink to this definition">¶</a></dt>
+<dd><p>Return the left turn movement of the link or raise an error if it does not exist</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="dta.RoadLink.getLength">
+<tt class="descname">getLength</tt><big>(</big><big>)</big><a class="headerlink" href="#dta.RoadLink.getLength" title="Permalink to this definition">¶</a></dt>
+<dd><p>Return the length of the link in <a class="reference internal" href="#dta.RoadLink.LENGTH_UNITS" title="dta.RoadLink.LENGTH_UNITS"><tt class="xref py py-attr docutils literal"><span class="pre">RoadLink.LENGTH_UNITS</span></tt></a> units.</p>
+<p>Uses the user input length, if there is one; otherwise calculates the euclidean length including the shape.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="dta.RoadLink.getLengthInCoordinateUnits">
+<tt class="descname">getLengthInCoordinateUnits</tt><big>(</big><big>)</big><a class="headerlink" href="#dta.RoadLink.getLengthInCoordinateUnits" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns the length of the link in <a class="reference internal" href="dta.Node.html#dta.Node.COORDINATE_UNITS" title="dta.Node.COORDINATE_UNITS"><tt class="xref py py-attr docutils literal"><span class="pre">Node.COORDINATE_UNITS</span></tt></a> units.</p>
+<p>Uses the asserted length, if there is one; otherwise calculates the euclidean length.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="dta.RoadLink.getMidPoint">
+<tt class="descname">getMidPoint</tt><big>(</big><big>)</big><a class="headerlink" href="#dta.RoadLink.getMidPoint" title="Permalink to this definition">¶</a></dt>
+<dd><p>Return the midpoint of the link&#8217;s centerline as a tuple of two floats</p>
+<p>This uses <a class="reference internal" href="#dta.RoadLink.coordinatesAlongLink" title="dta.RoadLink.coordinatesAlongLink"><tt class="xref py py-meth docutils literal"><span class="pre">RoadLink.coordinatesAlongLink()</span></tt></a> and includes shapepoints.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="dta.RoadLink.getNumIncomingMovements">
+<tt class="descname">getNumIncomingMovements</tt><big>(</big><big>)</big><a class="headerlink" href="#dta.RoadLink.getNumIncomingMovements" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns the number of incoming movements</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="dta.RoadLink.getNumLanes">
+<tt class="descname">getNumLanes</tt><big>(</big><big>)</big><a class="headerlink" href="#dta.RoadLink.getNumLanes" title="Permalink to this definition">¶</a></dt>
+<dd><p>Return the number of lanes.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="dta.RoadLink.getNumOutgoingMovements">
+<tt class="descname">getNumOutgoingMovements</tt><big>(</big><big>)</big><a class="headerlink" href="#dta.RoadLink.getNumOutgoingMovements" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns the number of outgoing movements</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="dta.RoadLink.getNumShapePoints">
+<tt class="descname">getNumShapePoints</tt><big>(</big><big>)</big><a class="headerlink" href="#dta.RoadLink.getNumShapePoints" title="Permalink to this definition">¶</a></dt>
+<dd><p>Return the number of shape points this link has</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="dta.RoadLink.getObsCount">
+<tt class="descname">getObsCount</tt><big>(</big><em>startTimeInMin</em>, <em>endTimeInMin</em><big>)</big><a class="headerlink" href="#dta.RoadLink.getObsCount" title="Permalink to this definition">¶</a></dt>
+<dd><p>Return the number of vehicles traversing the
+link in the input time window.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="dta.RoadLink.getObsMeanTT">
+<tt class="descname">getObsMeanTT</tt><big>(</big><em>startTimeInMin</em>, <em>endTimeInMin</em><big>)</big><a class="headerlink" href="#dta.RoadLink.getObsMeanTT" title="Permalink to this definition">¶</a></dt>
+<dd><p>Get the observed mean travel time of the link in minutes</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="dta.RoadLink.getObsSpeedInMPH">
+<tt class="descname">getObsSpeedInMPH</tt><big>(</big><em>startTimeInMin</em>, <em>endTimeInMin</em><big>)</big><a class="headerlink" href="#dta.RoadLink.getObsSpeedInMPH" title="Permalink to this definition">¶</a></dt>
+<dd><p>Get the observed speed of specified time period</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="dta.RoadLink.getOrientation">
+<tt class="descname">getOrientation</tt><big>(</big><em>atEnd=True</em>, <em>usingShapepoints=True</em><big>)</big><a class="headerlink" href="#dta.RoadLink.getOrientation" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns the angle of the link in degrees from the North
+measured clockwise.  The result is in [0, 360)</p>
+<p>The link shape is taken into account if <em>usingShapepoints</em> is True.</p>
+<p>If there are shape points, and <em>atEnd</em> is True, then the orientation
+is evaluated at the end point of the link, otherwise it&#8217;s evaluated at
+the start of the link.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="dta.RoadLink.getOtherEnd">
+<tt class="descname">getOtherEnd</tt><big>(</big><em>node</em><big>)</big><a class="headerlink" href="#dta.RoadLink.getOtherEnd" title="Permalink to this definition">¶</a></dt>
+<dd><p>Return the other end node than the one provided.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="dta.RoadLink.getOutgoingMovement">
+<tt class="descname">getOutgoingMovement</tt><big>(</big><em>nodeId</em><big>)</big><a class="headerlink" href="#dta.RoadLink.getOutgoingMovement" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns the outgoing movement with an end node specified by the given <em>nodeId</em>
+(and this link as the incoming link).</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="dta.RoadLink.getOutgoingMovementForLinkId">
+<tt class="descname">getOutgoingMovementForLinkId</tt><big>(</big><em>linkId</em><big>)</big><a class="headerlink" href="#dta.RoadLink.getOutgoingMovementForLinkId" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns the outgoing movement with the outgoing link specified by the given <em>linkId</em>
+(and this link as the incoming link).</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="dta.RoadLink.getOutline">
+<tt class="descname">getOutline</tt><big>(</big><em>scale=1</em><big>)</big><a class="headerlink" href="#dta.RoadLink.getOutline" title="Permalink to this definition">¶</a></dt>
+<dd><p>Return the outline of the link as a linearRing of points
+in clockwise order. If scale the physical outline of the link
+will be return using the number of lanes attribute to determine
+the boundaries of the outline.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="dta.RoadLink.getReferenceAngle">
+<tt class="descname">getReferenceAngle</tt><big>(</big><big>)</big><a class="headerlink" href="#dta.RoadLink.getReferenceAngle" title="Permalink to this definition">¶</a></dt>
+<dd><p>Visualizing the link as a straight vector from (0,0), returns the angle between &lt;1,0&gt; and this link.</p>
+<p>So returns a number in [0,2pi), increasing clockwise.</p>
+<p>These are based on the euclidean length of the link, so assumes a straight line.  If the link has no length,
+returns 0.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="dta.RoadLink.getReferenceAngleInDegrees">
+<tt class="descname">getReferenceAngleInDegrees</tt><big>(</big><big>)</big><a class="headerlink" href="#dta.RoadLink.getReferenceAngleInDegrees" title="Permalink to this definition">¶</a></dt>
+<dd><p>Return the Reference angle in degrees</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="dta.RoadLink.getRightTurn">
+<tt class="descname">getRightTurn</tt><big>(</big><big>)</big><a class="headerlink" href="#dta.RoadLink.getRightTurn" title="Permalink to this definition">¶</a></dt>
+<dd><p>Return the thru movement of the link or raise an error if it does not exist</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="dta.RoadLink.getShapePoints">
+<tt class="descname">getShapePoints</tt><big>(</big><big>)</big><a class="headerlink" href="#dta.RoadLink.getShapePoints" title="Permalink to this definition">¶</a></dt>
+<dd><p>Accessor for the shape points.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="dta.RoadLink.getShifts">
+<tt class="descname">getShifts</tt><big>(</big><big>)</big><a class="headerlink" href="#dta.RoadLink.getShifts" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns the <em>startShift</em> and <em>endShift</em> ordered pair, or (None,None) if it wasn&#8217;t set.
+See addShifts() for details.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="dta.RoadLink.getSimInFlow">
+<tt class="descname">getSimInFlow</tt><big>(</big><em>startTimeInMin</em>, <em>endTimeInMin</em><big>)</big><a class="headerlink" href="#dta.RoadLink.getSimInFlow" title="Permalink to this definition">¶</a></dt>
+<dd><p>Get the simulated incoming flow in vph</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="dta.RoadLink.getSimInVolume">
+<tt class="descname">getSimInVolume</tt><big>(</big><em>startTimeInMin</em>, <em>endTimeInMin</em><big>)</big><a class="headerlink" href="#dta.RoadLink.getSimInVolume" title="Permalink to this definition">¶</a></dt>
+<dd><p>Return the incoming volume on the link from startTimeInMin to endTimeInMin</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="dta.RoadLink.getSimOutFlow">
+<tt class="descname">getSimOutFlow</tt><big>(</big><em>startTimeInMin</em>, <em>endTimeInMin</em><big>)</big><a class="headerlink" href="#dta.RoadLink.getSimOutFlow" title="Permalink to this definition">¶</a></dt>
+<dd><p>Get the simulated flow in vph</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="dta.RoadLink.getSimOutVolume">
+<tt class="descname">getSimOutVolume</tt><big>(</big><em>startTimeInMin</em>, <em>endTimeInMin</em><big>)</big><a class="headerlink" href="#dta.RoadLink.getSimOutVolume" title="Permalink to this definition">¶</a></dt>
+<dd><p>Return the volume on the link from startTimeInMin to endTimeInMin</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="dta.RoadLink.getSimSpeedInMPH">
+<tt class="descname">getSimSpeedInMPH</tt><big>(</big><em>startTimeInMin</em>, <em>endTimeInMin</em><big>)</big><a class="headerlink" href="#dta.RoadLink.getSimSpeedInMPH" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="dta.RoadLink.getSimTTInMin">
+<tt class="descname">getSimTTInMin</tt><big>(</big><em>startTimeInMin</em>, <em>endTimeInMin</em><big>)</big><a class="headerlink" href="#dta.RoadLink.getSimTTInMin" title="Permalink to this definition">¶</a></dt>
+<dd><p>Get the average travel time of the vehicles traversing the link</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="dta.RoadLink.getStartNode">
+<tt class="descname">getStartNode</tt><big>(</big><big>)</big><a class="headerlink" href="#dta.RoadLink.getStartNode" title="Permalink to this definition">¶</a></dt>
+<dd><p>Accessor for startNode</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="dta.RoadLink.getStartNodeId">
+<tt class="descname">getStartNodeId</tt><big>(</big><big>)</big><a class="headerlink" href="#dta.RoadLink.getStartNodeId" title="Permalink to this definition">¶</a></dt>
+<dd><p>Return the id of the start node</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="dta.RoadLink.getSumOfAllMovementCounts">
+<tt class="descname">getSumOfAllMovementCounts</tt><big>(</big><em>startTimeInMin</em>, <em>endTimeInMin</em><big>)</big><a class="headerlink" href="#dta.RoadLink.getSumOfAllMovementCounts" title="Permalink to this definition">¶</a></dt>
+<dd><p>Return the sum of all outgoing movement counts</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="dta.RoadLink.getThruTurn">
+<tt class="descname">getThruTurn</tt><big>(</big><big>)</big><a class="headerlink" href="#dta.RoadLink.getThruTurn" title="Permalink to this definition">¶</a></dt>
+<dd><p>Return the thru movement of the link or raise an error if it does not exist</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="dta.RoadLink.getTollLink">
+<tt class="descname">getTollLink</tt><big>(</big><big>)</big><a class="headerlink" href="#dta.RoadLink.getTollLink" title="Permalink to this definition">¶</a></dt>
+<dd><p>Return the tollLink value for the link</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="dta.RoadLink.hasAllMovementCounts">
+<tt class="descname">hasAllMovementCounts</tt><big>(</big><em>startTimeInMin</em>, <em>endTimeInMin</em><big>)</big><a class="headerlink" href="#dta.RoadLink.hasAllMovementCounts" title="Permalink to this definition">¶</a></dt>
+<dd><p>Return True if there is a count for all outgoing movements
+in the input time period</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="dta.RoadLink.hasCountInfo">
+<tt class="descname">hasCountInfo</tt><big>(</big><big>)</big><a class="headerlink" href="#dta.RoadLink.hasCountInfo" title="Permalink to this definition">¶</a></dt>
+<dd><p>Return True if the link contains count information else false</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="dta.RoadLink.hasDirection">
+<tt class="descname">hasDirection</tt><big>(</big><em>dir</em>, <em>atEnd=True</em><big>)</big><a class="headerlink" href="#dta.RoadLink.hasDirection" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns True if the link is going in that direction at all.  That is, if a link is oriented to the
+southwest, this will return True for <em>dir</em> <a class="reference internal" href="#dta.RoadLink.DIR_SB" title="dta.RoadLink.DIR_SB"><tt class="xref py py-attr docutils literal"><span class="pre">RoadLink.DIR_SB</span></tt></a> and <em>dir</em> <a class="reference internal" href="#dta.RoadLink.DIR_WB" title="dta.RoadLink.DIR_WB"><tt class="xref py py-attr docutils literal"><span class="pre">RoadLink.DIR_WB</span></tt></a> but
+False otherwise.  <em>atEnd</em> is interpreted by the <a class="reference internal" href="#dta.RoadLink.getOrientation" title="dta.RoadLink.getOrientation"><tt class="xref py py-meth docutils literal"><span class="pre">getOrientation()</span></tt></a> method.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="dta.RoadLink.hasLeftTurn">
+<tt class="descname">hasLeftTurn</tt><big>(</big><big>)</big><a class="headerlink" href="#dta.RoadLink.hasLeftTurn" title="Permalink to this definition">¶</a></dt>
+<dd><p>Return True if the link has a through turn</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="dta.RoadLink.hasMovementCountInfo">
+<tt class="descname">hasMovementCountInfo</tt><big>(</big><big>)</big><a class="headerlink" href="#dta.RoadLink.hasMovementCountInfo" title="Permalink to this definition">¶</a></dt>
+<dd><p>Return True if any outgoing movement on the link
+contains count information else false</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="dta.RoadLink.hasObsCount">
+<tt class="descname">hasObsCount</tt><big>(</big><em>startTimeInMin</em>, <em>endTimeInMin</em><big>)</big><a class="headerlink" href="#dta.RoadLink.hasObsCount" title="Permalink to this definition">¶</a></dt>
+<dd><p>Return True if there is a count for the input time period</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="dta.RoadLink.hasOutgoingMovement">
+<tt class="descname">hasOutgoingMovement</tt><big>(</big><em>nodeId</em>, <em>vehicleClassGroup=None</em><big>)</big><a class="headerlink" href="#dta.RoadLink.hasOutgoingMovement" title="Permalink to this definition">¶</a></dt>
+<dd><p>Return True if the link has an outgoing movement towards nodeId.
+Please note that the movement may be prohibited.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="dta.RoadLink.hasRightTurn">
+<tt class="descname">hasRightTurn</tt><big>(</big><big>)</big><a class="headerlink" href="#dta.RoadLink.hasRightTurn" title="Permalink to this definition">¶</a></dt>
+<dd><p>Return True if the link has a through turn</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="dta.RoadLink.hasSameAttributes">
+<tt class="descname">hasSameAttributes</tt><big>(</big><em>other</em><big>)</big><a class="headerlink" href="#dta.RoadLink.hasSameAttributes" title="Permalink to this definition">¶</a></dt>
+<dd><p>Return True if the two links have the same attributes return True</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="dta.RoadLink.hasThruTurn">
+<tt class="descname">hasThruTurn</tt><big>(</big><big>)</big><a class="headerlink" href="#dta.RoadLink.hasThruTurn" title="Permalink to this definition">¶</a></dt>
+<dd><p>Return True if the link has a through turn</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="dta.RoadLink.isConnector">
+<tt class="descname">isConnector</tt><big>(</big><big>)</big><a class="headerlink" href="#dta.RoadLink.isConnector" title="Permalink to this definition">¶</a></dt>
+<dd><p>Return True if this Link is a Connector</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="dta.RoadLink.isOverlapping">
+<tt class="descname">isOverlapping</tt><big>(</big><em>other</em>, <em>usingShapepoints=False</em><big>)</big><a class="headerlink" href="#dta.RoadLink.isOverlapping" title="Permalink to this definition">¶</a></dt>
+<dd><p>Return True if the given link and <em>other</em> overlap.  Assumes they share an endpoint.
+See <a class="reference internal" href="#dta.RoadLink.getAngle" title="dta.RoadLink.getAngle"><tt class="xref py py-meth docutils literal"><span class="pre">RoadLink.getAngle()</span></tt></a> for explanation of <em>usingShapePoints</em>.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="dta.RoadLink.isRoadLink">
+<tt class="descname">isRoadLink</tt><big>(</big><big>)</big><a class="headerlink" href="#dta.RoadLink.isRoadLink" title="Permalink to this definition">¶</a></dt>
+<dd><p>Return True this Link is RoadLink</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="dta.RoadLink.isVirtualLink">
+<tt class="descname">isVirtualLink</tt><big>(</big><big>)</big><a class="headerlink" href="#dta.RoadLink.isVirtualLink" title="Permalink to this definition">¶</a></dt>
+<dd><p>Return True if this LInk is a VirtualLink</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="dta.RoadLink.iterIncidentMovements">
+<tt class="descname">iterIncidentMovements</tt><big>(</big><big>)</big><a class="headerlink" href="#dta.RoadLink.iterIncidentMovements" title="Permalink to this definition">¶</a></dt>
+<dd><p>Return an iterator to all the incident movemements
+of this link</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="dta.RoadLink.iterIncomingMovements">
+<tt class="descname">iterIncomingMovements</tt><big>(</big><big>)</big><a class="headerlink" href="#dta.RoadLink.iterIncomingMovements" title="Permalink to this definition">¶</a></dt>
+<dd><p>Iterator for the incoming movements of this link</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="dta.RoadLink.iterOutgoingMovements">
+<tt class="descname">iterOutgoingMovements</tt><big>(</big><big>)</big><a class="headerlink" href="#dta.RoadLink.iterOutgoingMovements" title="Permalink to this definition">¶</a></dt>
+<dd><p>Iterator for the outgoing movements of this link</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="dta.RoadLink.prohibitOutgoingMovement">
+<tt class="descname">prohibitOutgoingMovement</tt><big>(</big><em>movementToProhibit</em><big>)</big><a class="headerlink" href="#dta.RoadLink.prohibitOutgoingMovement" title="Permalink to this definition">¶</a></dt>
+<dd><p>Prohibit the input movement</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="dta.RoadLink.setGroup">
+<tt class="descname">setGroup</tt><big>(</big><em>group</em><big>)</big><a class="headerlink" href="#dta.RoadLink.setGroup" title="Permalink to this definition">¶</a></dt>
+<dd><p>Set the group number for the link</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="dta.RoadLink.setLabel">
+<tt class="descname">setLabel</tt><big>(</big><em>label</em><big>)</big><a class="headerlink" href="#dta.RoadLink.setLabel" title="Permalink to this definition">¶</a></dt>
+<dd><p>Set the link label</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="dta.RoadLink.setLength">
+<tt class="descname">setLength</tt><big>(</big><em>newLength</em><big>)</big><a class="headerlink" href="#dta.RoadLink.setLength" title="Permalink to this definition">¶</a></dt>
+<dd><p>Sets the asserted length of this link; the <em>newLength</em> should be in units specified by <cite>RoadLink.LENGTH_UNITS</cite></p>
+</dd></dl>
+
+<dl class="method">
+<dt id="dta.RoadLink.setNumLanes">
+<tt class="descname">setNumLanes</tt><big>(</big><em>numLanes</em><big>)</big><a class="headerlink" href="#dta.RoadLink.setNumLanes" title="Permalink to this definition">¶</a></dt>
+<dd><p>Sets the number of lanes to the given value</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="dta.RoadLink.setObsCount">
+<tt class="descname">setObsCount</tt><big>(</big><em>startTimeInMin</em>, <em>endTimeInMin</em>, <em>count</em><big>)</big><a class="headerlink" href="#dta.RoadLink.setObsCount" title="Permalink to this definition">¶</a></dt>
+<dd><p>Set the number of vehicles Traversing the link 
+in the input time period</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="dta.RoadLink.setResTimeFac">
+<tt class="descname">setResTimeFac</tt><big>(</big><em>newResFac</em><big>)</big><a class="headerlink" href="#dta.RoadLink.setResTimeFac" title="Permalink to this definition">¶</a></dt>
+<dd><p>Sets the response time factor to the given value</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="dta.RoadLink.setSimOutVolume">
+<tt class="descname">setSimOutVolume</tt><big>(</big><em>startTimeInMin</em>, <em>endTimeInMin</em>, <em>volume</em><big>)</big><a class="headerlink" href="#dta.RoadLink.setSimOutVolume" title="Permalink to this definition">¶</a></dt>
+<dd><p>Set the simulated volume on the edge provided that the edge 
+does not have any emanating movements</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="dta.RoadLink.setSimTTInMin">
+<tt class="descname">setSimTTInMin</tt><big>(</big><em>startTimeInMin</em>, <em>endTimeInMin</em>, <em>averageTTInMin</em><big>)</big><a class="headerlink" href="#dta.RoadLink.setSimTTInMin" title="Permalink to this definition">¶</a></dt>
+<dd><p>Set the simulated travel time on the link for the particular input period</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="dta.RoadLink.setTollLink">
+<tt class="descname">setTollLink</tt><big>(</big><em>newTollLink</em><big>)</big><a class="headerlink" href="#dta.RoadLink.setTollLink" title="Permalink to this definition">¶</a></dt>
+<dd><p>Sets the tollLink field (dummy var indicating tolled link) to specified value (should be zero or one)</p>
+</dd></dl>
+
+</dd></dl>
+
+</div>
+
+
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar">
+        <div class="sphinxsidebarwrapper">
+  <h4>Previous topic</h4>
+  <p class="topless"><a href="dta.Link.html"
+                        title="previous chapter">dta.Link</a></p>
+  <h4>Next topic</h4>
+  <p class="topless"><a href="dta.VirtualLink.html"
+                        title="next chapter">dta.VirtualLink</a></p>
+  <h3>This Page</h3>
+  <ul class="this-page-menu">
+    <li><a href="../_sources/_generated/dta.RoadLink.txt"
+           rel="nofollow">Show Source</a></li>
+  </ul>
+<div id="searchbox" style="display: none">
+  <h3>Quick search</h3>
+    <form class="search" action="../search.html" method="get">
+      <input type="text" name="q" />
+      <input type="submit" value="Go" />
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+    <p class="searchtip" style="font-size: 90%">
+    Enter search terms or a module, class or function name.
+    </p>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../genindex.html" title="General Index"
+             >index</a></li>
+        <li class="right" >
+          <a href="../py-modindex.html" title="Python Module Index"
+             >modules</a> |</li>
+        <li class="right" >
+          <a href="dta.VirtualLink.html" title="dta.VirtualLink"
+             >next</a> |</li>
+        <li class="right" >
+          <a href="dta.Link.html" title="dta.Link"
+             >previous</a> |</li>
+        <li><a href="../index.html">DTA Anyway 1.0 documentation</a> &raquo;</li> 
+      </ul>
+    </div>
+    <div class="footer">
+        &copy; Copyright 2011-2012, SFCTA Modeling Crew.
+      Created using <a href="http://sphinx.pocoo.org/">Sphinx</a> 1.1.3.
+    </div>
+  </body>
+</html>

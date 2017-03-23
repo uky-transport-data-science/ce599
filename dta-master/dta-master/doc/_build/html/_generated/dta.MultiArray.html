@@ -1,0 +1,397 @@
+
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>dta.MultiArray &mdash; DTA Anyway 1.0 documentation</title>
+    
+    <link rel="stylesheet" href="../_static/dta.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '../',
+        VERSION:     '1.0',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+    <script type="text/javascript" src="../_static/jquery.js"></script>
+    <script type="text/javascript" src="../_static/underscore.js"></script>
+    <script type="text/javascript" src="../_static/doctools.js"></script>
+    <link rel="top" title="DTA Anyway 1.0 documentation" href="../index.html" />
+    <link rel="next" title="dta.Time" href="dta.Time.html" />
+    <link rel="prev" title="dta.Logger" href="dta.Logger.html" /> 
+  </head>
+  <body>
+    <div class="related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../genindex.html" title="General Index"
+             accesskey="I">index</a></li>
+        <li class="right" >
+          <a href="../py-modindex.html" title="Python Module Index"
+             >modules</a> |</li>
+        <li class="right" >
+          <a href="dta.Time.html" title="dta.Time"
+             accesskey="N">next</a> |</li>
+        <li class="right" >
+          <a href="dta.Logger.html" title="dta.Logger"
+             accesskey="P">previous</a> |</li>
+        <li><a href="../index.html">DTA Anyway 1.0 documentation</a> &raquo;</li> 
+      </ul>
+    </div>  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body">
+            
+  <div class="section" id="dta-multiarray">
+<h1>dta.MultiArray<a class="headerlink" href="#dta-multiarray" title="Permalink to this headline">¶</a></h1>
+<dl class="class">
+<dt id="dta.MultiArray">
+<em class="property">class </em><tt class="descname">MultiArray</tt><big>(</big><em>dtype</em>, <em>dimElements</em>, <em>numpyArray=None</em>, <em>isBase=True</em><big>)</big><a class="headerlink" href="#dta.MultiArray" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <tt class="xref py py-class docutils literal"><span class="pre">object</span></tt></p>
+<p>Multidimentinal array of custom numpy data types supporting
+string indices, arbitrary slicing and aggregation</p>
+<dl class="method">
+<dt id="dta.MultiArray.__init__">
+<tt class="descname">__init__</tt><big>(</big><em>dtype</em>, <em>dimElements</em>, <em>numpyArray=None</em>, <em>isBase=True</em><big>)</big><a class="headerlink" href="#dta.MultiArray.__init__" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<p class="rubric">Methods</p>
+<table border="1" class="longtable docutils">
+<colgroup>
+<col width="10%" />
+<col width="90%" />
+</colgroup>
+<tbody valign="top">
+<tr class="row-odd"><td><tt class="xref py py-obj docutils literal"><span class="pre">__init__</span></tt>(dtype,&nbsp;dimElements[,&nbsp;numpyArray,&nbsp;...])</td>
+<td></td>
+</tr>
+<tr class="row-even"><td><tt class="xref py py-obj docutils literal"><span class="pre">asPrettyString</span></tt>()</td>
+<td>Return the array as a properly formated string</td>
+</tr>
+<tr class="row-odd"><td><tt class="xref py py-obj docutils literal"><span class="pre">asPrettyString4</span></tt>()</td>
+<td>Return a four dimentional array as a property formated string</td>
+</tr>
+<tr class="row-even"><td><tt class="xref py py-obj docutils literal"><span class="pre">changeTranslationForDim</span></tt>(dimIndex,&nbsp;...)</td>
+<td></td>
+</tr>
+<tr class="row-odd"><td><tt class="xref py py-obj docutils literal"><span class="pre">collapse</span></tt>(alphaToBeta)</td>
+<td>Collapses the current array into fewer dimensions input: a numpy array with the following fields &#8220;alpha&#8221;, &#8220;beta&#8221;,  &#8220;percentage&#8221;.</td>
+</tr>
+<tr class="row-even"><td><tt class="xref py py-obj docutils literal"><span class="pre">copy</span></tt>()</td>
+<td>Return a copy of the current Multi Array</td>
+</tr>
+<tr class="row-odd"><td><tt class="xref py py-obj docutils literal"><span class="pre">eliminateDimention</span></tt>(dimIndex)</td>
+<td>Return the sum accross dimention dimIndex</td>
+</tr>
+<tr class="row-even"><td><tt class="xref py py-obj docutils literal"><span class="pre">expand</span></tt>(alphaToBeta)</td>
+<td>Expands the current dimentions of multiArray.</td>
+</tr>
+<tr class="row-odd"><td><tt class="xref py py-obj docutils literal"><span class="pre">fill</span></tt>(value)</td>
+<td></td>
+</tr>
+<tr class="row-even"><td><tt class="xref py py-obj docutils literal"><span class="pre">getDataType</span></tt>()</td>
+<td>Return the data type of the elements in the array</td>
+</tr>
+<tr class="row-odd"><td><tt class="xref py py-obj docutils literal"><span class="pre">getElementsOfAllDimentions</span></tt>()</td>
+<td>Return a tuple with the elements of all dimentions</td>
+</tr>
+<tr class="row-even"><td><tt class="xref py py-obj docutils literal"><span class="pre">getElementsOfDimention</span></tt>(dimIndex)</td>
+<td>Returns a tuple of all the indices of the dimention provided</td>
+</tr>
+<tr class="row-odd"><td><tt class="xref py py-obj docutils literal"><span class="pre">getItemSize</span></tt>()</td>
+<td>Return the element byte size</td>
+</tr>
+<tr class="row-even"><td><tt class="xref py py-obj docutils literal"><span class="pre">getNumDim</span></tt>()</td>
+<td>Return the number of dimentions</td>
+</tr>
+<tr class="row-odd"><td><tt class="xref py py-obj docutils literal"><span class="pre">getNumpyArray</span></tt>()</td>
+<td>Return a reference to the stored data as multidimentional numpy array</td>
+</tr>
+<tr class="row-even"><td><tt class="xref py py-obj docutils literal"><span class="pre">getShape</span></tt>()</td>
+<td>Return a tupble of integers indicating the size of the array in</td>
+</tr>
+<tr class="row-odd"><td><tt class="xref py py-obj docutils literal"><span class="pre">getSize</span></tt>()</td>
+<td>Return the number of items stored in the array</td>
+</tr>
+<tr class="row-even"><td><tt class="xref py py-obj docutils literal"><span class="pre">getSum</span></tt>()</td>
+<td>return the sum of all the items in the array</td>
+</tr>
+<tr class="row-odd"><td><tt class="xref py py-obj docutils literal"><span class="pre">iteritems</span></tt>()</td>
+<td></td>
+</tr>
+<tr class="row-even"><td><tt class="xref py py-obj docutils literal"><span class="pre">iterkeys</span></tt>()</td>
+<td></td>
+</tr>
+<tr class="row-odd"><td><tt class="xref py py-obj docutils literal"><span class="pre">itervalues</span></tt>()</td>
+<td>return an iterator over the values</td>
+</tr>
+<tr class="row-even"><td><tt class="xref py py-obj docutils literal"><span class="pre">multiplyInPlace</span></tt>(value)</td>
+<td>Multiply all the items of the array with the provided value</td>
+</tr>
+<tr class="row-odd"><td><tt class="xref py py-obj docutils literal"><span class="pre">pickle</span></tt>(fileName)</td>
+<td>Save the pickled multiarray in the given file</td>
+</tr>
+<tr class="row-even"><td><tt class="xref py py-obj docutils literal"><span class="pre">read</span></tt>(fileName)</td>
+<td>Read the multiArray from disk and return it</td>
+</tr>
+<tr class="row-odd"><td><tt class="xref py py-obj docutils literal"><span class="pre">unpickle</span></tt>(fileName)</td>
+<td>Unpickle and return the multiarray saved in the given file</td>
+</tr>
+<tr class="row-even"><td><tt class="xref py py-obj docutils literal"><span class="pre">write</span></tt>(fileName)</td>
+<td>Write the multidimentional array to file using the numpy binary format</td>
+</tr>
+<tr class="row-odd"><td><tt class="xref py py-obj docutils literal"><span class="pre">writeToCSV</span></tt>(fileName)</td>
+<td>Save the multiarry as a comma delimited text file</td>
+</tr>
+</tbody>
+</table>
+<dl class="method">
+<dt id="dta.MultiArray._translateElement">
+<tt class="descname">_translateElement</tt><big>(</big><em>dimIndex</em>, <em>element</em><big>)</big><a class="headerlink" href="#dta.MultiArray._translateElement" title="Permalink to this definition">¶</a></dt>
+<dd><p>Return the corresponding index of the provided element and dimention</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="dta.MultiArray._translateElements">
+<tt class="descname">_translateElements</tt><big>(</big><em>*args</em><big>)</big><a class="headerlink" href="#dta.MultiArray._translateElements" title="Permalink to this definition">¶</a></dt>
+<dd><p>Return a list with the translated indices</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="dta.MultiArray._translateViewObject">
+<tt class="descname">_translateViewObject</tt><big>(</big><em>eViewObject</em><big>)</big><a class="headerlink" href="#dta.MultiArray._translateViewObject" title="Permalink to this definition">¶</a></dt>
+<dd><p>Translate the external view object to the internal one</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="dta.MultiArray.asPrettyString">
+<tt class="descname">asPrettyString</tt><big>(</big><big>)</big><a class="headerlink" href="#dta.MultiArray.asPrettyString" title="Permalink to this definition">¶</a></dt>
+<dd><p>Return the array as a properly formated string</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="dta.MultiArray.asPrettyString4">
+<tt class="descname">asPrettyString4</tt><big>(</big><big>)</big><a class="headerlink" href="#dta.MultiArray.asPrettyString4" title="Permalink to this definition">¶</a></dt>
+<dd><p>Return a four dimentional array as a property formated string</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="dta.MultiArray.changeTranslationForDim">
+<tt class="descname">changeTranslationForDim</tt><big>(</big><em>dimIndex</em>, <em>oldElementsToNew</em><big>)</big><a class="headerlink" href="#dta.MultiArray.changeTranslationForDim" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="dta.MultiArray.collapse">
+<tt class="descname">collapse</tt><big>(</big><em>alphaToBeta</em><big>)</big><a class="headerlink" href="#dta.MultiArray.collapse" title="Permalink to this definition">¶</a></dt>
+<dd><p>Collapses the current array into fewer dimensions
+input: a numpy array with the following fields &#8220;alpha&#8221;, &#8220;beta&#8221;, 
+&#8220;percentage&#8221;. The current zoneIds are in the &#8220;alpha&#8221; fields, the 
+new ones in the &#8220;beta&#8221; fields.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="dta.MultiArray.copy">
+<tt class="descname">copy</tt><big>(</big><big>)</big><a class="headerlink" href="#dta.MultiArray.copy" title="Permalink to this definition">¶</a></dt>
+<dd><p>Return a copy of the current Multi Array</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="dta.MultiArray.eliminateDimention">
+<tt class="descname">eliminateDimention</tt><big>(</big><em>dimIndex</em><big>)</big><a class="headerlink" href="#dta.MultiArray.eliminateDimention" title="Permalink to this definition">¶</a></dt>
+<dd><p>Return the sum accross dimention dimIndex</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="dta.MultiArray.expand">
+<tt class="descname">expand</tt><big>(</big><em>alphaToBeta</em><big>)</big><a class="headerlink" href="#dta.MultiArray.expand" title="Permalink to this definition">¶</a></dt>
+<dd><p>Expands the current dimentions of multiArray.</p>
+<p>Input a numpy array with the following fields &#8220;alpha&#8221;, &#8220;beta&#8221;, &#8220;percentage&#8221;
+Output: a new Multi Array</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="dta.MultiArray.fill">
+<tt class="descname">fill</tt><big>(</big><em>value</em><big>)</big><a class="headerlink" href="#dta.MultiArray.fill" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="dta.MultiArray.getDataType">
+<tt class="descname">getDataType</tt><big>(</big><big>)</big><a class="headerlink" href="#dta.MultiArray.getDataType" title="Permalink to this definition">¶</a></dt>
+<dd><p>Return the data type of the elements in the array</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="dta.MultiArray.getElementsOfAllDimentions">
+<tt class="descname">getElementsOfAllDimentions</tt><big>(</big><big>)</big><a class="headerlink" href="#dta.MultiArray.getElementsOfAllDimentions" title="Permalink to this definition">¶</a></dt>
+<dd><p>Return a tuple with the elements of all dimentions</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="dta.MultiArray.getElementsOfDimention">
+<tt class="descname">getElementsOfDimention</tt><big>(</big><em>dimIndex</em><big>)</big><a class="headerlink" href="#dta.MultiArray.getElementsOfDimention" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns a tuple of all the indices of the dimention provided</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="dta.MultiArray.getItemSize">
+<tt class="descname">getItemSize</tt><big>(</big><big>)</big><a class="headerlink" href="#dta.MultiArray.getItemSize" title="Permalink to this definition">¶</a></dt>
+<dd><p>Return the element byte size</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="dta.MultiArray.getNumDim">
+<tt class="descname">getNumDim</tt><big>(</big><big>)</big><a class="headerlink" href="#dta.MultiArray.getNumDim" title="Permalink to this definition">¶</a></dt>
+<dd><p>Return the number of dimentions</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="dta.MultiArray.getNumpyArray">
+<tt class="descname">getNumpyArray</tt><big>(</big><big>)</big><a class="headerlink" href="#dta.MultiArray.getNumpyArray" title="Permalink to this definition">¶</a></dt>
+<dd><p>Return a reference to the stored data as multidimentional numpy array</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="dta.MultiArray.getShape">
+<tt class="descname">getShape</tt><big>(</big><big>)</big><a class="headerlink" href="#dta.MultiArray.getShape" title="Permalink to this definition">¶</a></dt>
+<dd><p>Return a tupble of integers indicating the size of the array in 
+each dimention</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="dta.MultiArray.getSize">
+<tt class="descname">getSize</tt><big>(</big><big>)</big><a class="headerlink" href="#dta.MultiArray.getSize" title="Permalink to this definition">¶</a></dt>
+<dd><p>Return the number of items stored in the array</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="dta.MultiArray.getSum">
+<tt class="descname">getSum</tt><big>(</big><big>)</big><a class="headerlink" href="#dta.MultiArray.getSum" title="Permalink to this definition">¶</a></dt>
+<dd><p>return the sum of all the items in the array</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="dta.MultiArray.iteritems">
+<tt class="descname">iteritems</tt><big>(</big><big>)</big><a class="headerlink" href="#dta.MultiArray.iteritems" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="dta.MultiArray.iterkeys">
+<tt class="descname">iterkeys</tt><big>(</big><big>)</big><a class="headerlink" href="#dta.MultiArray.iterkeys" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="dta.MultiArray.itervalues">
+<tt class="descname">itervalues</tt><big>(</big><big>)</big><a class="headerlink" href="#dta.MultiArray.itervalues" title="Permalink to this definition">¶</a></dt>
+<dd><p>return an iterator over the values</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="dta.MultiArray.multiplyInPlace">
+<tt class="descname">multiplyInPlace</tt><big>(</big><em>value</em><big>)</big><a class="headerlink" href="#dta.MultiArray.multiplyInPlace" title="Permalink to this definition">¶</a></dt>
+<dd><p>Multiply all the items of the array with the provided value</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="dta.MultiArray.pickle">
+<tt class="descname">pickle</tt><big>(</big><em>fileName</em><big>)</big><a class="headerlink" href="#dta.MultiArray.pickle" title="Permalink to this definition">¶</a></dt>
+<dd><p>Save the pickled multiarray in the given file</p>
+</dd></dl>
+
+<dl class="classmethod">
+<dt id="dta.MultiArray.read">
+<em class="property">classmethod </em><tt class="descname">read</tt><big>(</big><em>fileName</em><big>)</big><a class="headerlink" href="#dta.MultiArray.read" title="Permalink to this definition">¶</a></dt>
+<dd><p>Read the multiArray from disk and return it</p>
+</dd></dl>
+
+<dl class="classmethod">
+<dt id="dta.MultiArray.unpickle">
+<em class="property">classmethod </em><tt class="descname">unpickle</tt><big>(</big><em>fileName</em><big>)</big><a class="headerlink" href="#dta.MultiArray.unpickle" title="Permalink to this definition">¶</a></dt>
+<dd><p>Unpickle and return the multiarray saved in the given file</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="dta.MultiArray.write">
+<tt class="descname">write</tt><big>(</big><em>fileName</em><big>)</big><a class="headerlink" href="#dta.MultiArray.write" title="Permalink to this definition">¶</a></dt>
+<dd><p>Write the multidimentional array to file using the numpy binary format</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="dta.MultiArray.writeToCSV">
+<tt class="descname">writeToCSV</tt><big>(</big><em>fileName</em><big>)</big><a class="headerlink" href="#dta.MultiArray.writeToCSV" title="Permalink to this definition">¶</a></dt>
+<dd><p>Save the multiarry as a comma delimited text file</p>
+</dd></dl>
+
+</dd></dl>
+
+</div>
+
+
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar">
+        <div class="sphinxsidebarwrapper">
+  <h4>Previous topic</h4>
+  <p class="topless"><a href="dta.Logger.html"
+                        title="previous chapter">dta.Logger</a></p>
+  <h4>Next topic</h4>
+  <p class="topless"><a href="dta.Time.html"
+                        title="next chapter">dta.Time</a></p>
+  <h3>This Page</h3>
+  <ul class="this-page-menu">
+    <li><a href="../_sources/_generated/dta.MultiArray.txt"
+           rel="nofollow">Show Source</a></li>
+  </ul>
+<div id="searchbox" style="display: none">
+  <h3>Quick search</h3>
+    <form class="search" action="../search.html" method="get">
+      <input type="text" name="q" />
+      <input type="submit" value="Go" />
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+    <p class="searchtip" style="font-size: 90%">
+    Enter search terms or a module, class or function name.
+    </p>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../genindex.html" title="General Index"
+             >index</a></li>
+        <li class="right" >
+          <a href="../py-modindex.html" title="Python Module Index"
+             >modules</a> |</li>
+        <li class="right" >
+          <a href="dta.Time.html" title="dta.Time"
+             >next</a> |</li>
+        <li class="right" >
+          <a href="dta.Logger.html" title="dta.Logger"
+             >previous</a> |</li>
+        <li><a href="../index.html">DTA Anyway 1.0 documentation</a> &raquo;</li> 
+      </ul>
+    </div>
+    <div class="footer">
+        &copy; Copyright 2011-2012, SFCTA Modeling Crew.
+      Created using <a href="http://sphinx.pocoo.org/">Sphinx</a> 1.1.3.
+    </div>
+  </body>
+</html>

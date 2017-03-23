@@ -1,0 +1,376 @@
+
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>dta.DynameqScenario &mdash; DTA Anyway 1.0 documentation</title>
+    
+    <link rel="stylesheet" href="../_static/dta.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '../',
+        VERSION:     '1.0',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+    <script type="text/javascript" src="../_static/jquery.js"></script>
+    <script type="text/javascript" src="../_static/underscore.js"></script>
+    <script type="text/javascript" src="../_static/doctools.js"></script>
+    <link rel="top" title="DTA Anyway 1.0 documentation" href="../index.html" />
+    <link rel="next" title="dta.VehicleType" href="dta.VehicleType.html" />
+    <link rel="prev" title="dta.Scenario" href="dta.Scenario.html" /> 
+  </head>
+  <body>
+    <div class="related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../genindex.html" title="General Index"
+             accesskey="I">index</a></li>
+        <li class="right" >
+          <a href="../py-modindex.html" title="Python Module Index"
+             >modules</a> |</li>
+        <li class="right" >
+          <a href="dta.VehicleType.html" title="dta.VehicleType"
+             accesskey="N">next</a> |</li>
+        <li class="right" >
+          <a href="dta.Scenario.html" title="dta.Scenario"
+             accesskey="P">previous</a> |</li>
+        <li><a href="../index.html">DTA Anyway 1.0 documentation</a> &raquo;</li> 
+      </ul>
+    </div>  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body">
+            
+  <div class="section" id="dta-dynameqscenario">
+<h1>dta.DynameqScenario<a class="headerlink" href="#dta-dynameqscenario" title="Permalink to this headline">¶</a></h1>
+<dl class="class">
+<dt id="dta.DynameqScenario">
+<em class="property">class </em><tt class="descname">DynameqScenario</tt><big>(</big><em>startTime=Time(0</em>, <em>0)</em>, <em>endTime=Time(23</em>, <em>0)</em><big>)</big><a class="headerlink" href="#dta.DynameqScenario" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <tt class="xref py py-class docutils literal"><span class="pre">dta.Scenario.Scenario</span></tt></p>
+<p>A Dynameq Scenario.</p>
+<p>Constructor of a Scenario for Dynameq.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
+<li><strong>startTime</strong> (a <a class="reference internal" href="dta.Time.html#dta.Time" title="dta.Time"><tt class="xref py py-class docutils literal"><span class="pre">dta.Time</span></tt></a> instance) &#8211; the start time of the scenario.</li>
+<li><strong>endTime</strong> (a <a class="reference internal" href="dta.Time.html#dta.Time" title="dta.Time"><tt class="xref py py-class docutils literal"><span class="pre">dta.Time</span></tt></a> instance) &#8211; the end time of the scenario.</li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+<dl class="method">
+<dt id="dta.DynameqScenario.__init__">
+<tt class="descname">__init__</tt><big>(</big><em>startTime=Time(0</em>, <em>0)</em>, <em>endTime=Time(23</em>, <em>0)</em><big>)</big><a class="headerlink" href="#dta.DynameqScenario.__init__" title="Permalink to this definition">¶</a></dt>
+<dd><p>Constructor of a Scenario for Dynameq.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
+<li><strong>startTime</strong> (a <a class="reference internal" href="dta.Time.html#dta.Time" title="dta.Time"><tt class="xref py py-class docutils literal"><span class="pre">dta.Time</span></tt></a> instance) &#8211; the start time of the scenario.</li>
+<li><strong>endTime</strong> (a <a class="reference internal" href="dta.Time.html#dta.Time" title="dta.Time"><tt class="xref py py-class docutils literal"><span class="pre">dta.Time</span></tt></a> instance) &#8211; the end time of the scenario.</li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<p class="rubric">Methods</p>
+<table border="1" class="longtable docutils">
+<colgroup>
+<col width="10%" />
+<col width="90%" />
+</colgroup>
+<tbody valign="top">
+<tr class="row-odd"><td><tt class="xref py py-obj docutils literal"><span class="pre">__init__</span></tt>([startTime,&nbsp;endTime])</td>
+<td>Constructor of a Scenario for Dynameq.</td>
+</tr>
+<tr class="row-even"><td><tt class="xref py py-obj docutils literal"><span class="pre">addEvent</span></tt>(eventTime,&nbsp;eventDescription)</td>
+<td><em>eventTime</em> is a datetime.datetime instance and <em>description</em> is a string.</td>
+</tr>
+<tr class="row-odd"><td><tt class="xref py py-obj docutils literal"><span class="pre">addGeneralizedCost</span></tt>(name,&nbsp;units,&nbsp;turn_expr,&nbsp;...)</td>
+<td>TODO: need more documentation on these terms.</td>
+</tr>
+<tr class="row-even"><td><tt class="xref py py-obj docutils literal"><span class="pre">addVehicleClass</span></tt>(vehicleClassName)</td>
+<td><em>vehicleClassName</em> is a string</td>
+</tr>
+<tr class="row-odd"><td><tt class="xref py py-obj docutils literal"><span class="pre">addVehicleClassGroup</span></tt>(vehicleClassGroup)</td>
+<td><em>vehicleClassGroup</em> is a <a class="reference internal" href="dta.VehicleClassGroup.html#dta.VehicleClassGroup" title="dta.VehicleClassGroup"><tt class="xref py py-class docutils literal"><span class="pre">VehicleClassGroup</span></tt></a> object</td>
+</tr>
+<tr class="row-even"><td><tt class="xref py py-obj docutils literal"><span class="pre">addVehicleType</span></tt>(vehicleType)</td>
+<td><em>vehicleType</em> is a <a class="reference internal" href="dta.VehicleType.html#dta.VehicleType" title="dta.VehicleType"><tt class="xref py py-class docutils literal"><span class="pre">VehicleType</span></tt></a></td>
+</tr>
+<tr class="row-odd"><td><tt class="xref py py-obj docutils literal"><span class="pre">getVehicleClassGroup</span></tt>(vehicleClassGroupName)</td>
+<td>Returns the relevant <a class="reference internal" href="dta.VehicleClassGroup.html#dta.VehicleClassGroup" title="dta.VehicleClassGroup"><tt class="xref py py-class docutils literal"><span class="pre">VehicleClassGroup</span></tt></a> or throws a <a class="reference internal" href="dta.DtaError.html#dta.DtaError" title="dta.DtaError"><tt class="xref py py-class docutils literal"><span class="pre">DtaError</span></tt></a> if not</td>
+</tr>
+<tr class="row-even"><td><tt class="xref py py-obj docutils literal"><span class="pre">iterVehicleClassGroups</span></tt>()</td>
+<td>Return an iterator to the vehicle class group items</td>
+</tr>
+<tr class="row-odd"><td><tt class="xref py py-obj docutils literal"><span class="pre">iterVehicleClassNames</span></tt>()</td>
+<td>Return an iterator to the vehicle classes</td>
+</tr>
+<tr class="row-even"><td><tt class="xref py py-obj docutils literal"><span class="pre">maxVehicleLength</span></tt>()</td>
+<td>Returns the maximum vehicle length, in <a class="reference internal" href="dta.VehicleType.html#dta.VehicleType.LENGTH_UNITS" title="dta.VehicleType.LENGTH_UNITS"><tt class="xref py py-attr docutils literal"><span class="pre">VehicleType.LENGTH_UNITS</span></tt></a></td>
+</tr>
+<tr class="row-odd"><td><tt class="xref py py-obj docutils literal"><span class="pre">read</span></tt>(dir,&nbsp;file_prefix)</td>
+<td>Reads the scenario configuration from the Dynameq scenario file.</td>
+</tr>
+<tr class="row-even"><td><tt class="xref py py-obj docutils literal"><span class="pre">write</span></tt>(dir,&nbsp;file_prefix)</td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<p class="rubric">Attributes</p>
+<table border="1" class="longtable docutils">
+<colgroup>
+<col width="10%" />
+<col width="90%" />
+</colgroup>
+<tbody valign="top">
+<tr class="row-odd"><td><tt class="xref py py-obj docutils literal"><span class="pre">ADVANCED_HEADER</span></tt></td>
+<td>str(object) -&gt; string</td>
+</tr>
+<tr class="row-even"><td><tt class="xref py py-obj docutils literal"><span class="pre">SCENARIO_FILE</span></tt></td>
+<td>str(object) -&gt; string</td>
+</tr>
+</tbody>
+</table>
+<dl class="attribute">
+<dt id="dta.DynameqScenario.ADVANCED_HEADER">
+<tt class="descname">ADVANCED_HEADER</tt><em class="property"> = '&lt;DYNAMEQ&gt;\n&lt;VERSION_1.7&gt;\n&lt;SCENARIO_FILE&gt;\n* CREATED by DTA Anyway http://code.google.com/p/dta/    \n'</em><a class="headerlink" href="#dta.DynameqScenario.ADVANCED_HEADER" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="dta.DynameqScenario.SCENARIO_FILE">
+<tt class="descname">SCENARIO_FILE</tt><em class="property"> = '%s_scen.dqt'</em><a class="headerlink" href="#dta.DynameqScenario.SCENARIO_FILE" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="dta.DynameqScenario._readEventsFromFields">
+<tt class="descname">_readEventsFromFields</tt><big>(</big><em>scenariofile</em><big>)</big><a class="headerlink" href="#dta.DynameqScenario._readEventsFromFields" title="Permalink to this definition">¶</a></dt>
+<dd><p>Generator function, yields (eventTime, eventDescription) to the caller</p>
+<p>TODO: update to use dta.Time rather than datetime.time for consistency.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="dta.DynameqScenario._readGeneralizedCostFromFields">
+<tt class="descname">_readGeneralizedCostFromFields</tt><big>(</big><em>fields</em><big>)</big><a class="headerlink" href="#dta.DynameqScenario._readGeneralizedCostFromFields" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="dta.DynameqScenario._readSectionFromFile">
+<tt class="descname">_readSectionFromFile</tt><big>(</big><em>filename</em>, <em>sectionName</em>, <em>nextSectionName</em><big>)</big><a class="headerlink" href="#dta.DynameqScenario._readSectionFromFile" title="Permalink to this definition">¶</a></dt>
+<dd><p>Generator function, yields fields (array of strings) from the given section of the given file.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="dta.DynameqScenario._readStudyPeriodFromFields">
+<tt class="descname">_readStudyPeriodFromFields</tt><big>(</big><em>fields</em><big>)</big><a class="headerlink" href="#dta.DynameqScenario._readStudyPeriodFromFields" title="Permalink to this definition">¶</a></dt>
+<dd><p>Reads the study period and sets the <tt class="xref py py-attr docutils literal"><span class="pre">Scenario.startTime</span></tt> and <tt class="xref py py-attr docutils literal"><span class="pre">Scenario.endTime</span></tt></p>
+</dd></dl>
+
+<dl class="method">
+<dt id="dta.DynameqScenario._readVehicleClassFromFields">
+<tt class="descname">_readVehicleClassFromFields</tt><big>(</big><em>fields</em><big>)</big><a class="headerlink" href="#dta.DynameqScenario._readVehicleClassFromFields" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="dta.DynameqScenario._readVehicleClassGroupFromFields">
+<tt class="descname">_readVehicleClassGroupFromFields</tt><big>(</big><em>fields</em><big>)</big><a class="headerlink" href="#dta.DynameqScenario._readVehicleClassGroupFromFields" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns a VehicleClassGroup</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="dta.DynameqScenario._readVehicleTypeFromFields">
+<tt class="descname">_readVehicleTypeFromFields</tt><big>(</big><em>fields</em><big>)</big><a class="headerlink" href="#dta.DynameqScenario._readVehicleTypeFromFields" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns a VehicleType</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="dta.DynameqScenario._writeEventsToScenarioFile">
+<tt class="descname">_writeEventsToScenarioFile</tt><big>(</big><em>scenariofile_object</em><big>)</big><a class="headerlink" href="#dta.DynameqScenario._writeEventsToScenarioFile" title="Permalink to this definition">¶</a></dt>
+<dd><p>Write version of _readEventsFromScenarioFile().  <em>scenariofile_object</em> is the file object,
+ready for writing.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="dta.DynameqScenario._writeGeneralizedCostsToScenarioFile">
+<tt class="descname">_writeGeneralizedCostsToScenarioFile</tt><big>(</big><em>scenariofile_object</em><big>)</big><a class="headerlink" href="#dta.DynameqScenario._writeGeneralizedCostsToScenarioFile" title="Permalink to this definition">¶</a></dt>
+<dd><p>Write version of _readGenarlizedCostFromFields().
+<em>scenariofile_object</em> should be ready for writing</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="dta.DynameqScenario._writeStudyPeriodToScenarioFile">
+<tt class="descname">_writeStudyPeriodToScenarioFile</tt><big>(</big><em>scenariofile_object</em><big>)</big><a class="headerlink" href="#dta.DynameqScenario._writeStudyPeriodToScenarioFile" title="Permalink to this definition">¶</a></dt>
+<dd><p>Write version of _readStudyPeriodFromScenarioFile().  <em>scenariofile_object</em> is the file object,
+ready for writing.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="dta.DynameqScenario._writeVehicleClassGroupsToScenarioFile">
+<tt class="descname">_writeVehicleClassGroupsToScenarioFile</tt><big>(</big><em>scenariofile_object</em><big>)</big><a class="headerlink" href="#dta.DynameqScenario._writeVehicleClassGroupsToScenarioFile" title="Permalink to this definition">¶</a></dt>
+<dd><p>Write version of _readVehicleClassGroupsFromScenarioFile().  <em>scenariofile_object</em> is the file object,
+ready for writing.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="dta.DynameqScenario._writeVehicleClassesToScenarioFile">
+<tt class="descname">_writeVehicleClassesToScenarioFile</tt><big>(</big><em>scenariofile_object</em><big>)</big><a class="headerlink" href="#dta.DynameqScenario._writeVehicleClassesToScenarioFile" title="Permalink to this definition">¶</a></dt>
+<dd><p>Write version of _readVehicleClassesFromScenarioFile().  <em>scenariofile_object</em> is the file object,
+ready for writing.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="dta.DynameqScenario._writeVehicleTypesToScenarioFile">
+<tt class="descname">_writeVehicleTypesToScenarioFile</tt><big>(</big><em>scenariofile_object</em><big>)</big><a class="headerlink" href="#dta.DynameqScenario._writeVehicleTypesToScenarioFile" title="Permalink to this definition">¶</a></dt>
+<dd><p>Write version of _readVehicleTypesFromScenarioFile().  <em>scenariofile_object</em> is the file object,
+ready for writing.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="dta.DynameqScenario.addEvent">
+<tt class="descname">addEvent</tt><big>(</big><em>eventTime</em>, <em>eventDescription</em><big>)</big><a class="headerlink" href="#dta.DynameqScenario.addEvent" title="Permalink to this definition">¶</a></dt>
+<dd><p><em>eventTime</em> is a datetime.datetime instance and <em>description</em> is a string.</p>
+<p>Verifies that <em>eventTime</em> is in [startTime, endTime)</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="dta.DynameqScenario.addGeneralizedCost">
+<tt class="descname">addGeneralizedCost</tt><big>(</big><em>name</em>, <em>units</em>, <em>turn_expr</em>, <em>link_expr</em>, <em>desc</em><big>)</big><a class="headerlink" href="#dta.DynameqScenario.addGeneralizedCost" title="Permalink to this definition">¶</a></dt>
+<dd><p>TODO: need more documentation on these terms.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="dta.DynameqScenario.addVehicleClass">
+<tt class="descname">addVehicleClass</tt><big>(</big><em>vehicleClassName</em><big>)</big><a class="headerlink" href="#dta.DynameqScenario.addVehicleClass" title="Permalink to this definition">¶</a></dt>
+<dd><p><em>vehicleClassName</em> is a string</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="dta.DynameqScenario.addVehicleClassGroup">
+<tt class="descname">addVehicleClassGroup</tt><big>(</big><em>vehicleClassGroup</em><big>)</big><a class="headerlink" href="#dta.DynameqScenario.addVehicleClassGroup" title="Permalink to this definition">¶</a></dt>
+<dd><p><em>vehicleClassGroup</em> is a <a class="reference internal" href="dta.VehicleClassGroup.html#dta.VehicleClassGroup" title="dta.VehicleClassGroup"><tt class="xref py py-class docutils literal"><span class="pre">VehicleClassGroup</span></tt></a> object</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="dta.DynameqScenario.addVehicleType">
+<tt class="descname">addVehicleType</tt><big>(</big><em>vehicleType</em><big>)</big><a class="headerlink" href="#dta.DynameqScenario.addVehicleType" title="Permalink to this definition">¶</a></dt>
+<dd><p><em>vehicleType</em> is a <a class="reference internal" href="dta.VehicleType.html#dta.VehicleType" title="dta.VehicleType"><tt class="xref py py-class docutils literal"><span class="pre">VehicleType</span></tt></a></p>
+</dd></dl>
+
+<dl class="method">
+<dt id="dta.DynameqScenario.getVehicleClassGroup">
+<tt class="descname">getVehicleClassGroup</tt><big>(</big><em>vehicleClassGroupName</em><big>)</big><a class="headerlink" href="#dta.DynameqScenario.getVehicleClassGroup" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns the relevant <a class="reference internal" href="dta.VehicleClassGroup.html#dta.VehicleClassGroup" title="dta.VehicleClassGroup"><tt class="xref py py-class docutils literal"><span class="pre">VehicleClassGroup</span></tt></a> or throws a <a class="reference internal" href="dta.DtaError.html#dta.DtaError" title="dta.DtaError"><tt class="xref py py-class docutils literal"><span class="pre">DtaError</span></tt></a> if not
+found.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="dta.DynameqScenario.iterVehicleClassGroups">
+<tt class="descname">iterVehicleClassGroups</tt><big>(</big><big>)</big><a class="headerlink" href="#dta.DynameqScenario.iterVehicleClassGroups" title="Permalink to this definition">¶</a></dt>
+<dd><p>Return an iterator to the vehicle class group items</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="dta.DynameqScenario.iterVehicleClassNames">
+<tt class="descname">iterVehicleClassNames</tt><big>(</big><big>)</big><a class="headerlink" href="#dta.DynameqScenario.iterVehicleClassNames" title="Permalink to this definition">¶</a></dt>
+<dd><p>Return an iterator to the vehicle classes</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="dta.DynameqScenario.maxVehicleLength">
+<tt class="descname">maxVehicleLength</tt><big>(</big><big>)</big><a class="headerlink" href="#dta.DynameqScenario.maxVehicleLength" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns the maximum vehicle length, in <a class="reference internal" href="dta.VehicleType.html#dta.VehicleType.LENGTH_UNITS" title="dta.VehicleType.LENGTH_UNITS"><tt class="xref py py-attr docutils literal"><span class="pre">VehicleType.LENGTH_UNITS</span></tt></a></p>
+</dd></dl>
+
+<dl class="method">
+<dt id="dta.DynameqScenario.read">
+<tt class="descname">read</tt><big>(</big><em>dir</em>, <em>file_prefix</em><big>)</big><a class="headerlink" href="#dta.DynameqScenario.read" title="Permalink to this definition">¶</a></dt>
+<dd><p>Reads the scenario configuration from the Dynameq scenario file.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="dta.DynameqScenario.write">
+<tt class="descname">write</tt><big>(</big><em>dir</em>, <em>file_prefix</em><big>)</big><a class="headerlink" href="#dta.DynameqScenario.write" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+</div>
+
+
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar">
+        <div class="sphinxsidebarwrapper">
+  <h4>Previous topic</h4>
+  <p class="topless"><a href="dta.Scenario.html"
+                        title="previous chapter">dta.Scenario</a></p>
+  <h4>Next topic</h4>
+  <p class="topless"><a href="dta.VehicleType.html"
+                        title="next chapter">dta.VehicleType</a></p>
+  <h3>This Page</h3>
+  <ul class="this-page-menu">
+    <li><a href="../_sources/_generated/dta.DynameqScenario.txt"
+           rel="nofollow">Show Source</a></li>
+  </ul>
+<div id="searchbox" style="display: none">
+  <h3>Quick search</h3>
+    <form class="search" action="../search.html" method="get">
+      <input type="text" name="q" />
+      <input type="submit" value="Go" />
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+    <p class="searchtip" style="font-size: 90%">
+    Enter search terms or a module, class or function name.
+    </p>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../genindex.html" title="General Index"
+             >index</a></li>
+        <li class="right" >
+          <a href="../py-modindex.html" title="Python Module Index"
+             >modules</a> |</li>
+        <li class="right" >
+          <a href="dta.VehicleType.html" title="dta.VehicleType"
+             >next</a> |</li>
+        <li class="right" >
+          <a href="dta.Scenario.html" title="dta.Scenario"
+             >previous</a> |</li>
+        <li><a href="../index.html">DTA Anyway 1.0 documentation</a> &raquo;</li> 
+      </ul>
+    </div>
+    <div class="footer">
+        &copy; Copyright 2011-2012, SFCTA Modeling Crew.
+      Created using <a href="http://sphinx.pocoo.org/">Sphinx</a> 1.1.3.
+    </div>
+  </body>
+</html>

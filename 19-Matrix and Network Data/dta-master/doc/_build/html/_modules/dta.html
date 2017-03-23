@@ -1,0 +1,172 @@
+
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>dta &mdash; DTA Anyway 1.0 documentation</title>
+    
+    <link rel="stylesheet" href="../_static/dta.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '../',
+        VERSION:     '1.0',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+    <script type="text/javascript" src="../_static/jquery.js"></script>
+    <script type="text/javascript" src="../_static/underscore.js"></script>
+    <script type="text/javascript" src="../_static/doctools.js"></script>
+    <link rel="top" title="DTA Anyway 1.0 documentation" href="../index.html" />
+    <link rel="up" title="Module code" href="index.html" /> 
+  </head>
+  <body>
+    <div class="related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../genindex.html" title="General Index"
+             accesskey="I">index</a></li>
+        <li class="right" >
+          <a href="../py-modindex.html" title="Python Module Index"
+             >modules</a> |</li>
+        <li><a href="../index.html">DTA Anyway 1.0 documentation</a> &raquo;</li>
+          <li><a href="index.html" accesskey="U">Module code</a> &raquo;</li> 
+      </ul>
+    </div>  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body">
+            
+  <h1>Source code for dta</h1><pre>
+"""
+
+.. figure:: /images/DtaAnywayFlow_470w.png
+   :figwidth: 470px
+   :align: right
+   :alt: SFCTA usage of DTA Anyway
+   :figclass: DtaAnywayFlow
+   
+   SFCTA uses DTA Anyway to generate a DTA network using this series of scripts, each one
+   adding a new layer of data onto the network.  See :doc:`script_importFullSanFranciscoNetworkDataset`
+
+
+DTA Anyway is a python module that facilitates network coding, analysis and visualization for
+DTA (Dynamic Traffic Assignment).
+
+"""
+
+__copyright__   = "Copyright 2011 SFCTA"
+__license__     = """
+    This file is part of DTA.
+
+    DTA is free software: you can redistribute it and/or modify
+    it under the terms of the GNU General Public License as published by
+    the Free Software Foundation, either version 3 of the License, or
+    (at your option) any later version.
+
+    DTA is distributed in the hope that it will be useful,
+    but WITHOUT ANY WARRANTY; without even the implied warranty of
+    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+    GNU General Public License for more details.
+
+    You should have received a copy of the GNU General Public License
+    along with DTA.  If not, see &lt;http://www.gnu.org/licenses/&gt;.
+"""
+
+from .Algorithms import ShortestPaths
+from .Centroid import Centroid
+from .Connector import Connector
+from .CorridorPlots import CountsVsVolumes
+from .CubeNetwork import CubeNetwork
+from .Demand import Demand
+from .DtaError import DtaError
+from .DynameqNetwork import DynameqNetwork
+from .DynameqScenario import DynameqScenario
+from .Link import Link
+from .Logger import DtaLogger, setupLogging
+from .Movement import Movement
+from .MultiArray import MultiArray
+from .Network import Network
+from .Node import Node
+from .Phase import Phase
+from .PhaseMovement import PhaseMovement
+from .RoadLink import RoadLink
+from .RoadNode import RoadNode
+from .Path import Path
+from .Scenario import Scenario
+from .TimePlan import PlanCollectionInfo, TimePlan
+from .TPPlusTransitRoute import TPPlusTransitNode, TPPlusTransitRoute
+from .TransitLine import TransitLine, TransitSegment
+from .Utils import crossProduct, direction, lineSegmentsCross, onSegment, Time
+from .VehicleClassGroup import VehicleClassGroup
+from .VehicleType import VehicleType
+from .VirtualLink import VirtualLink
+from .VirtualNode import VirtualNode
+
+
+from .Algorithms import dfs 
+
+__all__ = ['DtaError', 'DtaLogger', 'setupLogging',
+           'Network', 'DynameqNetwork', 'CubeNetwork',
+           'Scenario', 'DynameqScenario', 'VehicleType', 'VehicleClassGroup',
+           'Node', 'RoadNode', 'Centroid', 'VirtualNode',
+           'Link', 'RoadLink', 'Connector', 'VirtualLink', 'DynameqDemand',
+           'PlanCollectionInfo', 'TimePlan', 'PhaseMovement',
+           'TPPlusTransitNode', 'TPPlusTransitRoute', 'TransitLine', 'TransitSegment',
+           'Route', 'Phase', 'MultiArray',
+           'crossProduct', 'direction', 'lineSegmentsCross', 'onSegment', 'Time', 'CountsVsVolumes', 'ShortestPaths'
+]
+</pre>
+
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar">
+        <div class="sphinxsidebarwrapper">
+<div id="searchbox" style="display: none">
+  <h3>Quick search</h3>
+    <form class="search" action="../search.html" method="get">
+      <input type="text" name="q" />
+      <input type="submit" value="Go" />
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+    <p class="searchtip" style="font-size: 90%">
+    Enter search terms or a module, class or function name.
+    </p>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../genindex.html" title="General Index"
+             >index</a></li>
+        <li class="right" >
+          <a href="../py-modindex.html" title="Python Module Index"
+             >modules</a> |</li>
+        <li><a href="../index.html">DTA Anyway 1.0 documentation</a> &raquo;</li>
+          <li><a href="index.html" >Module code</a> &raquo;</li> 
+      </ul>
+    </div>
+    <div class="footer">
+        &copy; Copyright 2011-2012, SFCTA Modeling Crew.
+      Created using <a href="http://sphinx.pocoo.org/">Sphinx</a> 1.1.3.
+    </div>
+  </body>
+</html>

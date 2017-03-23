@@ -1,0 +1,281 @@
+
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>Importing Validation Counts &mdash; DTA Anyway 1.0 documentation</title>
+    
+    <link rel="stylesheet" href="_static/dta.css" type="text/css" />
+    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '',
+        VERSION:     '1.0',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+    <script type="text/javascript" src="_static/jquery.js"></script>
+    <script type="text/javascript" src="_static/underscore.js"></script>
+    <script type="text/javascript" src="_static/doctools.js"></script>
+    <link rel="top" title="DTA Anyway 1.0 documentation" href="index.html" />
+    <link rel="next" title="TODO List" href="todos.html" />
+    <link rel="prev" title="Importing Static Demand" href="script_importCubeDemand.html" /> 
+  </head>
+  <body>
+    <div class="related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="genindex.html" title="General Index"
+             accesskey="I">index</a></li>
+        <li class="right" >
+          <a href="py-modindex.html" title="Python Module Index"
+             >modules</a> |</li>
+        <li class="right" >
+          <a href="todos.html" title="TODO List"
+             accesskey="N">next</a> |</li>
+        <li class="right" >
+          <a href="script_importCubeDemand.html" title="Importing Static Demand"
+             accesskey="P">previous</a> |</li>
+        <li><a href="index.html">DTA Anyway 1.0 documentation</a> &raquo;</li> 
+      </ul>
+    </div>  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body">
+            
+  <div class="section" id="module-attachCountsFromCountDracula">
+<span id="importing-validation-counts"></span><h1>Importing Validation Counts<a class="headerlink" href="#module-attachCountsFromCountDracula" title="Permalink to this headline">¶</a></h1>
+<dl class="function">
+<dt id="attachCountsFromCountDracula.exportMainlineCountsToDynameUserDataFile">
+<tt class="descname">exportMainlineCountsToDynameUserDataFile</tt><big>(</big><em>sanfranciscoDynameqNet</em>, <em>starttime</em>, <em>period</em>, <em>num_intervals</em>, <em>suffix=None</em>, <em>from_year=None</em>, <em>to_year=None</em>, <em>weekdays=None</em>, <em>all_count_workbook=None</em><big>)</big><a class="reference internal" href="_modules/attachCountsFromCountDracula.html#exportMainlineCountsToDynameUserDataFile"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#attachCountsFromCountDracula.exportMainlineCountsToDynameUserDataFile" title="Permalink to this definition">¶</a></dt>
+<dd><p>Exports mainline counts from CountDracula database and exports them to a Dynameq link user data file.</p>
+<ul class="simple">
+<li><em>cd_reader</em> is a CountDraculaReader instance where the counts are stored</li>
+<li><em>sanfranciscoDynameqNet</em> is a <tt class="xref py py-class docutils literal"><span class="pre">Network</span></tt> instance for looking up the relevant nodes for the output file</li>
+<li><em>starttime</em> is a datetime.time instance defining the start time for the counts we&#8217;ll extract</li>
+<li><em>period</em> is a datetime.timedelta instance defining the duration of each time slice (e.g. 15-minute counts)</li>
+<li><em>num_intervals</em> is an integer defining how many intervals we&#8217;ll export</li>
+<li><em>suffix</em> is an optional suffix for the file name (something descriptive)</li>
+<li><em>from_year</em> is a datetime.date instance defining the start date (inclusive) of acceptable count dates</li>
+<li><em>to_year</em> is a datetime.date instance defining the end date (inclusive) of acceptable count dates</li>
+<li>If <em>weekdays</em> is passed (a list of integers, where Monday is 0 and Sunday is 6), then counts will
+only include the given weekdays.</li>
+<li>If <em>all_count_workbook</em> is passed (it should be an xlwt.Workbook) then the raw data will be added
+to a sheet there as well.</li>
+</ul>
+<p>Writes to a file called <tt class="docutils literal"><span class="pre">counts_links_Xmin_Y_Z.dat</span></tt> where X is the number of minutes in the period, Y is the starttime and Z is
+the endtime; e.g. counts_links_15min_1600_1830.dat</p>
+</dd></dl>
+
+<dl class="function">
+<dt id="attachCountsFromCountDracula.exportTurnCountsToDynameqUserDataFile">
+<tt class="descname">exportTurnCountsToDynameqUserDataFile</tt><big>(</big><em>sanfranciscoDynameqNet</em>, <em>starttime</em>, <em>period</em>, <em>num_intervals</em>, <em>suffix</em>, <em>from_year=None</em>, <em>to_year=None</em>, <em>weekdays=None</em>, <em>all_count_workbook=None</em><big>)</big><a class="reference internal" href="_modules/attachCountsFromCountDracula.html#exportTurnCountsToDynameqUserDataFile"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#attachCountsFromCountDracula.exportTurnCountsToDynameqUserDataFile" title="Permalink to this definition">¶</a></dt>
+<dd><p>Exports turn counts from CountDracula database and exports them to a Dynameq movement user data file.</p>
+<ul class="simple">
+<li><em>cd_reader</em> is a CountDraculaReader instance where the counts are stored</li>
+<li><em>sanfranciscoDynameqNet</em> is a <tt class="xref py py-class docutils literal"><span class="pre">Network</span></tt> instance for looking up the relevant nodes for the output file</li>
+<li><em>starttime</em> is a datetime.time instance defining the start time for the counts we&#8217;ll extract</li>
+<li><em>period</em> is a datetime.timedelta instance defining the duration of each time slice (e.g. 15-minute counts)</li>
+<li><em>num_intervals</em> is an integer defining how many intervals we&#8217;ll export</li>
+<li><em>suffix</em> is an optional suffix for the file name (something descriptive)</li>
+<li><em>from_year</em> is a datetime.date instance defining the start date (inclusive) of acceptable count dates</li>
+<li><em>to_year</em> is a datetime.date instance defining the end date (inclusive) of acceptable count dates</li>
+<li>If <em>weekdays</em> is passed (a list of integers, where Sunday is 1 and Saturday is 7), then counts will
+only include the given weekdays.</li>
+<li>If <em>all_count_workbook</em> is passed (it should be an xlwt.Workbook) then the raw data will be added
+to a sheet there as well.</li>
+</ul>
+<p>Writes to a file called <tt class="docutils literal"><span class="pre">counts_movements_Xmin_Y_Z_suffix.dat</span></tt> where X is the number of minutes in the period, Y is the starttime and Z is
+the endtime; e.g. counts_movements_15min_1600_1830_suffix.dat</p>
+</dd></dl>
+
+<dl class="function">
+<dt id="attachCountsFromCountDracula.findDtaLinkForMainlineCountLocation">
+<tt class="descname">findDtaLinkForMainlineCountLocation</tt><big>(</big><em>sanfranciscoDynameqNet</em>, <em>mainline_count_location</em><big>)</big><a class="reference internal" href="_modules/attachCountsFromCountDracula.html#findDtaLinkForMainlineCountLocation"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#attachCountsFromCountDracula.findDtaLinkForMainlineCountLocation" title="Permalink to this definition">¶</a></dt>
+<dd><p>Finds the DTA RoadLink for the given mainline_count_location (a CountDracula MainlineCountLocation instance).</p>
+<p>Returns None on failure; returns the RoadLink instance on success.</p>
+</dd></dl>
+
+<dl class="function">
+<dt id="attachCountsFromCountDracula.findDtaMovementForTurnCountLocation">
+<tt class="descname">findDtaMovementForTurnCountLocation</tt><big>(</big><em>sanfranciscoDynameqNet</em>, <em>turn_count_location</em><big>)</big><a class="reference internal" href="_modules/attachCountsFromCountDracula.html#findDtaMovementForTurnCountLocation"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#attachCountsFromCountDracula.findDtaMovementForTurnCountLocation" title="Permalink to this definition">¶</a></dt>
+<dd><p>Finds the DTA Movement for the given turn_count_location (a CountDracula TurnCountLocation instance).</p>
+<p>Returns None on failure; returns the Movement instance on success.</p>
+</dd></dl>
+
+<div class="section" id="main">
+<h2>Main<a class="headerlink" href="#main" title="Permalink to this headline">¶</a></h2>
+<div class="highlight-python"><pre>if __name__ == '__main__':
+    
+    os.environ['DJANGO_SETTINGS_MODULE'] = 'geodjango.settings'
+    from django.core.management import setup_environ
+    from geodjango import settings
+    from django.db.models import Avg, Count    
+    from countdracula.models import Node, StreetName, MainlineCountLocation, MainlineCount, TurnCountLocation, TurnCount
+
+    optlist, args = getopt.getopt(sys.argv[1:], "l:m:n:")
+    
+    if len(args) != 2:
+        print USAGE
+        sys.exit(2)
+    
+    SF_DYNAMEQ_NET_DIR          = args[0] 
+    SF_DYNAMEQ_NET_PREFIX       = args[1]
+    
+    OUTPUT_LINK_SHAPEFILE       = None
+    OUTPUT_MOVE_SHAPEFILE       = None
+    OUTPUT_NODE_SHAPEFILE       = None
+    
+    for (opt,arg) in optlist:
+        if opt=="-m":
+            OUTPUT_MOVE_SHAPEFILE  = arg
+        elif opt=="-l":
+            OUTPUT_LINK_SHAPEFILE  = arg
+        elif opt=="-n":
+            OUTPUT_NODE_SHAPEFILE  = arg
+                
+    dta.setupLogging("attachCountsFromCountDracula.INFO.log", "attachCountsFromCountDracula.DEBUG.log", logToConsole=True)
+    
+    dta.VehicleType.LENGTH_UNITS= "feet"
+    dta.Node.COORDINATE_UNITS   = "feet"
+    dta.RoadLink.LENGTH_UNITS   = "miles"
+        
+    # Read the SF scenario and DTA network
+    sanfranciscoScenario = dta.DynameqScenario()
+    sanfranciscoScenario.read(dir=SF_DYNAMEQ_NET_DIR, file_prefix=SF_DYNAMEQ_NET_PREFIX)
+    
+    sanfranciscoDynameqNet = dta.DynameqNetwork(scenario=sanfranciscoScenario)
+    sanfranciscoDynameqNet.read(dir=SF_DYNAMEQ_NET_DIR, file_prefix=SF_DYNAMEQ_NET_PREFIX)
+    
+    counts_wb = xlwt.Workbook()
+    
+    # Instantiate the count dracula reader and do the exports
+    # Time slices here are based on what we have available (according to CountDracula's querySanFranciscoCounts.py)
+    
+    for suffix in ["all", "all_midweek", "recent", "recent_midweek"]:
+        from_year   = None
+        to_year     = None
+        weekdays    = None
+        
+        # year range
+        if suffix.find("recent") &gt;= 0:
+            from_year   = 2009
+            to_year     = 2011
+            
+        # weekdays
+        if suffix.find("midweek") &gt;= 0:
+            weekdays    = [3,4,5] # Tues, Wed, Thurs
+            
+        dta.DtaLogger.info("Processing %s" % suffix)
+        exportTurnCountsToDynameqUserDataFile   (sanfranciscoDynameqNet, starttime=datetime.time(16,00), 
+                                                 period=datetime.timedelta(minutes=15), num_intervals=10, 
+                                                 suffix=suffix, from_year=from_year, to_year=to_year, weekdays=weekdays,
+                                                 all_count_workbook=counts_wb)
+        exportTurnCountsToDynameqUserDataFile   (sanfranciscoDynameqNet, starttime=datetime.time(16,00),
+                                                 period=datetime.timedelta(minutes= 5), num_intervals=24,
+                                                 suffix=suffix, from_year=from_year, to_year=to_year, weekdays=weekdays,
+                                                 all_count_workbook=counts_wb)
+        exportMainlineCountsToDynameUserDataFile(sanfranciscoDynameqNet, starttime=datetime.time(16,00),
+                                                 period=datetime.timedelta(minutes=60), num_intervals=2,
+                                                 suffix=suffix, from_year=from_year, to_year=to_year, weekdays=weekdays,
+                                                 all_count_workbook=counts_wb)
+        exportMainlineCountsToDynameUserDataFile(sanfranciscoDynameqNet, starttime=datetime.time(16,00),
+                                                 period=datetime.timedelta(minutes=15), num_intervals=10,
+                                                 suffix=suffix, from_year=from_year, to_year=to_year, weekdays=weekdays,
+                                                 all_count_workbook=counts_wb)
+        # static counts - PM period
+        
+        if weekdays: continue  # no notion of weekdays...
+        
+        exportMainlineCountsToDynameUserDataFile(sanfranciscoDynameqNet, starttime=datetime.time(15,30),
+                                                 period=datetime.timedelta(minutes=60*3), num_intervals=1,
+                                                 suffix=suffix, from_year=from_year, to_year=to_year, weekdays=weekdays,
+                                                 all_count_workbook=counts_wb)
+
+    counts_wb.save("counts_generated_%s.xls" % str(datetime.date.today()))
+    
+    if OUTPUT_LINK_SHAPEFILE: sanfranciscoDynameqNet.writeLinksToShp(OUTPUT_LINK_SHAPEFILE)
+    if OUTPUT_MOVE_SHAPEFILE: sanfranciscoDynameqNet.writeMovementsToShp(OUTPUT_MOVE_SHAPEFILE)
+    if OUTPUT_NODE_SHAPEFILE: sanfranciscoDynameqNet.writeNodesToShp(OUTPUT_NODE_SHAPEFILE)
+    </pre>
+</div>
+</div>
+</div>
+
+
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar">
+        <div class="sphinxsidebarwrapper">
+  <h3><a href="index.html">Table Of Contents</a></h3>
+  <ul>
+<li><a class="reference internal" href="#">Importing Validation Counts</a><ul>
+<li><a class="reference internal" href="#main">Main</a></li>
+</ul>
+</li>
+</ul>
+
+  <h4>Previous topic</h4>
+  <p class="topless"><a href="script_importCubeDemand.html"
+                        title="previous chapter">Importing Static Demand</a></p>
+  <h4>Next topic</h4>
+  <p class="topless"><a href="todos.html"
+                        title="next chapter">TODO List</a></p>
+  <h3>This Page</h3>
+  <ul class="this-page-menu">
+    <li><a href="_sources/script_attachCountsFromCountDracula.txt"
+           rel="nofollow">Show Source</a></li>
+  </ul>
+<div id="searchbox" style="display: none">
+  <h3>Quick search</h3>
+    <form class="search" action="search.html" method="get">
+      <input type="text" name="q" />
+      <input type="submit" value="Go" />
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+    <p class="searchtip" style="font-size: 90%">
+    Enter search terms or a module, class or function name.
+    </p>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="genindex.html" title="General Index"
+             >index</a></li>
+        <li class="right" >
+          <a href="py-modindex.html" title="Python Module Index"
+             >modules</a> |</li>
+        <li class="right" >
+          <a href="todos.html" title="TODO List"
+             >next</a> |</li>
+        <li class="right" >
+          <a href="script_importCubeDemand.html" title="Importing Static Demand"
+             >previous</a> |</li>
+        <li><a href="index.html">DTA Anyway 1.0 documentation</a> &raquo;</li> 
+      </ul>
+    </div>
+    <div class="footer">
+        &copy; Copyright 2011-2012, SFCTA Modeling Crew.
+      Created using <a href="http://sphinx.pocoo.org/">Sphinx</a> 1.1.3.
+    </div>
+  </body>
+</html>

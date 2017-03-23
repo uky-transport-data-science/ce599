@@ -1,0 +1,566 @@
+
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>Importing Excel Signals &mdash; DTA Anyway 1.0 documentation</title>
+    
+    <link rel="stylesheet" href="_static/dta.css" type="text/css" />
+    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '',
+        VERSION:     '1.0',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+    <script type="text/javascript" src="_static/jquery.js"></script>
+    <script type="text/javascript" src="_static/underscore.js"></script>
+    <script type="text/javascript" src="_static/doctools.js"></script>
+    <link rel="top" title="DTA Anyway 1.0 documentation" href="index.html" />
+    <link rel="next" title="Importing Stop Signs" href="script_importUnsignalizedIntersections.html" />
+    <link rel="prev" title="Importing Transit Routes" href="script_importTPPlusTransitRoutes.html" /> 
+  </head>
+  <body>
+    <div class="related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="genindex.html" title="General Index"
+             accesskey="I">index</a></li>
+        <li class="right" >
+          <a href="py-modindex.html" title="Python Module Index"
+             >modules</a> |</li>
+        <li class="right" >
+          <a href="script_importUnsignalizedIntersections.html" title="Importing Stop Signs"
+             accesskey="N">next</a> |</li>
+        <li class="right" >
+          <a href="script_importTPPlusTransitRoutes.html" title="Importing Transit Routes"
+             accesskey="P">previous</a> |</li>
+        <li><a href="index.html">DTA Anyway 1.0 documentation</a> &raquo;</li> 
+      </ul>
+    </div>  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body">
+            
+  <div class="section" id="module-importExcelSignals">
+<span id="importing-excel-signals"></span><h1>Importing Excel Signals<a class="headerlink" href="#module-importExcelSignals" title="Permalink to this headline">¶</a></h1>
+<p>This script reads the SF signal cards (which are in Excel workbooks) and creates corresponding
+<a class="reference internal" href="_generated/dta.TimePlan.html#dta.TimePlan" title="dta.TimePlan"><tt class="xref py py-class docutils literal"><span class="pre">dta.TimePlan</span></tt></a> instances for them.</p>
+<dl class="exception">
+<dt id="importExcelSignals.ExcelCardError">
+<em class="property">exception </em><tt class="descname">ExcelCardError</tt><a class="reference internal" href="_modules/importExcelSignals.html#ExcelCardError"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#importExcelSignals.ExcelCardError" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <tt class="xref py py-class docutils literal"><span class="pre">exceptions.Exception</span></tt></p>
+<dl class="attribute">
+<dt id="importExcelSignals.ExcelCardError.args">
+<tt class="descname">args</tt><a class="headerlink" href="#importExcelSignals.ExcelCardError.args" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="importExcelSignals.ExcelCardError.message">
+<tt class="descname">message</tt><a class="headerlink" href="#importExcelSignals.ExcelCardError.message" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="importExcelSignals.ExcelSignalTiming">
+<em class="property">class </em><tt class="descname">ExcelSignalTiming</tt><a class="reference internal" href="_modules/importExcelSignals.html#ExcelSignalTiming"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#importExcelSignals.ExcelSignalTiming" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <tt class="xref py py-class docutils literal"><span class="pre">object</span></tt></p>
+<p>Contains the timing information for a particular period</p>
+<p>the timing consists of a list of floating numbers that each of which 
+corresponds to a different state of the timing plan</p>
+<dl class="attribute">
+<dt id="importExcelSignals.ExcelSignalTiming.DEFAULT_OFFSET">
+<tt class="descname">DEFAULT_OFFSET</tt><em class="property"> = 0</em><a class="headerlink" href="#importExcelSignals.ExcelSignalTiming.DEFAULT_OFFSET" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="importExcelSignals.ExcelSignalTiming.DEFAULT_VALUE">
+<tt class="descname">DEFAULT_VALUE</tt><em class="property"> = -1</em><a class="headerlink" href="#importExcelSignals.ExcelSignalTiming.DEFAULT_VALUE" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="importExcelSignals.ExcelSignalTiming.getNumIntervals">
+<tt class="descname">getNumIntervals</tt><big>(</big><big>)</big><a class="reference internal" href="_modules/importExcelSignals.html#ExcelSignalTiming.getNumIntervals"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#importExcelSignals.ExcelSignalTiming.getNumIntervals" title="Permalink to this definition">¶</a></dt>
+<dd><p>Return the number of intevals of the time plan</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="importExcelSignals.ExcelSignalTiming.setPhaseTimes">
+<tt class="descname">setPhaseTimes</tt><big>(</big><em>times</em><big>)</big><a class="reference internal" href="_modules/importExcelSignals.html#ExcelSignalTiming.setPhaseTimes"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#importExcelSignals.ExcelSignalTiming.setPhaseTimes" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="exception">
+<dt id="importExcelSignals.ExcelSignalTimingError">
+<em class="property">exception </em><tt class="descname">ExcelSignalTimingError</tt><a class="reference internal" href="_modules/importExcelSignals.html#ExcelSignalTimingError"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#importExcelSignals.ExcelSignalTimingError" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="#importExcelSignals.ParsingCardError" title="importExcelSignals.ParsingCardError"><tt class="xref py py-class docutils literal"><span class="pre">importExcelSignals.ParsingCardError</span></tt></a></p>
+<dl class="attribute">
+<dt id="importExcelSignals.ExcelSignalTimingError.args">
+<tt class="descname">args</tt><a class="headerlink" href="#importExcelSignals.ExcelSignalTimingError.args" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="importExcelSignals.ExcelSignalTimingError.message">
+<tt class="descname">message</tt><a class="headerlink" href="#importExcelSignals.ExcelSignalTimingError.message" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="exception">
+<dt id="importExcelSignals.MovementMappingError">
+<em class="property">exception </em><tt class="descname">MovementMappingError</tt><a class="reference internal" href="_modules/importExcelSignals.html#MovementMappingError"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#importExcelSignals.MovementMappingError" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="#importExcelSignals.ExcelCardError" title="importExcelSignals.ExcelCardError"><tt class="xref py py-class docutils literal"><span class="pre">importExcelSignals.ExcelCardError</span></tt></a></p>
+<dl class="attribute">
+<dt id="importExcelSignals.MovementMappingError.args">
+<tt class="descname">args</tt><a class="headerlink" href="#importExcelSignals.MovementMappingError.args" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="importExcelSignals.MovementMappingError.message">
+<tt class="descname">message</tt><a class="headerlink" href="#importExcelSignals.MovementMappingError.message" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="exception">
+<dt id="importExcelSignals.ParsingCardError">
+<em class="property">exception </em><tt class="descname">ParsingCardError</tt><a class="reference internal" href="_modules/importExcelSignals.html#ParsingCardError"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#importExcelSignals.ParsingCardError" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="#importExcelSignals.ExcelCardError" title="importExcelSignals.ExcelCardError"><tt class="xref py py-class docutils literal"><span class="pre">importExcelSignals.ExcelCardError</span></tt></a></p>
+<dl class="attribute">
+<dt id="importExcelSignals.ParsingCardError.args">
+<tt class="descname">args</tt><a class="headerlink" href="#importExcelSignals.ParsingCardError.args" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="importExcelSignals.ParsingCardError.message">
+<tt class="descname">message</tt><a class="headerlink" href="#importExcelSignals.ParsingCardError.message" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="importExcelSignals.PhaseState">
+<em class="property">class </em><tt class="descname">PhaseState</tt><big>(</big><em>state</em>, <em>duration</em><big>)</big><a class="reference internal" href="_modules/importExcelSignals.html#PhaseState"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#importExcelSignals.PhaseState" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <tt class="xref py py-class docutils literal"><span class="pre">object</span></tt></p>
+<p>Represents the state of a phase for a specfic duration
+The state can be one of GREEN, YELLOW and RED:
+and the duration is a floating number</p>
+<dl class="attribute">
+<dt id="importExcelSignals.PhaseState.GREEN">
+<tt class="descname">GREEN</tt><em class="property"> = 0</em><a class="headerlink" href="#importExcelSignals.PhaseState.GREEN" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="importExcelSignals.PhaseState.RED">
+<tt class="descname">RED</tt><em class="property"> = 2</em><a class="headerlink" href="#importExcelSignals.PhaseState.RED" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="importExcelSignals.PhaseState.YELLOW">
+<tt class="descname">YELLOW</tt><em class="property"> = 1</em><a class="headerlink" href="#importExcelSignals.PhaseState.YELLOW" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="exception">
+<dt id="importExcelSignals.SignalConversionError">
+<em class="property">exception </em><tt class="descname">SignalConversionError</tt><a class="reference internal" href="_modules/importExcelSignals.html#SignalConversionError"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#importExcelSignals.SignalConversionError" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="#importExcelSignals.ExcelCardError" title="importExcelSignals.ExcelCardError"><tt class="xref py py-class docutils literal"><span class="pre">importExcelSignals.ExcelCardError</span></tt></a></p>
+<dl class="attribute">
+<dt id="importExcelSignals.SignalConversionError.args">
+<tt class="descname">args</tt><a class="headerlink" href="#importExcelSignals.SignalConversionError.args" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="importExcelSignals.SignalConversionError.message">
+<tt class="descname">message</tt><a class="headerlink" href="#importExcelSignals.SignalConversionError.message" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="importExcelSignals.SignalData">
+<em class="property">class </em><tt class="descname">SignalData</tt><a class="reference internal" href="_modules/importExcelSignals.html#SignalData"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#importExcelSignals.SignalData" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <tt class="xref py py-class docutils literal"><span class="pre">object</span></tt></p>
+<p>Class that represents the signal data for an intersection.</p>
+<dl class="attribute">
+<dt id="importExcelSignals.SignalData.attrNames">
+<tt class="descname">attrNames</tt><em class="property"> = ['fileName', 'iName', 'topLeftCell', 'phaseSeqCell', 'pedPhaseCell', 'sigInterCell', 'colPhaseData', 'lastColPhaseData', 'gMov1', 'gMov2', 'gMov3', 'gMov4', 'gMov5', 'gMov6', 'gMov7', 'gMov8']</em><a class="headerlink" href="#importExcelSignals.SignalData.attrNames" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="importExcelSignals.SignalData.getNumTimeIntervals">
+<tt class="descname">getNumTimeIntervals</tt><big>(</big><big>)</big><a class="reference internal" href="_modules/importExcelSignals.html#SignalData.getNumTimeIntervals"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#importExcelSignals.SignalData.getNumTimeIntervals" title="Permalink to this definition">¶</a></dt>
+<dd><p>Return the number of time intervals</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="importExcelSignals.SignalData.getPhases">
+<tt class="descname">getPhases</tt><big>(</big><em>startHour</em>, <em>endHour</em><big>)</big><a class="reference internal" href="_modules/importExcelSignals.html#SignalData.getPhases"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#importExcelSignals.SignalData.getPhases" title="Permalink to this definition">¶</a></dt>
+<dd><p>Get the phases as list of dictionaries. By combining phasing data information
+such as the one in the following table</p>
+<div class="highlight-python"><pre>Phasing Data
+                   1  2  3  4  5  6  7  8
+  GEARY BLVD (EB)  G  G  Y  R  R  R  R  R
+    10TH AVE (SB)  R  R  R  R  G  G  Y  R
+  GEARY BLVD (WB)  G  G  Y  R  R  R  R  R
+    10TH AVE (NB)  R  R  R  R  G  G  Y  R</pre>
+</div>
+<p>And the signal interval data for the time of day that is specified
+by the startHour and endHour input arguments</p>
+<blockquote>
+<div>Times: [47.0, 6.0, 3.5, 0.5, 8.0, 20.0, 3.5, 1.5]</div></blockquote>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="importExcelSignals.SignalData.i">
+<tt class="descname">i</tt><em class="property"> = 8</em><a class="headerlink" href="#importExcelSignals.SignalData.i" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="importExcelSignals.SignalData.iterSignalTiming">
+<tt class="descname">iterSignalTiming</tt><big>(</big><big>)</big><a class="reference internal" href="_modules/importExcelSignals.html#SignalData.iterSignalTiming"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#importExcelSignals.SignalData.iterSignalTiming" title="Permalink to this definition">¶</a></dt>
+<dd><p>Return an iterator to the signal Timing objects</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="importExcelSignals.SignalData.mappingInfo">
+<tt class="descname">mappingInfo</tt><em class="property"> = ['IntersectionName(for mapping)', 'mapped Intersection Name', 'mapped Node id']</em><a class="headerlink" href="#importExcelSignals.SignalData.mappingInfo" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="importExcelSignals.SignalData.selectCSO">
+<tt class="descname">selectCSO</tt><big>(</big><em>startTime</em>, <em>endTime</em><big>)</big><a class="reference internal" href="_modules/importExcelSignals.html#SignalData.selectCSO"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#importExcelSignals.SignalData.selectCSO" title="Permalink to this definition">¶</a></dt>
+<dd><p>returns the ExcelSignalTiming if there is one that is in operation during the 
+input hours. Otherwise it returns none</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="importExcelSignals.SignalData.streets">
+<tt class="descname">streets</tt><em class="property"> = ['Street0', 'Street1', 'Street2', 'Street3']</em><a class="headerlink" href="#importExcelSignals.SignalData.streets" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="importExcelSignals.SignalData.toDict">
+<tt class="descname">toDict</tt><big>(</big><big>)</big><a class="reference internal" href="_modules/importExcelSignals.html#SignalData.toDict"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#importExcelSignals.SignalData.toDict" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="exception">
+<dt id="importExcelSignals.StreetNameMappingError">
+<em class="property">exception </em><tt class="descname">StreetNameMappingError</tt><a class="reference internal" href="_modules/importExcelSignals.html#StreetNameMappingError"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#importExcelSignals.StreetNameMappingError" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="#importExcelSignals.ExcelCardError" title="importExcelSignals.ExcelCardError"><tt class="xref py py-class docutils literal"><span class="pre">importExcelSignals.ExcelCardError</span></tt></a></p>
+<dl class="attribute">
+<dt id="importExcelSignals.StreetNameMappingError.args">
+<tt class="descname">args</tt><a class="headerlink" href="#importExcelSignals.StreetNameMappingError.args" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="importExcelSignals.StreetNameMappingError.message">
+<tt class="descname">message</tt><a class="headerlink" href="#importExcelSignals.StreetNameMappingError.message" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="data">
+<dt id="importExcelSignals.USAGE">
+<tt class="descname">USAGE</tt><em class="property"> = '\n\n python importExcelSignals.py dynameq_net_dir dynameq_net_prefix excel_signals_dir startTime endTime output_dynameq_dir output_dynameq_net_prefix [overrideturntypes.csv]\n \n e.g.\n \n python importExcelSignals.py . sf Y:\\dta\\SanFrancisco\\2010\\excelSignalCards 15:30 18:30 Y:\\dta\\SanFrancisco\\2010\\network\\movement_override.csv\n \n This script reads all the excel signal cards in the excel_signal_cards dir and converts them to the dynameq network\n specified with the first two arguments.\n \n Only signals that are active in the given time period are converted.\n \n The script writes a new dynameq network that includes the signals to output_dynameq_dir using the prefix output_dynameq_net_prefix\n '</em><a class="headerlink" href="#importExcelSignals.USAGE" title="Permalink to this definition">¶</a></dt>
+<dd><p>How to use this script</p>
+</dd></dl>
+
+<dl class="function">
+<dt id="importExcelSignals.assignCardNames">
+<tt class="descname">assignCardNames</tt><big>(</big><em>excelCards</em><big>)</big><a class="reference internal" href="_modules/importExcelSignals.html#assignCardNames"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#importExcelSignals.assignCardNames" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="function">
+<dt id="importExcelSignals.checkForWeekdayPlan">
+<tt class="descname">checkForWeekdayPlan</tt><big>(</big><em>sheet</em>, <em>row</em>, <em>column</em><big>)</big><a class="reference internal" href="_modules/importExcelSignals.html#checkForWeekdayPlan"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#importExcelSignals.checkForWeekdayPlan" title="Permalink to this definition">¶</a></dt>
+<dd><p>Checks the plan data to see if the CSO is used on weekdays (Thursday and Friday)</p>
+</dd></dl>
+
+<dl class="function">
+<dt id="importExcelSignals.checkNumberofTimes">
+<tt class="descname">checkNumberofTimes</tt><big>(</big><em>excelCard</em>, <em>startTime</em>, <em>endTime</em><big>)</big><a class="reference internal" href="_modules/importExcelSignals.html#checkNumberofTimes"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#importExcelSignals.checkNumberofTimes" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="function">
+<dt id="importExcelSignals.cleanStreetName">
+<tt class="descname">cleanStreetName</tt><big>(</big><em>streetName</em><big>)</big><a class="reference internal" href="_modules/importExcelSignals.html#cleanStreetName"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#importExcelSignals.cleanStreetName" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="function">
+<dt id="importExcelSignals.cleanStreetNames">
+<tt class="descname">cleanStreetNames</tt><big>(</big><em>streetNames</em><big>)</big><a class="reference internal" href="_modules/importExcelSignals.html#cleanStreetNames"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#importExcelSignals.cleanStreetNames" title="Permalink to this definition">¶</a></dt>
+<dd><p>Accept street names as a list and return a list 
+with the cleaned street names</p>
+</dd></dl>
+
+<dl class="function">
+<dt id="importExcelSignals.convertSignalToDynameq">
+<tt class="descname">convertSignalToDynameq</tt><big>(</big><em>net</em>, <em>node</em>, <em>card</em>, <em>planInfo</em>, <em>startTime</em>, <em>endTime</em><big>)</big><a class="reference internal" href="_modules/importExcelSignals.html#convertSignalToDynameq"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#importExcelSignals.convertSignalToDynameq" title="Permalink to this definition">¶</a></dt>
+<dd><p>Convert the excel signal described by the card object to
+a Dynameq time plan and return it. The input planInfo
+object determines the time period of operation</p>
+</dd></dl>
+
+<dl class="function">
+<dt id="importExcelSignals.createDynameqSignals">
+<tt class="descname">createDynameqSignals</tt><big>(</big><em>net</em>, <em>card</em>, <em>planInfo</em>, <em>startTime</em>, <em>endTime</em><big>)</big><a class="reference internal" href="_modules/importExcelSignals.html#createDynameqSignals"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#importExcelSignals.createDynameqSignals" title="Permalink to this definition">¶</a></dt>
+<dd><p>Create a dynameq signal for each excel card object for
+the specified input period</p>
+</dd></dl>
+
+<dl class="function">
+<dt id="importExcelSignals.exportToJSON">
+<tt class="descname">exportToJSON</tt><big>(</big><em>cards</em>, <em>outFileName</em><big>)</big><a class="reference internal" href="_modules/importExcelSignals.html#exportToJSON"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#importExcelSignals.exportToJSON" title="Permalink to this definition">¶</a></dt>
+<dd><p>Export the signal cards to json format</p>
+</dd></dl>
+
+<dl class="function">
+<dt id="importExcelSignals.extractStreetNames">
+<tt class="descname">extractStreetNames</tt><big>(</big><em>intersection</em><big>)</big><a class="reference internal" href="_modules/importExcelSignals.html#extractStreetNames"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#importExcelSignals.extractStreetNames" title="Permalink to this definition">¶</a></dt>
+<dd><p>Split the Excel intersection string to two or more streetNames</p>
+</dd></dl>
+
+<dl class="function">
+<dt id="importExcelSignals.fillPhaseInfo">
+<tt class="descname">fillPhaseInfo</tt><big>(</big><em>phaseInfo</em><big>)</big><a class="reference internal" href="_modules/importExcelSignals.html#fillPhaseInfo"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#importExcelSignals.fillPhaseInfo" title="Permalink to this definition">¶</a></dt>
+<dd><p>The a list with the phase info for a movement group such as
+[&#8216;&#8217;, u&#8217;G&#8217;, &#8216;&#8217;, u&#8217;Y&#8217;, u&#8217;R&#8217;, &#8216;&#8217;, &#8216;&#8217;, &#8216;&#8217;, &#8216;&#8217;, &#8216;&#8217;, &#8216;&#8217;, &#8216;&#8217;]
+fill the empty strings with the state of the signal</p>
+</dd></dl>
+
+<dl class="function">
+<dt id="importExcelSignals.findNodeWithSameStreetNames">
+<tt class="descname">findNodeWithSameStreetNames</tt><big>(</big><em>network</em>, <em>excelCard</em>, <em>CUTOFF</em>, <em>mappedNodes</em><big>)</big><a class="reference internal" href="_modules/importExcelSignals.html#findNodeWithSameStreetNames"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#importExcelSignals.findNodeWithSameStreetNames" title="Permalink to this definition">¶</a></dt>
+<dd><p>Given a <a class="reference internal" href="_generated/dta.DynameqNetwork.html#dta.DynameqNetwork" title="dta.DynameqNetwork"><tt class="xref py py-class docutils literal"><span class="pre">dta.DynameqNetwork</span></tt></a> instance, <em>network</em>, and 
+an instance of ?, <em>excelCard</em>,
+looks for the <a class="reference internal" href="_generated/dta.RoadNode.html#dta.RoadNode" title="dta.RoadNode"><tt class="xref py py-class docutils literal"><span class="pre">dta.RoadNode</span></tt></a> instance in the <em>network</em> with matching
+streetnames to the excelCard.streetNames</p>
+<dl class="docutils">
+<dt>Returns True if a match is found, and sets:</dt>
+<dd><ul class="first last simple">
+<li>excelCard.mappedStreet</li>
+<li>excelCard.mappedNodeName</li>
+<li>excelCard.mappedNodeId</li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="function">
+<dt id="importExcelSignals.findPedestrianPhase">
+<tt class="descname">findPedestrianPhase</tt><big>(</big><em>sheet</em>, <em>topLeftCell</em><big>)</big><a class="reference internal" href="_modules/importExcelSignals.html#findPedestrianPhase"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#importExcelSignals.findPedestrianPhase" title="Permalink to this definition">¶</a></dt>
+<dd><p>Find the cell that corresponds to the pedestrian phase.
+If not such cell exists it returns None</p>
+</dd></dl>
+
+<dl class="function">
+<dt id="importExcelSignals.findSignalIntervals">
+<tt class="descname">findSignalIntervals</tt><big>(</big><em>sheet</em>, <em>topLeftCell</em><big>)</big><a class="reference internal" href="_modules/importExcelSignals.html#findSignalIntervals"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#importExcelSignals.findSignalIntervals" title="Permalink to this definition">¶</a></dt>
+<dd><p>Find the cell that contains the Cycle and Offset infrmation</p>
+</dd></dl>
+
+<dl class="function">
+<dt id="importExcelSignals.findStreet">
+<tt class="descname">findStreet</tt><big>(</big><em>sheet</em>, <em>topLeftCell</em><big>)</big><a class="reference internal" href="_modules/importExcelSignals.html#findStreet"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#importExcelSignals.findStreet" title="Permalink to this definition">¶</a></dt>
+<dd><p>Find the cell containing the STREET keyword that marks
+the beggining of the phase sequencing information and return 
+its coordinates. If unsuccesfull raiseParsingCardError</p>
+</dd></dl>
+
+<dl class="function">
+<dt id="importExcelSignals.findTopLeftCell">
+<tt class="descname">findTopLeftCell</tt><big>(</big><em>sheet</em><big>)</big><a class="reference internal" href="_modules/importExcelSignals.html#findTopLeftCell"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#importExcelSignals.findTopLeftCell" title="Permalink to this definition">¶</a></dt>
+<dd><p>Find the top left cell of the signal card containing 
+the intersection name and return its coordinates</p>
+</dd></dl>
+
+<dl class="function">
+<dt id="importExcelSignals.getExcelFileNames">
+<tt class="descname">getExcelFileNames</tt><big>(</big><em>directory</em><big>)</big><a class="reference internal" href="_modules/importExcelSignals.html#getExcelFileNames"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#importExcelSignals.getExcelFileNames" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="function">
+<dt id="importExcelSignals.getFirstColumnOfPhasingData">
+<tt class="descname">getFirstColumnOfPhasingData</tt><big>(</big><em>sheet</em>, <em>signalData</em><big>)</big><a class="reference internal" href="_modules/importExcelSignals.html#getFirstColumnOfPhasingData"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#importExcelSignals.getFirstColumnOfPhasingData" title="Permalink to this definition">¶</a></dt>
+<dd><p>Search the cells in the spreadsheet to find and return the cell that
+contains phase state 1</p>
+</dd></dl>
+
+<dl class="function">
+<dt id="importExcelSignals.getIntersectionName">
+<tt class="descname">getIntersectionName</tt><big>(</big><em>sheet</em>, <em>topLeftCell</em><big>)</big><a class="reference internal" href="_modules/importExcelSignals.html#getIntersectionName"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#importExcelSignals.getIntersectionName" title="Permalink to this definition">¶</a></dt>
+<dd><p>Return the intersection name as found in the excel card. 
+TopLeftCell is a tuble that contains the location of the top left cell</p>
+</dd></dl>
+
+<dl class="function">
+<dt id="importExcelSignals.getMappedCards">
+<tt class="descname">getMappedCards</tt><big>(</big><em>net</em>, <em>excelCards</em>, <em>mappedExcelCard</em>, <em>mappedNodes</em>, <em>cardsDirectoryManuallyMapped=None</em><big>)</big><a class="reference internal" href="_modules/importExcelSignals.html#getMappedCards"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#importExcelSignals.getMappedCards" title="Permalink to this definition">¶</a></dt>
+<dd><p>Read the cards in the cards directory and map them to network nodes.
+Return the mapped signal objects cards in a list</p>
+</dd></dl>
+
+<dl class="function">
+<dt id="importExcelSignals.getOperationTimes">
+<tt class="descname">getOperationTimes</tt><big>(</big><em>sheet</em>, <em>signalData</em><big>)</big><a class="reference internal" href="_modules/importExcelSignals.html#getOperationTimes"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#importExcelSignals.getOperationTimes" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="function">
+<dt id="importExcelSignals.getPhasingData">
+<tt class="descname">getPhasingData</tt><big>(</big><em>sheet</em>, <em>signalData</em><big>)</big><a class="reference internal" href="_modules/importExcelSignals.html#getPhasingData"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#importExcelSignals.getPhasingData" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="function">
+<dt id="importExcelSignals.getPossibleLinkDirections">
+<tt class="descname">getPossibleLinkDirections</tt><big>(</big><em>link</em><big>)</big><a class="reference internal" href="_modules/importExcelSignals.html#getPossibleLinkDirections"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#importExcelSignals.getPossibleLinkDirections" title="Permalink to this definition">¶</a></dt>
+<dd><p>Return a two element tuple containing the possible directions of the link.
+Example (NB, WB)</p>
+</dd></dl>
+
+<dl class="function">
+<dt id="importExcelSignals.getSignalIntervalData">
+<tt class="descname">getSignalIntervalData</tt><big>(</big><em>sheet</em>, <em>signalData</em><big>)</big><a class="reference internal" href="_modules/importExcelSignals.html#getSignalIntervalData"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#importExcelSignals.getSignalIntervalData" title="Permalink to this definition">¶</a></dt>
+<dd><p>Assigns the signal interval data from the supplied excel
+spreadsheet</p>
+</dd></dl>
+
+<dl class="function">
+<dt id="importExcelSignals.groupMovementToTurnType">
+<tt class="descname">groupMovementToTurnType</tt><big>(</big><em>gMovName</em>, <em>addRightToThru=True</em><big>)</big><a class="reference internal" href="_modules/importExcelSignals.html#groupMovementToTurnType"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#importExcelSignals.groupMovementToTurnType" title="Permalink to this definition">¶</a></dt>
+<dd><p>Given <em>gMovName</em>, which is the string from the Excel file representing a movement (e.g. <tt class="docutils literal"><span class="pre">OTIS</span> <span class="pre">SBLT</span></tt> or <tt class="docutils literal"><span class="pre">17TH</span> <span class="pre">ST.</span> <span class="pre">W/B</span> <span class="pre">THRU</span></tt>),
+returns a list of relevant turntypes corresponding to the <tt class="xref py py-meth docutils literal"><span class="pre">Movement.getTurnType()</span></tt> method.</p>
+<p>Pass <em>addRightToThru</em> if you want the through movements to come with right turns automatically.</p>
+<p>the function is being called by mapGroupMovments</p>
+</dd></dl>
+
+<dl class="function">
+<dt id="importExcelSignals.manuallyDetermineMappedNodeId">
+<tt class="descname">manuallyDetermineMappedNodeId</tt><big>(</big><em>net</em>, <em>cardsDirectory</em>, <em>manuallyMappedIntersectionsFile</em><big>)</big><a class="reference internal" href="_modules/importExcelSignals.html#manuallyDetermineMappedNodeId"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#importExcelSignals.manuallyDetermineMappedNodeId" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="function">
+<dt id="importExcelSignals.mapIntersectionsByName">
+<tt class="descname">mapIntersectionsByName</tt><big>(</big><em>network</em>, <em>excelCards</em>, <em>mappedExcelCard</em>, <em>mappedNodes</em><big>)</big><a class="reference internal" href="_modules/importExcelSignals.html#mapIntersectionsByName"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#importExcelSignals.mapIntersectionsByName" title="Permalink to this definition">¶</a></dt>
+<dd><p>Map each excel card to a dynameq node</p>
+</dd></dl>
+
+<dl class="function">
+<dt id="importExcelSignals.mapMovements">
+<tt class="descname">mapMovements</tt><big>(</big><em>mec</em>, <em>baseNetwork</em><big>)</big><a class="reference internal" href="_modules/importExcelSignals.html#mapMovements"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#importExcelSignals.mapMovements" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="function">
+<dt id="importExcelSignals.mapStreetNamesForManuallyMappedNodes">
+<tt class="descname">mapStreetNamesForManuallyMappedNodes</tt><big>(</big><em>network</em>, <em>cards</em><big>)</big><a class="reference internal" href="_modules/importExcelSignals.html#mapStreetNamesForManuallyMappedNodes"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#importExcelSignals.mapStreetNamesForManuallyMappedNodes" title="Permalink to this definition">¶</a></dt>
+<dd><p>This function maps street names for the nodes that have been manually mapped</p>
+</dd></dl>
+
+<dl class="function">
+<dt id="importExcelSignals.parseExcelCardFile">
+<tt class="descname">parseExcelCardFile</tt><big>(</big><em>directory</em>, <em>fileName</em><big>)</big><a class="reference internal" href="_modules/importExcelSignals.html#parseExcelCardFile"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#importExcelSignals.parseExcelCardFile" title="Permalink to this definition">¶</a></dt>
+<dd><p>Reads the excel file, parses its information and returns
+as a <a class="reference internal" href="#importExcelSignals.SignalData" title="importExcelSignals.SignalData"><tt class="xref py py-class docutils literal"><span class="pre">SignalData</span></tt></a> object.</p>
+</dd></dl>
+
+<dl class="function">
+<dt id="importExcelSignals.parseExcelCardsToSignalObjects">
+<tt class="descname">parseExcelCardsToSignalObjects</tt><big>(</big><em>directory</em>, <em>fileName</em><big>)</big><a class="reference internal" href="_modules/importExcelSignals.html#parseExcelCardsToSignalObjects"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#importExcelSignals.parseExcelCardsToSignalObjects" title="Permalink to this definition">¶</a></dt>
+<dd><p>Reads the raw excel cards, extracts all the relevant information, instantiates 
+for each excel file an object called SignalData and stores the information
+and then pickles all the signal data objects into a file named:</p>
+<p>excelCards.pkl</p>
+</dd></dl>
+
+<dl class="function">
+<dt id="importExcelSignals.selectCSO">
+<tt class="descname">selectCSO</tt><big>(</big><em>excelCard</em>, <em>startTime</em>, <em>endTime</em><big>)</big><a class="reference internal" href="_modules/importExcelSignals.html#selectCSO"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#importExcelSignals.selectCSO" title="Permalink to this definition">¶</a></dt>
+<dd><p>returns the ExcelSignalTiming if there is one that is in operation during the 
+input hours. Otherwise it returns none</p>
+</dd></dl>
+
+<dl class="function">
+<dt id="importExcelSignals.verifySingleSignal">
+<tt class="descname">verifySingleSignal</tt><big>(</big><em>net</em>, <em>fileName</em>, <em>mappedNodes</em><big>)</big><a class="reference internal" href="_modules/importExcelSignals.html#verifySingleSignal"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#importExcelSignals.verifySingleSignal" title="Permalink to this definition">¶</a></dt>
+<dd><p>Read the signal card stored in the fileName and verify that
+can be imported properly to the dynameq network provided as
+the first argument</p>
+</dd></dl>
+
+</div>
+
+
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar">
+        <div class="sphinxsidebarwrapper">
+  <h4>Previous topic</h4>
+  <p class="topless"><a href="script_importTPPlusTransitRoutes.html"
+                        title="previous chapter">Importing Transit Routes</a></p>
+  <h4>Next topic</h4>
+  <p class="topless"><a href="script_importUnsignalizedIntersections.html"
+                        title="next chapter">Importing Stop Signs</a></p>
+  <h3>This Page</h3>
+  <ul class="this-page-menu">
+    <li><a href="_sources/script_importExcelSignals.txt"
+           rel="nofollow">Show Source</a></li>
+  </ul>
+<div id="searchbox" style="display: none">
+  <h3>Quick search</h3>
+    <form class="search" action="search.html" method="get">
+      <input type="text" name="q" />
+      <input type="submit" value="Go" />
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+    <p class="searchtip" style="font-size: 90%">
+    Enter search terms or a module, class or function name.
+    </p>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="genindex.html" title="General Index"
+             >index</a></li>
+        <li class="right" >
+          <a href="py-modindex.html" title="Python Module Index"
+             >modules</a> |</li>
+        <li class="right" >
+          <a href="script_importUnsignalizedIntersections.html" title="Importing Stop Signs"
+             >next</a> |</li>
+        <li class="right" >
+          <a href="script_importTPPlusTransitRoutes.html" title="Importing Transit Routes"
+             >previous</a> |</li>
+        <li><a href="index.html">DTA Anyway 1.0 documentation</a> &raquo;</li> 
+      </ul>
+    </div>
+    <div class="footer">
+        &copy; Copyright 2011-2012, SFCTA Modeling Crew.
+      Created using <a href="http://sphinx.pocoo.org/">Sphinx</a> 1.1.3.
+    </div>
+  </body>
+</html>

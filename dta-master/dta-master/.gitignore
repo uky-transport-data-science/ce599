@@ -1,0 +1,6 @@
+*.pyc
+*.bak
+*.project
+*.pydevproject
+.settings
+doc/images/Thumbs.db

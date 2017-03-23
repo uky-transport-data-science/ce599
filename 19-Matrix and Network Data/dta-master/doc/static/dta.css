@@ -1,0 +1,91 @@
+@import url("default.css");
+
+div#module-dta div.figure {
+  border: 2px solid #999999;
+  background-color:white;
+  padding: 1em;
+}
+
+div.body h1 {
+  font-size: 150%;
+  page-break-after: avoid;
+}
+
+p.graphviz {
+  page-break-before: avoid;
+  page-break-after: avoid;
+}
+
+/* Image map for flow diagram */
+div.dtaanywayflow {
+  height: 757px;
+  background:url("../../../images/DtaAnywayFlow_470w.png") no-repeat;
+  position:relative;
+}
+
+/* Move the caption down */
+div.dtaanywayflow p.caption {
+ position:absolute;
+ top: 677px;
+ padding:10px;
+}
+
+div.dtaanywayflow a#link1{
+ display:block;
+ position:absolute;
+
+ width:240px;
+ height:200px;
+ top:10px;
+ left:10px;
+}
+
+div.dtaanywayflow a#link2{
+ display:block;
+ position:absolute;
+
+ width:240px;
+ height:87px;
+ top:213px;
+ left:10px;
+}
+
+div.dtaanywayflow a#link3{
+ display:block;
+ position:absolute;
+
+ width:240px;
+ height:87px;
+ top:303px;
+ left:10px;
+}
+
+div.dtaanywayflow a#link4{
+ display:block;
+ position:absolute;
+
+ width:240px;
+ height:87px;
+ top:393px;
+ left:10px;
+}
+
+div.dtaanywayflow a#link5{
+ display:block;
+ position:absolute;
+
+ width:240px;
+ height:87px;
+ top:486px;
+ left:10px;
+}
+
+div.dtaanywayflow a#link6{
+ display:block;
+ position:absolute;
+
+ width:240px;
+ height:87px;
+ top:577px;
+ left:10px;
+}

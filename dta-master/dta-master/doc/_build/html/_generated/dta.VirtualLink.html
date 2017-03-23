@@ -1,0 +1,418 @@
+
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>dta.VirtualLink &mdash; DTA Anyway 1.0 documentation</title>
+    
+    <link rel="stylesheet" href="../_static/dta.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '../',
+        VERSION:     '1.0',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+    <script type="text/javascript" src="../_static/jquery.js"></script>
+    <script type="text/javascript" src="../_static/underscore.js"></script>
+    <script type="text/javascript" src="../_static/doctools.js"></script>
+    <link rel="top" title="DTA Anyway 1.0 documentation" href="../index.html" />
+    <link rel="next" title="dta.Connector" href="dta.Connector.html" />
+    <link rel="prev" title="dta.RoadLink" href="dta.RoadLink.html" /> 
+  </head>
+  <body>
+    <div class="related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../genindex.html" title="General Index"
+             accesskey="I">index</a></li>
+        <li class="right" >
+          <a href="../py-modindex.html" title="Python Module Index"
+             >modules</a> |</li>
+        <li class="right" >
+          <a href="dta.Connector.html" title="dta.Connector"
+             accesskey="N">next</a> |</li>
+        <li class="right" >
+          <a href="dta.RoadLink.html" title="dta.RoadLink"
+             accesskey="P">previous</a> |</li>
+        <li><a href="../index.html">DTA Anyway 1.0 documentation</a> &raquo;</li> 
+      </ul>
+    </div>  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body">
+            
+  <div class="section" id="dta-virtuallink">
+<h1>dta.VirtualLink<a class="headerlink" href="#dta-virtuallink" title="Permalink to this headline">¶</a></h1>
+<dl class="class">
+<dt id="dta.VirtualLink">
+<em class="property">class </em><tt class="descname">VirtualLink</tt><big>(</big><em>id</em>, <em>startNode</em>, <em>endNode</em>, <em>label</em><big>)</big><a class="headerlink" href="#dta.VirtualLink" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <tt class="xref py py-class docutils literal"><span class="pre">dta.Link.Link</span></tt></p>
+<p>A VirtualLink is a Link that connects a <a class="reference internal" href="dta.Centroid.html#dta.Centroid" title="dta.Centroid"><tt class="xref py py-class docutils literal"><span class="pre">Centroid</span></tt></a> with
+a <a class="reference internal" href="dta.Connector.html#dta.Connector" title="dta.Connector"><tt class="xref py py-class docutils literal"><span class="pre">Connector</span></tt></a>.</p>
+<p>Constructor. Verifies one node is a <a class="reference internal" href="dta.Centroid.html#dta.Centroid" title="dta.Centroid"><tt class="xref py py-class docutils literal"><span class="pre">Centroid</span></tt></a> and the
+other node is a <a class="reference internal" href="dta.VirtualNode.html#dta.VirtualNode" title="dta.VirtualNode"><tt class="xref py py-class docutils literal"><span class="pre">VirtualNode</span></tt></a>.</p>
+<blockquote>
+<div><ul class="simple">
+<li><em>id</em> is a unique identifier (unique within the containing network), an integer</li>
+<li><em>startNode</em>, <em>endNode</em> are <a class="reference internal" href="dta.Node.html#dta.Node" title="dta.Node"><tt class="xref py py-class docutils literal"><span class="pre">Node</span></tt></a> instances</li>
+<li><em>label</em> is a string, or None</li>
+</ul>
+</div></blockquote>
+<dl class="method">
+<dt id="dta.VirtualLink.__init__">
+<tt class="descname">__init__</tt><big>(</big><em>id</em>, <em>startNode</em>, <em>endNode</em>, <em>label</em><big>)</big><a class="headerlink" href="#dta.VirtualLink.__init__" title="Permalink to this definition">¶</a></dt>
+<dd><p>Constructor. Verifies one node is a <a class="reference internal" href="dta.Centroid.html#dta.Centroid" title="dta.Centroid"><tt class="xref py py-class docutils literal"><span class="pre">Centroid</span></tt></a> and the
+other node is a <a class="reference internal" href="dta.VirtualNode.html#dta.VirtualNode" title="dta.VirtualNode"><tt class="xref py py-class docutils literal"><span class="pre">VirtualNode</span></tt></a>.</p>
+<blockquote>
+<div><ul class="simple">
+<li><em>id</em> is a unique identifier (unique within the containing network), an integer</li>
+<li><em>startNode</em>, <em>endNode</em> are <a class="reference internal" href="dta.Node.html#dta.Node" title="dta.Node"><tt class="xref py py-class docutils literal"><span class="pre">Node</span></tt></a> instances</li>
+<li><em>label</em> is a string, or None</li>
+</ul>
+</div></blockquote>
+</dd></dl>
+
+<p class="rubric">Methods</p>
+<table border="1" class="longtable docutils">
+<colgroup>
+<col width="10%" />
+<col width="90%" />
+</colgroup>
+<tbody valign="top">
+<tr class="row-odd"><td><tt class="xref py py-obj docutils literal"><span class="pre">__init__</span></tt>(id,&nbsp;startNode,&nbsp;endNode,&nbsp;label)</td>
+<td>Constructor.</td>
+</tr>
+<tr class="row-even"><td><tt class="xref py py-obj docutils literal"><span class="pre">euclideanLength</span></tt>([includeShape])</td>
+<td>Calculates the length based on simple Euclidean distance.</td>
+</tr>
+<tr class="row-odd"><td><tt class="xref py py-obj docutils literal"><span class="pre">getAdjacentConnector</span></tt>()</td>
+<td>A VirtualLink connects a <a class="reference internal" href="dta.Centroid.html#dta.Centroid" title="dta.Centroid"><tt class="xref py py-class docutils literal"><span class="pre">Centroid</span></tt></a> with a <a class="reference internal" href="dta.Connector.html#dta.Connector" title="dta.Connector"><tt class="xref py py-class docutils literal"><span class="pre">Connector</span></tt></a>; this</td>
+</tr>
+<tr class="row-even"><td><tt class="xref py py-obj docutils literal"><span class="pre">getCentroid</span></tt>()</td>
+<td>Return the centroid associated with the VirtualLink</td>
+</tr>
+<tr class="row-odd"><td><tt class="xref py py-obj docutils literal"><span class="pre">getEndNode</span></tt>()</td>
+<td>Accessor for endNode</td>
+</tr>
+<tr class="row-even"><td><tt class="xref py py-obj docutils literal"><span class="pre">getEndNodeId</span></tt>()</td>
+<td>Return the id of the end node</td>
+</tr>
+<tr class="row-odd"><td><tt class="xref py py-obj docutils literal"><span class="pre">getId</span></tt>()</td>
+<td>Return the link id</td>
+</tr>
+<tr class="row-even"><td><tt class="xref py py-obj docutils literal"><span class="pre">getIid</span></tt>()</td>
+<td>Return a pair representing the start and end node ids</td>
+</tr>
+<tr class="row-odd"><td><tt class="xref py py-obj docutils literal"><span class="pre">getLabel</span></tt>()</td>
+<td>Return the link label</td>
+</tr>
+<tr class="row-even"><td><tt class="xref py py-obj docutils literal"><span class="pre">getOtherEnd</span></tt>(node)</td>
+<td>Return the other end node than the one provided.</td>
+</tr>
+<tr class="row-odd"><td><tt class="xref py py-obj docutils literal"><span class="pre">getReferenceAngle</span></tt>()</td>
+<td>Visualizing the link as a straight vector from (0,0), returns the angle between &lt;1,0&gt; and this link.</td>
+</tr>
+<tr class="row-even"><td><tt class="xref py py-obj docutils literal"><span class="pre">getReferenceAngleInDegrees</span></tt>()</td>
+<td>Return the Reference angle in degrees</td>
+</tr>
+<tr class="row-odd"><td><tt class="xref py py-obj docutils literal"><span class="pre">getStartNode</span></tt>()</td>
+<td>Accessor for startNode</td>
+</tr>
+<tr class="row-even"><td><tt class="xref py py-obj docutils literal"><span class="pre">getStartNodeId</span></tt>()</td>
+<td>Return the id of the start node</td>
+</tr>
+<tr class="row-odd"><td><tt class="xref py py-obj docutils literal"><span class="pre">hasSameAttributes</span></tt>(other)</td>
+<td>Return True if the two links have the same attributes return True</td>
+</tr>
+<tr class="row-even"><td><tt class="xref py py-obj docutils literal"><span class="pre">isConnector</span></tt>()</td>
+<td>Return True if this Link is a Connector</td>
+</tr>
+<tr class="row-odd"><td><tt class="xref py py-obj docutils literal"><span class="pre">isRoadLink</span></tt>()</td>
+<td>Return True this Link is RoadLink</td>
+</tr>
+<tr class="row-even"><td><tt class="xref py py-obj docutils literal"><span class="pre">isVirtualLink</span></tt>()</td>
+<td>Return True if this LInk is a VirtualLink</td>
+</tr>
+<tr class="row-odd"><td><tt class="xref py py-obj docutils literal"><span class="pre">setLabel</span></tt>(label)</td>
+<td>Set the link label</td>
+</tr>
+</tbody>
+</table>
+<p class="rubric">Attributes</p>
+<table border="1" class="longtable docutils">
+<colgroup>
+<col width="10%" />
+<col width="90%" />
+</colgroup>
+<tbody valign="top">
+<tr class="row-odd"><td><tt class="xref py py-obj docutils literal"><span class="pre">DEFAULT_LABEL</span></tt></td>
+<td>str(object) -&gt; string</td>
+</tr>
+<tr class="row-even"><td><tt class="xref py py-obj docutils literal"><span class="pre">FACILITY_TYPE</span></tt></td>
+<td>int(x[, base]) -&gt; integer</td>
+</tr>
+<tr class="row-odd"><td><tt class="xref py py-obj docutils literal"><span class="pre">FFSPEED</span></tt></td>
+<td>int(x[, base]) -&gt; integer</td>
+</tr>
+<tr class="row-even"><td><tt class="xref py py-obj docutils literal"><span class="pre">LANES</span></tt></td>
+<td>int(x[, base]) -&gt; integer</td>
+</tr>
+<tr class="row-odd"><td><tt class="xref py py-obj docutils literal"><span class="pre">LENGTH</span></tt></td>
+<td>int(x[, base]) -&gt; integer</td>
+</tr>
+<tr class="row-even"><td><tt class="xref py py-obj docutils literal"><span class="pre">LENGTH_FACTOR</span></tt></td>
+<td>int(x[, base]) -&gt; integer</td>
+</tr>
+<tr class="row-odd"><td><tt class="xref py py-obj docutils literal"><span class="pre">LEVEL</span></tt></td>
+<td>int(x[, base]) -&gt; integer</td>
+</tr>
+<tr class="row-even"><td><tt class="xref py py-obj docutils literal"><span class="pre">RABOUT</span></tt></td>
+<td>int(x[, base]) -&gt; integer</td>
+</tr>
+<tr class="row-odd"><td><tt class="xref py py-obj docutils literal"><span class="pre">RESPONSE_FACTOR</span></tt></td>
+<td>int(x[, base]) -&gt; integer</td>
+</tr>
+<tr class="row-even"><td><tt class="xref py py-obj docutils literal"><span class="pre">REVERSE</span></tt></td>
+<td>int(x[, base]) -&gt; integer</td>
+</tr>
+</tbody>
+</table>
+<dl class="attribute">
+<dt id="dta.VirtualLink.DEFAULT_LABEL">
+<tt class="descname">DEFAULT_LABEL</tt><em class="property"> = ''</em><a class="headerlink" href="#dta.VirtualLink.DEFAULT_LABEL" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="dta.VirtualLink.FACILITY_TYPE">
+<tt class="descname">FACILITY_TYPE</tt><em class="property"> = 100</em><a class="headerlink" href="#dta.VirtualLink.FACILITY_TYPE" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="dta.VirtualLink.FFSPEED">
+<tt class="descname">FFSPEED</tt><em class="property"> = 30</em><a class="headerlink" href="#dta.VirtualLink.FFSPEED" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="dta.VirtualLink.LANES">
+<tt class="descname">LANES</tt><em class="property"> = 1</em><a class="headerlink" href="#dta.VirtualLink.LANES" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="dta.VirtualLink.LENGTH">
+<tt class="descname">LENGTH</tt><em class="property"> = 0</em><a class="headerlink" href="#dta.VirtualLink.LENGTH" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="dta.VirtualLink.LENGTH_FACTOR">
+<tt class="descname">LENGTH_FACTOR</tt><em class="property"> = 0</em><a class="headerlink" href="#dta.VirtualLink.LENGTH_FACTOR" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="dta.VirtualLink.LEVEL">
+<tt class="descname">LEVEL</tt><em class="property"> = 0</em><a class="headerlink" href="#dta.VirtualLink.LEVEL" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="dta.VirtualLink.RABOUT">
+<tt class="descname">RABOUT</tt><em class="property"> = 0</em><a class="headerlink" href="#dta.VirtualLink.RABOUT" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="dta.VirtualLink.RESPONSE_FACTOR">
+<tt class="descname">RESPONSE_FACTOR</tt><em class="property"> = 0</em><a class="headerlink" href="#dta.VirtualLink.RESPONSE_FACTOR" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="dta.VirtualLink.REVERSE">
+<tt class="descname">REVERSE</tt><em class="property"> = -1</em><a class="headerlink" href="#dta.VirtualLink.REVERSE" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="dta.VirtualLink.euclideanLength">
+<tt class="descname">euclideanLength</tt><big>(</big><em>includeShape=False</em><big>)</big><a class="headerlink" href="#dta.VirtualLink.euclideanLength" title="Permalink to this definition">¶</a></dt>
+<dd><p>Calculates the length based on simple Euclidean distance.</p>
+<p>This will be in the units specified by <a class="reference internal" href="dta.Node.html#dta.Node.COORDINATE_UNITS" title="dta.Node.COORDINATE_UNITS"><tt class="xref py py-attr docutils literal"><span class="pre">Node.COORDINATE_UNITS</span></tt></a>.</p>
+<p><em>includeShape</em> is ignored in the generic case; the <a class="reference internal" href="dta.RoadLink.html#dta.RoadLink" title="dta.RoadLink"><tt class="xref py py-class docutils literal"><span class="pre">RoadLink</span></tt></a> will use that arg.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="dta.VirtualLink.getAdjacentConnector">
+<tt class="descname">getAdjacentConnector</tt><big>(</big><big>)</big><a class="headerlink" href="#dta.VirtualLink.getAdjacentConnector" title="Permalink to this definition">¶</a></dt>
+<dd><p>A VirtualLink connects a <a class="reference internal" href="dta.Centroid.html#dta.Centroid" title="dta.Centroid"><tt class="xref py py-class docutils literal"><span class="pre">Centroid</span></tt></a> with a <a class="reference internal" href="dta.Connector.html#dta.Connector" title="dta.Connector"><tt class="xref py py-class docutils literal"><span class="pre">Connector</span></tt></a>; this
+returns the <a class="reference internal" href="dta.Connector.html#dta.Connector" title="dta.Connector"><tt class="xref py py-class docutils literal"><span class="pre">Connector</span></tt></a> instance.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="dta.VirtualLink.getCentroid">
+<tt class="descname">getCentroid</tt><big>(</big><big>)</big><a class="headerlink" href="#dta.VirtualLink.getCentroid" title="Permalink to this definition">¶</a></dt>
+<dd><p>Return the centroid associated with the VirtualLink</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="dta.VirtualLink.getEndNode">
+<tt class="descname">getEndNode</tt><big>(</big><big>)</big><a class="headerlink" href="#dta.VirtualLink.getEndNode" title="Permalink to this definition">¶</a></dt>
+<dd><p>Accessor for endNode</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="dta.VirtualLink.getEndNodeId">
+<tt class="descname">getEndNodeId</tt><big>(</big><big>)</big><a class="headerlink" href="#dta.VirtualLink.getEndNodeId" title="Permalink to this definition">¶</a></dt>
+<dd><p>Return the id of the end node</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="dta.VirtualLink.getId">
+<tt class="descname">getId</tt><big>(</big><big>)</big><a class="headerlink" href="#dta.VirtualLink.getId" title="Permalink to this definition">¶</a></dt>
+<dd><p>Return the link id</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="dta.VirtualLink.getIid">
+<tt class="descname">getIid</tt><big>(</big><big>)</big><a class="headerlink" href="#dta.VirtualLink.getIid" title="Permalink to this definition">¶</a></dt>
+<dd><p>Return a pair representing the start and end node ids</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="dta.VirtualLink.getLabel">
+<tt class="descname">getLabel</tt><big>(</big><big>)</big><a class="headerlink" href="#dta.VirtualLink.getLabel" title="Permalink to this definition">¶</a></dt>
+<dd><p>Return the link label</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="dta.VirtualLink.getOtherEnd">
+<tt class="descname">getOtherEnd</tt><big>(</big><em>node</em><big>)</big><a class="headerlink" href="#dta.VirtualLink.getOtherEnd" title="Permalink to this definition">¶</a></dt>
+<dd><p>Return the other end node than the one provided.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="dta.VirtualLink.getReferenceAngle">
+<tt class="descname">getReferenceAngle</tt><big>(</big><big>)</big><a class="headerlink" href="#dta.VirtualLink.getReferenceAngle" title="Permalink to this definition">¶</a></dt>
+<dd><p>Visualizing the link as a straight vector from (0,0), returns the angle between &lt;1,0&gt; and this link.</p>
+<p>So returns a number in [0,2pi), increasing clockwise.</p>
+<p>These are based on the euclidean length of the link, so assumes a straight line.  If the link has no length,
+returns 0.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="dta.VirtualLink.getReferenceAngleInDegrees">
+<tt class="descname">getReferenceAngleInDegrees</tt><big>(</big><big>)</big><a class="headerlink" href="#dta.VirtualLink.getReferenceAngleInDegrees" title="Permalink to this definition">¶</a></dt>
+<dd><p>Return the Reference angle in degrees</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="dta.VirtualLink.getStartNode">
+<tt class="descname">getStartNode</tt><big>(</big><big>)</big><a class="headerlink" href="#dta.VirtualLink.getStartNode" title="Permalink to this definition">¶</a></dt>
+<dd><p>Accessor for startNode</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="dta.VirtualLink.getStartNodeId">
+<tt class="descname">getStartNodeId</tt><big>(</big><big>)</big><a class="headerlink" href="#dta.VirtualLink.getStartNodeId" title="Permalink to this definition">¶</a></dt>
+<dd><p>Return the id of the start node</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="dta.VirtualLink.hasSameAttributes">
+<tt class="descname">hasSameAttributes</tt><big>(</big><em>other</em><big>)</big><a class="headerlink" href="#dta.VirtualLink.hasSameAttributes" title="Permalink to this definition">¶</a></dt>
+<dd><p>Return True if the two links have the same attributes return True</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="dta.VirtualLink.isConnector">
+<tt class="descname">isConnector</tt><big>(</big><big>)</big><a class="headerlink" href="#dta.VirtualLink.isConnector" title="Permalink to this definition">¶</a></dt>
+<dd><p>Return True if this Link is a Connector</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="dta.VirtualLink.isRoadLink">
+<tt class="descname">isRoadLink</tt><big>(</big><big>)</big><a class="headerlink" href="#dta.VirtualLink.isRoadLink" title="Permalink to this definition">¶</a></dt>
+<dd><p>Return True this Link is RoadLink</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="dta.VirtualLink.isVirtualLink">
+<tt class="descname">isVirtualLink</tt><big>(</big><big>)</big><a class="headerlink" href="#dta.VirtualLink.isVirtualLink" title="Permalink to this definition">¶</a></dt>
+<dd><p>Return True if this LInk is a VirtualLink</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="dta.VirtualLink.setLabel">
+<tt class="descname">setLabel</tt><big>(</big><em>label</em><big>)</big><a class="headerlink" href="#dta.VirtualLink.setLabel" title="Permalink to this definition">¶</a></dt>
+<dd><p>Set the link label</p>
+</dd></dl>
+
+</dd></dl>
+
+</div>
+
+
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar">
+        <div class="sphinxsidebarwrapper">
+  <h4>Previous topic</h4>
+  <p class="topless"><a href="dta.RoadLink.html"
+                        title="previous chapter">dta.RoadLink</a></p>
+  <h4>Next topic</h4>
+  <p class="topless"><a href="dta.Connector.html"
+                        title="next chapter">dta.Connector</a></p>
+  <h3>This Page</h3>
+  <ul class="this-page-menu">
+    <li><a href="../_sources/_generated/dta.VirtualLink.txt"
+           rel="nofollow">Show Source</a></li>
+  </ul>
+<div id="searchbox" style="display: none">
+  <h3>Quick search</h3>
+    <form class="search" action="../search.html" method="get">
+      <input type="text" name="q" />
+      <input type="submit" value="Go" />
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+    <p class="searchtip" style="font-size: 90%">
+    Enter search terms or a module, class or function name.
+    </p>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../genindex.html" title="General Index"
+             >index</a></li>
+        <li class="right" >
+          <a href="../py-modindex.html" title="Python Module Index"
+             >modules</a> |</li>
+        <li class="right" >
+          <a href="dta.Connector.html" title="dta.Connector"
+             >next</a> |</li>
+        <li class="right" >
+          <a href="dta.RoadLink.html" title="dta.RoadLink"
+             >previous</a> |</li>
+        <li><a href="../index.html">DTA Anyway 1.0 documentation</a> &raquo;</li> 
+      </ul>
+    </div>
+    <div class="footer">
+        &copy; Copyright 2011-2012, SFCTA Modeling Crew.
+      Created using <a href="http://sphinx.pocoo.org/">Sphinx</a> 1.1.3.
+    </div>
+  </body>
+</html>

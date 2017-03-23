@@ -1,0 +1,319 @@
+
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>dta.Time &mdash; DTA Anyway 1.0 documentation</title>
+    
+    <link rel="stylesheet" href="../_static/dta.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '../',
+        VERSION:     '1.0',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+    <script type="text/javascript" src="../_static/jquery.js"></script>
+    <script type="text/javascript" src="../_static/underscore.js"></script>
+    <script type="text/javascript" src="../_static/doctools.js"></script>
+    <link rel="top" title="DTA Anyway 1.0 documentation" href="../index.html" />
+    <link rel="next" title="dta.Utils" href="dta.Utils.html" />
+    <link rel="prev" title="dta.MultiArray" href="dta.MultiArray.html" /> 
+  </head>
+  <body>
+    <div class="related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../genindex.html" title="General Index"
+             accesskey="I">index</a></li>
+        <li class="right" >
+          <a href="../py-modindex.html" title="Python Module Index"
+             >modules</a> |</li>
+        <li class="right" >
+          <a href="dta.Utils.html" title="dta.Utils"
+             accesskey="N">next</a> |</li>
+        <li class="right" >
+          <a href="dta.MultiArray.html" title="dta.MultiArray"
+             accesskey="P">previous</a> |</li>
+        <li><a href="../index.html">DTA Anyway 1.0 documentation</a> &raquo;</li> 
+      </ul>
+    </div>  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body">
+            
+  <div class="section" id="dta-time">
+<h1>dta.Time<a class="headerlink" href="#dta-time" title="Permalink to this headline">¶</a></h1>
+<dl class="class">
+<dt id="dta.Time">
+<em class="property">class </em><tt class="descname">Time</tt><big>(</big><em>hour</em>, <em>minute</em>, <em>second=0</em><big>)</big><a class="headerlink" href="#dta.Time" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <tt class="xref py py-class docutils literal"><span class="pre">datetime.time</span></tt></p>
+<p>Class that represents a time (without a specific date).
+Adds a few simple methods to the standard python datetime.time class.</p>
+<dl class="method">
+<dt id="dta.Time.__init__">
+<tt class="descname">__init__</tt><big>(</big><em>hour</em>, <em>minute</em>, <em>second=0</em><big>)</big><a class="headerlink" href="#dta.Time.__init__" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<p class="rubric">Methods</p>
+<table border="1" class="longtable docutils">
+<colgroup>
+<col width="10%" />
+<col width="90%" />
+</colgroup>
+<tbody valign="top">
+<tr class="row-odd"><td><a class="reference internal" href="#dta.Time.__init__" title="dta.Time.__init__"><tt class="xref py py-obj docutils literal"><span class="pre">__init__</span></tt></a>(hour,&nbsp;minute[,&nbsp;second])</td>
+<td></td>
+</tr>
+<tr class="row-even"><td><a class="reference internal" href="#dta.Time.dst" title="dta.Time.dst"><tt class="xref py py-obj docutils literal"><span class="pre">dst</span></tt></a></td>
+<td>Return self.tzinfo.dst(self).</td>
+</tr>
+<tr class="row-odd"><td><a class="reference internal" href="#dta.Time.fromMinutes" title="dta.Time.fromMinutes"><tt class="xref py py-obj docutils literal"><span class="pre">fromMinutes</span></tt></a>(minutes)</td>
+<td>Return a Time object that has the same number of minutes and the input arguments</td>
+</tr>
+<tr class="row-even"><td><a class="reference internal" href="#dta.Time.fromSeconds" title="dta.Time.fromSeconds"><tt class="xref py py-obj docutils literal"><span class="pre">fromSeconds</span></tt></a>(seconds)</td>
+<td>Return a Time object that assuming <em>seconds</em> represents seconds after midnight.</td>
+</tr>
+<tr class="row-odd"><td><a class="reference internal" href="#dta.Time.getMinutes" title="dta.Time.getMinutes"><tt class="xref py py-obj docutils literal"><span class="pre">getMinutes</span></tt></a>()</td>
+<td>Return the number of minutes from 0:00AM that</td>
+</tr>
+<tr class="row-even"><td><a class="reference internal" href="#dta.Time.isoformat" title="dta.Time.isoformat"><tt class="xref py py-obj docutils literal"><span class="pre">isoformat</span></tt></a></td>
+<td>Return string in ISO 8601 format, HH:MM:SS[.mmmmmm][+HH:MM].</td>
+</tr>
+<tr class="row-odd"><td><a class="reference internal" href="#dta.Time.readFromString" title="dta.Time.readFromString"><tt class="xref py py-obj docutils literal"><span class="pre">readFromString</span></tt></a>(timeAsString)</td>
+<td>Read a string representing time in the format %H:%M or %H:%M:%S e.g. 16:30</td>
+</tr>
+<tr class="row-even"><td><a class="reference internal" href="#dta.Time.readFromStringWithoutColon" title="dta.Time.readFromStringWithoutColon"><tt class="xref py py-obj docutils literal"><span class="pre">readFromStringWithoutColon</span></tt></a>(timeAsString)</td>
+<td>Read a string representing time in the format %H:%M e.g. 1630</td>
+</tr>
+<tr class="row-odd"><td><a class="reference internal" href="#dta.Time.replace" title="dta.Time.replace"><tt class="xref py py-obj docutils literal"><span class="pre">replace</span></tt></a></td>
+<td>Return time with new specified fields.</td>
+</tr>
+<tr class="row-even"><td><a class="reference internal" href="#dta.Time.strftime" title="dta.Time.strftime"><tt class="xref py py-obj docutils literal"><span class="pre">strftime</span></tt></a></td>
+<td>format -&gt; strftime() style string.</td>
+</tr>
+<tr class="row-odd"><td><a class="reference internal" href="#dta.Time.tzname" title="dta.Time.tzname"><tt class="xref py py-obj docutils literal"><span class="pre">tzname</span></tt></a></td>
+<td>Return self.tzinfo.tzname(self).</td>
+</tr>
+<tr class="row-even"><td><a class="reference internal" href="#dta.Time.utcoffset" title="dta.Time.utcoffset"><tt class="xref py py-obj docutils literal"><span class="pre">utcoffset</span></tt></a></td>
+<td>Return self.tzinfo.utcoffset(self).</td>
+</tr>
+</tbody>
+</table>
+<p class="rubric">Attributes</p>
+<table border="1" class="longtable docutils">
+<colgroup>
+<col width="10%" />
+<col width="90%" />
+</colgroup>
+<tbody valign="top">
+<tr class="row-odd"><td><a class="reference internal" href="#dta.Time.hour" title="dta.Time.hour"><tt class="xref py py-obj docutils literal"><span class="pre">hour</span></tt></a></td>
+<td></td>
+</tr>
+<tr class="row-even"><td><a class="reference internal" href="#dta.Time.max" title="dta.Time.max"><tt class="xref py py-obj docutils literal"><span class="pre">max</span></tt></a></td>
+<td>time([hour[, minute[, second[, microsecond[, tzinfo]]]]]) &#8211;&gt; a time object</td>
+</tr>
+<tr class="row-odd"><td><a class="reference internal" href="#dta.Time.microsecond" title="dta.Time.microsecond"><tt class="xref py py-obj docutils literal"><span class="pre">microsecond</span></tt></a></td>
+<td></td>
+</tr>
+<tr class="row-even"><td><a class="reference internal" href="#dta.Time.min" title="dta.Time.min"><tt class="xref py py-obj docutils literal"><span class="pre">min</span></tt></a></td>
+<td>time([hour[, minute[, second[, microsecond[, tzinfo]]]]]) &#8211;&gt; a time object</td>
+</tr>
+<tr class="row-odd"><td><a class="reference internal" href="#dta.Time.minute" title="dta.Time.minute"><tt class="xref py py-obj docutils literal"><span class="pre">minute</span></tt></a></td>
+<td></td>
+</tr>
+<tr class="row-even"><td><a class="reference internal" href="#dta.Time.resolution" title="dta.Time.resolution"><tt class="xref py py-obj docutils literal"><span class="pre">resolution</span></tt></a></td>
+<td>Difference between two datetime values.</td>
+</tr>
+<tr class="row-odd"><td><a class="reference internal" href="#dta.Time.second" title="dta.Time.second"><tt class="xref py py-obj docutils literal"><span class="pre">second</span></tt></a></td>
+<td></td>
+</tr>
+<tr class="row-even"><td><a class="reference internal" href="#dta.Time.tzinfo" title="dta.Time.tzinfo"><tt class="xref py py-obj docutils literal"><span class="pre">tzinfo</span></tt></a></td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<dl class="method">
+<dt id="dta.Time.dst">
+<tt class="descname">dst</tt><big>(</big><big>)</big><a class="headerlink" href="#dta.Time.dst" title="Permalink to this definition">¶</a></dt>
+<dd><p>Return self.tzinfo.dst(self).</p>
+</dd></dl>
+
+<dl class="classmethod">
+<dt id="dta.Time.fromMinutes">
+<em class="property">classmethod </em><tt class="descname">fromMinutes</tt><big>(</big><em>minutes</em><big>)</big><a class="headerlink" href="#dta.Time.fromMinutes" title="Permalink to this definition">¶</a></dt>
+<dd><p>Return a Time object that has the same number of minutes and the input arguments</p>
+</dd></dl>
+
+<dl class="classmethod">
+<dt id="dta.Time.fromSeconds">
+<em class="property">classmethod </em><tt class="descname">fromSeconds</tt><big>(</big><em>seconds</em><big>)</big><a class="headerlink" href="#dta.Time.fromSeconds" title="Permalink to this definition">¶</a></dt>
+<dd><p>Return a Time object that assuming <em>seconds</em> represents seconds after midnight.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="dta.Time.getMinutes">
+<tt class="descname">getMinutes</tt><big>(</big><big>)</big><a class="headerlink" href="#dta.Time.getMinutes" title="Permalink to this definition">¶</a></dt>
+<dd><p>Return the number of minutes from 0:00AM that
+correspond to the hours and minutes of this
+object.</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="dta.Time.hour">
+<tt class="descname">hour</tt><a class="headerlink" href="#dta.Time.hour" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="dta.Time.isoformat">
+<tt class="descname">isoformat</tt><big>(</big><big>)</big><a class="headerlink" href="#dta.Time.isoformat" title="Permalink to this definition">¶</a></dt>
+<dd><p>Return string in ISO 8601 format, HH:MM:SS[.mmmmmm][+HH:MM].</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="dta.Time.max">
+<tt class="descname">max</tt><em class="property"> = datetime.time(23, 59, 59, 999999)</em><a class="headerlink" href="#dta.Time.max" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="dta.Time.microsecond">
+<tt class="descname">microsecond</tt><a class="headerlink" href="#dta.Time.microsecond" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="dta.Time.min">
+<tt class="descname">min</tt><em class="property"> = datetime.time(0, 0)</em><a class="headerlink" href="#dta.Time.min" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="dta.Time.minute">
+<tt class="descname">minute</tt><a class="headerlink" href="#dta.Time.minute" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="classmethod">
+<dt id="dta.Time.readFromString">
+<em class="property">classmethod </em><tt class="descname">readFromString</tt><big>(</big><em>timeAsString</em><big>)</big><a class="headerlink" href="#dta.Time.readFromString" title="Permalink to this definition">¶</a></dt>
+<dd><p>Read a string representing time in the format %H:%M or %H:%M:%S e.g. 16:30
+and return a time object</p>
+</dd></dl>
+
+<dl class="classmethod">
+<dt id="dta.Time.readFromStringWithoutColon">
+<em class="property">classmethod </em><tt class="descname">readFromStringWithoutColon</tt><big>(</big><em>timeAsString</em><big>)</big><a class="headerlink" href="#dta.Time.readFromStringWithoutColon" title="Permalink to this definition">¶</a></dt>
+<dd><p>Read a string representing time in the format %H:%M e.g. 1630
+and return a time object</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="dta.Time.replace">
+<tt class="descname">replace</tt><big>(</big><big>)</big><a class="headerlink" href="#dta.Time.replace" title="Permalink to this definition">¶</a></dt>
+<dd><p>Return time with new specified fields.</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="dta.Time.resolution">
+<tt class="descname">resolution</tt><em class="property"> = datetime.timedelta(0, 0, 1)</em><a class="headerlink" href="#dta.Time.resolution" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="dta.Time.second">
+<tt class="descname">second</tt><a class="headerlink" href="#dta.Time.second" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="dta.Time.strftime">
+<tt class="descname">strftime</tt><big>(</big><big>)</big><a class="headerlink" href="#dta.Time.strftime" title="Permalink to this definition">¶</a></dt>
+<dd><p>format -&gt; strftime() style string.</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="dta.Time.tzinfo">
+<tt class="descname">tzinfo</tt><a class="headerlink" href="#dta.Time.tzinfo" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="dta.Time.tzname">
+<tt class="descname">tzname</tt><big>(</big><big>)</big><a class="headerlink" href="#dta.Time.tzname" title="Permalink to this definition">¶</a></dt>
+<dd><p>Return self.tzinfo.tzname(self).</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="dta.Time.utcoffset">
+<tt class="descname">utcoffset</tt><big>(</big><big>)</big><a class="headerlink" href="#dta.Time.utcoffset" title="Permalink to this definition">¶</a></dt>
+<dd><p>Return self.tzinfo.utcoffset(self).</p>
+</dd></dl>
+
+</dd></dl>
+
+</div>
+
+
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar">
+        <div class="sphinxsidebarwrapper">
+  <h4>Previous topic</h4>
+  <p class="topless"><a href="dta.MultiArray.html"
+                        title="previous chapter">dta.MultiArray</a></p>
+  <h4>Next topic</h4>
+  <p class="topless"><a href="dta.Utils.html"
+                        title="next chapter">dta.Utils</a></p>
+  <h3>This Page</h3>
+  <ul class="this-page-menu">
+    <li><a href="../_sources/_generated/dta.Time.txt"
+           rel="nofollow">Show Source</a></li>
+  </ul>
+<div id="searchbox" style="display: none">
+  <h3>Quick search</h3>
+    <form class="search" action="../search.html" method="get">
+      <input type="text" name="q" />
+      <input type="submit" value="Go" />
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+    <p class="searchtip" style="font-size: 90%">
+    Enter search terms or a module, class or function name.
+    </p>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../genindex.html" title="General Index"
+             >index</a></li>
+        <li class="right" >
+          <a href="../py-modindex.html" title="Python Module Index"
+             >modules</a> |</li>
+        <li class="right" >
+          <a href="dta.Utils.html" title="dta.Utils"
+             >next</a> |</li>
+        <li class="right" >
+          <a href="dta.MultiArray.html" title="dta.MultiArray"
+             >previous</a> |</li>
+        <li><a href="../index.html">DTA Anyway 1.0 documentation</a> &raquo;</li> 
+      </ul>
+    </div>
+    <div class="footer">
+        &copy; Copyright 2011-2012, SFCTA Modeling Crew.
+      Created using <a href="http://sphinx.pocoo.org/">Sphinx</a> 1.1.3.
+    </div>
+  </body>
+</html>

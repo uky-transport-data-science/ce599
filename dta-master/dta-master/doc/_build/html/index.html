@@ -1,0 +1,405 @@
+
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>Overview &mdash; DTA Anyway 1.0 documentation</title>
+    
+    <link rel="stylesheet" href="_static/dta.css" type="text/css" />
+    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '',
+        VERSION:     '1.0',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+    <script type="text/javascript" src="_static/jquery.js"></script>
+    <script type="text/javascript" src="_static/underscore.js"></script>
+    <script type="text/javascript" src="_static/doctools.js"></script>
+    <link rel="top" title="DTA Anyway 1.0 documentation" href="#" />
+    <link rel="next" title="dta.Network" href="_generated/dta.Network.html" /> 
+  </head>
+  <body>
+    <div class="related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="genindex.html" title="General Index"
+             accesskey="I">index</a></li>
+        <li class="right" >
+          <a href="py-modindex.html" title="Python Module Index"
+             >modules</a> |</li>
+        <li class="right" >
+          <a href="_generated/dta.Network.html" title="dta.Network"
+             accesskey="N">next</a> |</li>
+        <li><a href="#">DTA Anyway 1.0 documentation</a> &raquo;</li> 
+      </ul>
+    </div>  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body">
+            
+  <div class="section" id="module-dta">
+<span id="overview"></span><h1>Overview<a class="headerlink" href="#module-dta" title="Permalink to this headline">¶</a></h1>
+<div class="dtaanywayflow figure align-right" style="width: 470px">
+<a id="link1" href="script_createSFNetworkFromCubeNetwork.html"></a>
+<a id="link2" href="script_importTPPlusTransitRoutes.html"></a>
+<a id="link3" href="script_importExcelSignals.html"></a>
+<a id="link4" href="script_importUnsignalizedIntersections.html"></a>
+<a id="link5" href="script_importCubeDemand.html"></a>
+<a id="link6" href="script_attachCountsFromCountDracula.html"></a>
+
+<p class="caption">SFCTA uses DTA Anyway to generate a DTA network using this series of scripts, each one
+adding a new layer of data onto the network.  See <a class="reference internal" href="script_importFullSanFranciscoNetworkDataset.html"><em>Batch File for Entire Import Process</em></a></p>
+</div>
+<p>DTA Anyway is a python module that facilitates network coding, analysis and visualization for
+DTA (Dynamic Traffic Assignment).</p>
+</div>
+<div class="section" id="installation">
+<h1>Installation<a class="headerlink" href="#installation" title="Permalink to this headline">¶</a></h1>
+<p>This code has been tested with Python 2.6.4.</p>
+<p>Required python modules:</p>
+<ul class="simple">
+<li><a class="reference external" href="http://numpy.scipy.org/">numpy</a> Efficient multi-dimensional container of generic data.  Used for Demand data and Corridor plots.  Tested with numpy 1.3.0.</li>
+<li><a class="reference external" href="http://code.google.com/p/pyshp/">pyshp</a> Python Shapefile Library for interpretting shapefiles for road geometry and for exporting shapefiles.  Tested with pyshp 1.1.4.</li>
+<li><a class="reference external" href="http://pyparsing.wikispaces.com/">pyparsing</a>  Enables parsing using simple grammars.  Used for parsing TPPlus transit line files.  Tested with pyparsing 1.5.6.</li>
+</ul>
+<p>Optional python modules:</p>
+<ul class="simple">
+<li><a class="reference external" href="http://matplotlib.sourceforge.net/">matplotlib</a>  A 2D plotting library. Used for <a class="reference internal" href="_generated/dta.CountsVsVolumes.html#dta.CountsVsVolumes" title="dta.CountsVsVolumes"><tt class="xref py py-class docutils literal"><span class="pre">CountsVsVolumes</span></tt></a> corridor plots.  Tested with matplotlib 1.1.1.</li>
+<li><a class="reference external" href="http://code.google.com/p/pyproj/">pyproj</a> A cartographic transformation library to convert between longitude and latitude to native map projection (x,y) coordinates.  Useful for GTFS importing. Tested with pyproj 1.9.0.</li>
+<li><a class="reference external" href="http://code.google.com/p/googletransitdatafeed/">transitfeed</a> GTFS parsing library for importing GTFS.  Tested with transitfeed 1.2.11.</li>
+<li><a class="reference external" href="http://sphinx.pocoo.org">sphinx</a> Python documentation generator.</li>
+<li><a class="reference external" href="http://pypi.python.org/pypi/nose">nose</a> For unit tests.</li>
+</ul>
+</div>
+<div class="section" id="network-classes">
+<h1>Network classes<a class="headerlink" href="#network-classes" title="Permalink to this headline">¶</a></h1>
+<p class="graphviz">
+<img src="_images/inheritance-64afb129176cddb9ac4f017af1df1e8ac418d9ee.png" alt="Inheritance diagram of dta.Network, dta.DynameqNetwork, dta.CubeNetwork" class="inheritance"/>
+</p>
+<table border="1" class="longtable docutils">
+<colgroup>
+<col width="10%" />
+<col width="90%" />
+</colgroup>
+<tbody valign="top">
+<tr class="row-odd"><td><a class="reference internal" href="_generated/dta.Network.html#dta.Network" title="dta.Network"><tt class="xref py py-obj docutils literal"><span class="pre">dta.Network</span></tt></a></td>
+<td>Base class that represents a DTA Network.  Networks exist on a continuum between</td>
+</tr>
+<tr class="row-even"><td><a class="reference internal" href="_generated/dta.DynameqNetwork.html#dta.DynameqNetwork" title="dta.DynameqNetwork"><tt class="xref py py-obj docutils literal"><span class="pre">dta.DynameqNetwork</span></tt></a></td>
+<td>A Dynameq DTA Network.</td>
+</tr>
+<tr class="row-odd"><td><a class="reference internal" href="_generated/dta.CubeNetwork.html#dta.CubeNetwork" title="dta.CubeNetwork"><tt class="xref py py-obj docutils literal"><span class="pre">dta.CubeNetwork</span></tt></a></td>
+<td>A DTA Network originating from a Cube network.</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="section" id="scenario-classes">
+<h1>Scenario classes<a class="headerlink" href="#scenario-classes" title="Permalink to this headline">¶</a></h1>
+<p class="graphviz">
+<img src="_images/inheritance-4543bd51bfec9247e13e6735ce7c13fc74cf3298.png" alt="Inheritance diagram of dta.Scenario, dta.DynameqScenario, dta.VehicleType, dta.VehicleClassGroup" class="inheritance"/>
+</p>
+<table border="1" class="longtable docutils">
+<colgroup>
+<col width="10%" />
+<col width="90%" />
+</colgroup>
+<tbody valign="top">
+<tr class="row-odd"><td><a class="reference internal" href="_generated/dta.Scenario.html#dta.Scenario" title="dta.Scenario"><tt class="xref py py-obj docutils literal"><span class="pre">dta.Scenario</span></tt></a></td>
+<td>Class that represents a DTA Scenario, and all that it entails.</td>
+</tr>
+<tr class="row-even"><td><a class="reference internal" href="_generated/dta.DynameqScenario.html#dta.DynameqScenario" title="dta.DynameqScenario"><tt class="xref py py-obj docutils literal"><span class="pre">dta.DynameqScenario</span></tt></a></td>
+<td>A Dynameq Scenario.</td>
+</tr>
+<tr class="row-odd"><td><a class="reference internal" href="_generated/dta.VehicleType.html#dta.VehicleType" title="dta.VehicleType"><tt class="xref py py-obj docutils literal"><span class="pre">dta.VehicleType</span></tt></a></td>
+<td>Class that represents a vehicle type.</td>
+</tr>
+<tr class="row-even"><td><a class="reference internal" href="_generated/dta.VehicleClassGroup.html#dta.VehicleClassGroup" title="dta.VehicleClassGroup"><tt class="xref py py-obj docutils literal"><span class="pre">dta.VehicleClassGroup</span></tt></a></td>
+<td>Represents a group (or a set) of VehicleClasses, which are the classNames in <a class="reference internal" href="_generated/dta.VehicleType.html#dta.VehicleType" title="dta.VehicleType"><tt class="xref py py-class docutils literal"><span class="pre">VehicleType</span></tt></a>.</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="section" id="node-classes">
+<h1>Node classes<a class="headerlink" href="#node-classes" title="Permalink to this headline">¶</a></h1>
+<p class="graphviz">
+<img src="_images/inheritance-c5c417b2a83bb403c992cd46f0f33bf18977c678.png" alt="Inheritance diagram of dta.Node, dta.RoadNode, dta.VirtualNode, dta.Centroid" class="inheritance"/>
+</p>
+<table border="1" class="longtable docutils">
+<colgroup>
+<col width="10%" />
+<col width="90%" />
+</colgroup>
+<tbody valign="top">
+<tr class="row-odd"><td><a class="reference internal" href="_generated/dta.Node.html#dta.Node" title="dta.Node"><tt class="xref py py-obj docutils literal"><span class="pre">dta.Node</span></tt></a></td>
+<td>Base class that represents a node in a network.</td>
+</tr>
+<tr class="row-even"><td><a class="reference internal" href="_generated/dta.RoadNode.html#dta.RoadNode" title="dta.RoadNode"><tt class="xref py py-obj docutils literal"><span class="pre">dta.RoadNode</span></tt></a></td>
+<td>A Node subclass that represents a road node in a network.</td>
+</tr>
+<tr class="row-odd"><td><a class="reference internal" href="_generated/dta.VirtualNode.html#dta.VirtualNode" title="dta.VirtualNode"><tt class="xref py py-obj docutils literal"><span class="pre">dta.VirtualNode</span></tt></a></td>
+<td>A Node subclass that represents a virtual node in a network.</td>
+</tr>
+<tr class="row-even"><td><a class="reference internal" href="_generated/dta.Centroid.html#dta.Centroid" title="dta.Centroid"><tt class="xref py py-obj docutils literal"><span class="pre">dta.Centroid</span></tt></a></td>
+<td>A Node subclass that represents a centroid node in a network, which is the origin or destination</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="section" id="link-classes">
+<h1>Link classes<a class="headerlink" href="#link-classes" title="Permalink to this headline">¶</a></h1>
+<p class="graphviz">
+<img src="_images/inheritance-e0d404e40debc0b2e3859747dcf1c8a6f906675e.png" alt="Inheritance diagram of dta.Link, dta.RoadLink, dta.VirtualLink, dta.Connector" class="inheritance"/>
+</p>
+<table border="1" class="longtable docutils">
+<colgroup>
+<col width="10%" />
+<col width="90%" />
+</colgroup>
+<tbody valign="top">
+<tr class="row-odd"><td><a class="reference internal" href="_generated/dta.Link.html#dta.Link" title="dta.Link"><tt class="xref py py-obj docutils literal"><span class="pre">dta.Link</span></tt></a></td>
+<td>Base class that represents a link in a network.</td>
+</tr>
+<tr class="row-even"><td><a class="reference internal" href="_generated/dta.RoadLink.html#dta.RoadLink" title="dta.RoadLink"><tt class="xref py py-obj docutils literal"><span class="pre">dta.RoadLink</span></tt></a></td>
+<td>A RoadLink in a network.  Both nodes must be RoadNodes.</td>
+</tr>
+<tr class="row-odd"><td><a class="reference internal" href="_generated/dta.VirtualLink.html#dta.VirtualLink" title="dta.VirtualLink"><tt class="xref py py-obj docutils literal"><span class="pre">dta.VirtualLink</span></tt></a></td>
+<td>A VirtualLink is a Link that connects a <a class="reference internal" href="_generated/dta.Centroid.html#dta.Centroid" title="dta.Centroid"><tt class="xref py py-class docutils literal"><span class="pre">Centroid</span></tt></a> with</td>
+</tr>
+<tr class="row-even"><td><a class="reference internal" href="_generated/dta.Connector.html#dta.Connector" title="dta.Connector"><tt class="xref py py-obj docutils literal"><span class="pre">dta.Connector</span></tt></a></td>
+<td>A Connector is a <a class="reference internal" href="_generated/dta.RoadLink.html#dta.RoadLink" title="dta.RoadLink"><tt class="xref py py-class docutils literal"><span class="pre">RoadLink</span></tt></a> that connects a RoadNode with a Centroid or a VirtualNode.</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="section" id="signal-classes">
+<h1>Signal classes<a class="headerlink" href="#signal-classes" title="Permalink to this headline">¶</a></h1>
+<table border="1" class="longtable docutils">
+<colgroup>
+<col width="10%" />
+<col width="90%" />
+</colgroup>
+<tbody valign="top">
+<tr class="row-odd"><td><a class="reference internal" href="_generated/dta.TimePlan.html#dta.TimePlan" title="dta.TimePlan"><tt class="xref py py-obj docutils literal"><span class="pre">dta.TimePlan</span></tt></a></td>
+<td>Represents generic signal timeplan</td>
+</tr>
+<tr class="row-even"><td><a class="reference internal" href="_generated/dta.PlanCollectionInfo.html#dta.PlanCollectionInfo" title="dta.PlanCollectionInfo"><tt class="xref py py-obj docutils literal"><span class="pre">dta.PlanCollectionInfo</span></tt></a></td>
+<td>Contains user information for a collection of signals belonging to the</td>
+</tr>
+<tr class="row-odd"><td><a class="reference internal" href="_generated/dta.Phase.html#dta.Phase" title="dta.Phase"><tt class="xref py py-obj docutils literal"><span class="pre">dta.Phase</span></tt></a></td>
+<td>A phase consists of timing (green, yellow and red times) plus a set of <a class="reference internal" href="_generated/dta.PhaseMovement.html#dta.PhaseMovement" title="dta.PhaseMovement"><tt class="xref py py-class docutils literal"><span class="pre">PhaseMovement</span></tt></a> instances</td>
+</tr>
+<tr class="row-even"><td><a class="reference internal" href="_generated/dta.PhaseMovement.html#dta.PhaseMovement" title="dta.PhaseMovement"><tt class="xref py py-obj docutils literal"><span class="pre">dta.PhaseMovement</span></tt></a></td>
+<td>Represents a movement specific to a particular phase.</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="section" id="transit-classes">
+<h1>Transit classes<a class="headerlink" href="#transit-classes" title="Permalink to this headline">¶</a></h1>
+<table border="1" class="longtable docutils">
+<colgroup>
+<col width="10%" />
+<col width="90%" />
+</colgroup>
+<tbody valign="top">
+<tr class="row-odd"><td><a class="reference internal" href="_generated/dta.TPPlusTransitNode.html#dta.TPPlusTransitNode" title="dta.TPPlusTransitNode"><tt class="xref py py-obj docutils literal"><span class="pre">dta.TPPlusTransitNode</span></tt></a></td>
+<td>Representation of a transit node for a <a class="reference internal" href="_generated/dta.TPPlusTransitRoute.html#dta.TPPlusTransitRoute" title="dta.TPPlusTransitRoute"><tt class="xref py py-class docutils literal"><span class="pre">TPPlusTransitRoute</span></tt></a></td>
+</tr>
+<tr class="row-even"><td><a class="reference internal" href="_generated/dta.TPPlusTransitRoute.html#dta.TPPlusTransitRoute" title="dta.TPPlusTransitRoute"><tt class="xref py py-obj docutils literal"><span class="pre">dta.TPPlusTransitRoute</span></tt></a></td>
+<td>Representation of a transit line read from Cube line file (TRNBUILD or PT)</td>
+</tr>
+<tr class="row-odd"><td><a class="reference internal" href="_generated/dta.TransitLine.html#dta.TransitLine" title="dta.TransitLine"><tt class="xref py py-obj docutils literal"><span class="pre">dta.TransitLine</span></tt></a></td>
+<td>Transit Line representation for a DTA Network.</td>
+</tr>
+<tr class="row-even"><td><a class="reference internal" href="_generated/dta.TransitSegment.html#dta.TransitSegment" title="dta.TransitSegment"><tt class="xref py py-obj docutils literal"><span class="pre">dta.TransitSegment</span></tt></a></td>
+<td>A piece of a <a class="reference internal" href="_generated/dta.TransitLine.html#dta.TransitLine" title="dta.TransitLine"><tt class="xref py py-class docutils literal"><span class="pre">TransitLine</span></tt></a>, basically a link with a transit line on it.</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="section" id="movement-and-path-classes">
+<h1>Movement and Path classes<a class="headerlink" href="#movement-and-path-classes" title="Permalink to this headline">¶</a></h1>
+<table border="1" class="longtable docutils">
+<colgroup>
+<col width="10%" />
+<col width="90%" />
+</colgroup>
+<tbody valign="top">
+<tr class="row-odd"><td><a class="reference internal" href="_generated/dta.Movement.html#dta.Movement" title="dta.Movement"><tt class="xref py py-obj docutils literal"><span class="pre">dta.Movement</span></tt></a></td>
+<td>A movement consists of an incoming link, and outgoing link, and attributes</td>
+</tr>
+<tr class="row-even"><td><a class="reference internal" href="_generated/dta.Path.html#dta.Path" title="dta.Path"><tt class="xref py py-obj docutils literal"><span class="pre">dta.Path</span></tt></a></td>
+<td>A path in the network represented by a sequence of links</td>
+</tr>
+<tr class="row-odd"><td><a class="reference internal" href="_generated/dta.ShortestPaths.html#dta.ShortestPaths" title="dta.ShortestPaths"><tt class="xref py py-obj docutils literal"><span class="pre">dta.ShortestPaths</span></tt></a></td>
+<td>Shortest path algorithms and various utilities</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="section" id="misc">
+<h1>Misc<a class="headerlink" href="#misc" title="Permalink to this headline">¶</a></h1>
+<table border="1" class="longtable docutils">
+<colgroup>
+<col width="10%" />
+<col width="90%" />
+</colgroup>
+<tbody valign="top">
+<tr class="row-odd"><td><a class="reference internal" href="_generated/dta.CountsVsVolumes.html#dta.CountsVsVolumes" title="dta.CountsVsVolumes"><tt class="xref py py-obj docutils literal"><span class="pre">dta.CountsVsVolumes</span></tt></a></td>
+<td>Generates corridor plots.</td>
+</tr>
+<tr class="row-even"><td><a class="reference internal" href="_generated/dta.Demand.html#dta.Demand" title="dta.Demand"><tt class="xref py py-obj docutils literal"><span class="pre">dta.Demand</span></tt></a></td>
+<td>Class that represents the demand matrix for a <a class="reference internal" href="_generated/dta.Network.html#dta.Network" title="dta.Network"><tt class="xref py py-class docutils literal"><span class="pre">Network</span></tt></a></td>
+</tr>
+<tr class="row-odd"><td><a class="reference internal" href="_generated/dta.DtaError.html#dta.DtaError" title="dta.DtaError"><tt class="xref py py-obj docutils literal"><span class="pre">dta.DtaError</span></tt></a></td>
+<td>Base class for errors in the dta package.</td>
+</tr>
+<tr class="row-even"><td><a class="reference internal" href="_generated/dta.Logger.html#module-dta.Logger" title="dta.Logger"><tt class="xref py py-obj docutils literal"><span class="pre">dta.Logger</span></tt></a></td>
+<td></td>
+</tr>
+<tr class="row-odd"><td><a class="reference internal" href="_generated/dta.MultiArray.html#dta.MultiArray" title="dta.MultiArray"><tt class="xref py py-obj docutils literal"><span class="pre">dta.MultiArray</span></tt></a></td>
+<td>Multidimentinal array of custom numpy data types supporting</td>
+</tr>
+<tr class="row-even"><td><a class="reference internal" href="_generated/dta.Time.html#dta.Time" title="dta.Time"><tt class="xref py py-obj docutils literal"><span class="pre">dta.Time</span></tt></a></td>
+<td>Class that represents a time (without a specific date).</td>
+</tr>
+<tr class="row-odd"><td><a class="reference internal" href="_generated/dta.Utils.html#module-dta.Utils" title="dta.Utils"><tt class="xref py py-obj docutils literal"><span class="pre">dta.Utils</span></tt></a></td>
+<td>Utility functions for use throughout DTA Anyway.</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="section" id="scripts">
+<h1>Scripts<a class="headerlink" href="#scripts" title="Permalink to this headline">¶</a></h1>
+<div class="toctree-wrapper compound">
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="script_importFullSanFranciscoNetworkDataset.html">Batch File for Entire Import Process</a></li>
+<li class="toctree-l1"><a class="reference internal" href="script_createSFNetworkFromCubeNetwork.html">Creating the SF DTA Network from Cube Network and Defining the Scenario</a></li>
+<li class="toctree-l1"><a class="reference internal" href="script_importTPPlusTransitRoutes.html">Importing Transit Routes</a></li>
+<li class="toctree-l1"><a class="reference internal" href="script_importExcelSignals.html">Importing Excel Signals</a></li>
+<li class="toctree-l1"><a class="reference internal" href="script_importUnsignalizedIntersections.html">Importing Stop Signs</a></li>
+<li class="toctree-l1"><a class="reference internal" href="script_importCubeDemand.html">Importing Static Demand</a></li>
+<li class="toctree-l1"><a class="reference internal" href="script_attachCountsFromCountDracula.html">Importing Validation Counts</a></li>
+</ul>
+</div>
+</div>
+<div class="section" id="todos">
+<h1>TODOs<a class="headerlink" href="#todos" title="Permalink to this headline">¶</a></h1>
+<div class="toctree-wrapper compound">
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="todos.html">TODO List</a></li>
+</ul>
+</div>
+</div>
+<div class="section" id="indices-and-tables">
+<h1>Indices and tables<a class="headerlink" href="#indices-and-tables" title="Permalink to this headline">¶</a></h1>
+<ul class="simple">
+<li><a class="reference internal" href="genindex.html"><em>Index</em></a></li>
+<li><a class="reference internal" href="py-modindex.html"><em>Module Index</em></a></li>
+<li><a class="reference internal" href="search.html"><em>Search Page</em></a></li>
+</ul>
+</div>
+
+
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar">
+        <div class="sphinxsidebarwrapper">
+  <h3><a href="#">Table Of Contents</a></h3>
+  <ul>
+<li><a class="reference internal" href="#">Overview</a></li>
+<li><a class="reference internal" href="#installation">Installation</a></li>
+<li><a class="reference internal" href="#network-classes">Network classes</a><ul>
+</ul>
+</li>
+<li><a class="reference internal" href="#scenario-classes">Scenario classes</a><ul>
+</ul>
+</li>
+<li><a class="reference internal" href="#node-classes">Node classes</a><ul>
+</ul>
+</li>
+<li><a class="reference internal" href="#link-classes">Link classes</a><ul>
+</ul>
+</li>
+<li><a class="reference internal" href="#signal-classes">Signal classes</a><ul>
+</ul>
+</li>
+<li><a class="reference internal" href="#transit-classes">Transit classes</a><ul>
+</ul>
+</li>
+<li><a class="reference internal" href="#movement-and-path-classes">Movement and Path classes</a><ul>
+</ul>
+</li>
+<li><a class="reference internal" href="#misc">Misc</a><ul>
+</ul>
+</li>
+<li><a class="reference internal" href="#scripts">Scripts</a><ul>
+</ul>
+</li>
+<li><a class="reference internal" href="#todos">TODOs</a><ul>
+</ul>
+</li>
+<li><a class="reference internal" href="#indices-and-tables">Indices and tables</a></li>
+</ul>
+
+  <h4>Next topic</h4>
+  <p class="topless"><a href="_generated/dta.Network.html"
+                        title="next chapter">dta.Network</a></p>
+  <h3>This Page</h3>
+  <ul class="this-page-menu">
+    <li><a href="_sources/index.txt"
+           rel="nofollow">Show Source</a></li>
+  </ul>
+<div id="searchbox" style="display: none">
+  <h3>Quick search</h3>
+    <form class="search" action="search.html" method="get">
+      <input type="text" name="q" />
+      <input type="submit" value="Go" />
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+    <p class="searchtip" style="font-size: 90%">
+    Enter search terms or a module, class or function name.
+    </p>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="genindex.html" title="General Index"
+             >index</a></li>
+        <li class="right" >
+          <a href="py-modindex.html" title="Python Module Index"
+             >modules</a> |</li>
+        <li class="right" >
+          <a href="_generated/dta.Network.html" title="dta.Network"
+             >next</a> |</li>
+        <li><a href="#">DTA Anyway 1.0 documentation</a> &raquo;</li> 
+      </ul>
+    </div>
+    <div class="footer">
+        &copy; Copyright 2011-2012, SFCTA Modeling Crew.
+      Created using <a href="http://sphinx.pocoo.org/">Sphinx</a> 1.1.3.
+    </div>
+  </body>
+</html>

@@ -1,0 +1,157 @@
+
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>dta.Logger &mdash; DTA Anyway 1.0 documentation</title>
+    
+    <link rel="stylesheet" href="../_static/dta.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '../',
+        VERSION:     '1.0',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+    <script type="text/javascript" src="../_static/jquery.js"></script>
+    <script type="text/javascript" src="../_static/underscore.js"></script>
+    <script type="text/javascript" src="../_static/doctools.js"></script>
+    <link rel="top" title="DTA Anyway 1.0 documentation" href="../index.html" />
+    <link rel="next" title="dta.MultiArray" href="dta.MultiArray.html" />
+    <link rel="prev" title="dta.DtaError" href="dta.DtaError.html" /> 
+  </head>
+  <body>
+    <div class="related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../genindex.html" title="General Index"
+             accesskey="I">index</a></li>
+        <li class="right" >
+          <a href="../py-modindex.html" title="Python Module Index"
+             >modules</a> |</li>
+        <li class="right" >
+          <a href="dta.MultiArray.html" title="dta.MultiArray"
+             accesskey="N">next</a> |</li>
+        <li class="right" >
+          <a href="dta.DtaError.html" title="dta.DtaError"
+             accesskey="P">previous</a> |</li>
+        <li><a href="../index.html">DTA Anyway 1.0 documentation</a> &raquo;</li> 
+      </ul>
+    </div>  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body">
+            
+  <div class="section" id="module-dta.Logger">
+<span id="dta-logger"></span><h1>dta.Logger<a class="headerlink" href="#module-dta.Logger" title="Permalink to this headline">¶</a></h1>
+<p class="rubric">Functions</p>
+<table border="1" class="longtable docutils">
+<colgroup>
+<col width="10%" />
+<col width="90%" />
+</colgroup>
+<tbody valign="top">
+<tr class="row-odd"><td><a class="reference internal" href="#dta.Logger.setupLogging" title="dta.Logger.setupLogging"><tt class="xref py py-obj docutils literal"><span class="pre">setupLogging</span></tt></a>(infoLogFilename,&nbsp;debugLogFilename)</td>
+<td>Sets up the logger.</td>
+</tr>
+</tbody>
+</table>
+<dl class="data">
+<dt id="dta.Logger.DtaLogger">
+<tt class="descname">DtaLogger</tt><em class="property"> = &lt;logging.Logger object at 0x02C9A3B0&gt;</em><a class="headerlink" href="#dta.Logger.DtaLogger" title="Permalink to this definition">¶</a></dt>
+<dd><p>This is the instance of <tt class="xref py py-class docutils literal"><span class="pre">Logger</span></tt> that gets used for all dta logging needs!</p>
+</dd></dl>
+
+<dl class="function">
+<dt id="dta.Logger.setupLogging">
+<tt class="descname">setupLogging</tt><big>(</big><em>infoLogFilename</em>, <em>debugLogFilename</em>, <em>logToConsole=True</em><big>)</big><a class="reference internal" href="../_modules/dta/Logger.html#setupLogging"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#dta.Logger.setupLogging" title="Permalink to this definition">¶</a></dt>
+<dd><p>Sets up the logger.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
+<li><strong>infoLogFilename</strong> &#8211; info log file, will receive log messages of level INFO or more important.
+Pass None for no info log file.</li>
+<li><strong>debugLogFilename</strong> &#8211; debug log file, will receive log messages of level DEBUG or more important.
+Pass None for no debug log file.</li>
+<li><strong>logToConsole</strong> &#8211; if true, INFO and above will also go to the console.</li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+</div>
+
+
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar">
+        <div class="sphinxsidebarwrapper">
+  <h4>Previous topic</h4>
+  <p class="topless"><a href="dta.DtaError.html"
+                        title="previous chapter">dta.DtaError</a></p>
+  <h4>Next topic</h4>
+  <p class="topless"><a href="dta.MultiArray.html"
+                        title="next chapter">dta.MultiArray</a></p>
+  <h3>This Page</h3>
+  <ul class="this-page-menu">
+    <li><a href="../_sources/_generated/dta.Logger.txt"
+           rel="nofollow">Show Source</a></li>
+  </ul>
+<div id="searchbox" style="display: none">
+  <h3>Quick search</h3>
+    <form class="search" action="../search.html" method="get">
+      <input type="text" name="q" />
+      <input type="submit" value="Go" />
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+    <p class="searchtip" style="font-size: 90%">
+    Enter search terms or a module, class or function name.
+    </p>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../genindex.html" title="General Index"
+             >index</a></li>
+        <li class="right" >
+          <a href="../py-modindex.html" title="Python Module Index"
+             >modules</a> |</li>
+        <li class="right" >
+          <a href="dta.MultiArray.html" title="dta.MultiArray"
+             >next</a> |</li>
+        <li class="right" >
+          <a href="dta.DtaError.html" title="dta.DtaError"
+             >previous</a> |</li>
+        <li><a href="../index.html">DTA Anyway 1.0 documentation</a> &raquo;</li> 
+      </ul>
+    </div>
+    <div class="footer">
+        &copy; Copyright 2011-2012, SFCTA Modeling Crew.
+      Created using <a href="http://sphinx.pocoo.org/">Sphinx</a> 1.1.3.
+    </div>
+  </body>
+</html>

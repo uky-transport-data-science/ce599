@@ -1,0 +1,368 @@
+
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>Importing Stop Signs &mdash; DTA Anyway 1.0 documentation</title>
+    
+    <link rel="stylesheet" href="_static/dta.css" type="text/css" />
+    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '',
+        VERSION:     '1.0',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+    <script type="text/javascript" src="_static/jquery.js"></script>
+    <script type="text/javascript" src="_static/underscore.js"></script>
+    <script type="text/javascript" src="_static/doctools.js"></script>
+    <link rel="top" title="DTA Anyway 1.0 documentation" href="index.html" />
+    <link rel="next" title="Importing Static Demand" href="script_importCubeDemand.html" />
+    <link rel="prev" title="Importing Excel Signals" href="script_importExcelSignals.html" /> 
+  </head>
+  <body>
+    <div class="related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="genindex.html" title="General Index"
+             accesskey="I">index</a></li>
+        <li class="right" >
+          <a href="py-modindex.html" title="Python Module Index"
+             >modules</a> |</li>
+        <li class="right" >
+          <a href="script_importCubeDemand.html" title="Importing Static Demand"
+             accesskey="N">next</a> |</li>
+        <li class="right" >
+          <a href="script_importExcelSignals.html" title="Importing Excel Signals"
+             accesskey="P">previous</a> |</li>
+        <li><a href="index.html">DTA Anyway 1.0 documentation</a> &raquo;</li> 
+      </ul>
+    </div>  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body">
+            
+  <div class="section" id="module-importUnsignalizedIntersections">
+<span id="importing-stop-signs"></span><h1>Importing Stop Signs<a class="headerlink" href="#module-importUnsignalizedIntersections" title="Permalink to this headline">¶</a></h1>
+<dl class="function">
+<dt id="importUnsignalizedIntersections.checkStreetnameConsistency">
+<tt class="descname">checkStreetnameConsistency</tt><big>(</big><em>dta_node_id</em>, <em>dta_streets</em>, <em>stopsign_streets</em>, <em>stopsign_x_streets</em><big>)</big><a class="reference internal" href="_modules/importUnsignalizedIntersections.html#checkStreetnameConsistency"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#importUnsignalizedIntersections.checkStreetnameConsistency" title="Permalink to this definition">¶</a></dt>
+<dd><p>Verifies that the stopsign streets and the stopsign_x_streets are subsets of dta_streets.
+Warns about violations.</p>
+<p><em>dta_node_id</em> is an integer, just used for logging.  All three  remaining inputs are lists of strings.</p>
+</dd></dl>
+
+<dl class="function">
+<dt id="importUnsignalizedIntersections.cleanStreetName">
+<tt class="descname">cleanStreetName</tt><big>(</big><em>streetName</em><big>)</big><a class="reference internal" href="_modules/importUnsignalizedIntersections.html#cleanStreetName"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#importUnsignalizedIntersections.cleanStreetName" title="Permalink to this definition">¶</a></dt>
+<dd><p>Given a streetname, this function attempts to make it uniform with the San Francisco DTA Network streetnames.</p>
+</dd></dl>
+
+<dl class="function">
+<dt id="importUnsignalizedIntersections.readStopSignShapefile">
+<tt class="descname">readStopSignShapefile</tt><big>(</big><em>shapefilename</em><big>)</big><a class="reference internal" href="_modules/importUnsignalizedIntersections.html#readStopSignShapefile"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#importUnsignalizedIntersections.readStopSignShapefile" title="Permalink to this definition">¶</a></dt>
+<dd><p>Reads the stop sign shapefile and returns the following:</p>
+<p>{ cnn -&gt; [ record1_dict, record2_dict, ... ] }</p>
+<p>Where <em>record_dict</em> includes all the fields from the shapefile, plus <cite>COORDS</cite> which maps to the coordinate tuple.</p>
+</dd></dl>
+
+<div class="section" id="main">
+<h2>Main<a class="headerlink" href="#main" title="Permalink to this headline">¶</a></h2>
+<div class="highlight-python"><pre>if __name__ == "__main__":
+
+    if len(sys.argv) != 4:
+        print USAGE
+        sys.exit(2)
+
+    INPUT_DYNAMEQ_NET_DIR         = sys.argv[1]
+    INPUT_DYNAMEQ_NET_PREFIX      = sys.argv[2]
+    STOP_SHAPEFILE                = sys.argv[3]
+    
+    # The SanFrancisco network will use feet for vehicle lengths and coordinates, and miles for link lengths
+    dta.VehicleType.LENGTH_UNITS= "feet"
+    dta.Node.COORDINATE_UNITS   = "feet"
+    dta.RoadLink.LENGTH_UNITS   = "miles"
+
+    dta.setupLogging("importUnsignalizedIntersections.INFO.log", "importUnsignalizedIntersections.DEBUG.log", logToConsole=True)
+
+    scenario = dta.DynameqScenario()
+    scenario.read(INPUT_DYNAMEQ_NET_DIR, INPUT_DYNAMEQ_NET_PREFIX) 
+    net = dta.DynameqNetwork(scenario)
+    net.read(INPUT_DYNAMEQ_NET_DIR, INPUT_DYNAMEQ_NET_PREFIX)
+
+    cnn_to_recordlist = readStopSignShapefile(STOP_SHAPEFILE)
+    
+    count_notmapped     = 0
+    count_hassignal     = 0
+    count_moreincoming  = 0
+    count_allway        = 0
+    count_twoway        = 0 # no custom
+    count_twoway_custom = 0
+    count_allway_fromtwo= 0 # use this?
+    
+    # the cnn is unique per intersection so loop through each intersection with stop signs
+    for cnn, stopsignlist in cnn_to_recordlist.iteritems():
+        
+        # these are the streets for the stop signs
+        stopsign_streets   = []
+        stopsign_x_streets = []
+        # and the dirs
+        stopsign_dirs      = []
+        for stopsign in stopsignlist:
+            if stopsign['STREET'] not in stopsign_streets:
+                stopsign_streets.append(stopsign['STREET'])
+            if stopsign['X_STREET'] not in stopsign_x_streets:
+                stopsign_x_streets.append(stopsign['X_STREET'])
+            stopsign_dirs.append(stopsign['ST_FACING'])
+
+        # find the nearest node to this                
+        (min_dist, roadnode) = net.findNodeNearestCoords(stopsignlist[0]['COORDS'][0], stopsignlist[0]['COORDS'][1], quick_dist=100.0)
+        
+        if roadnode == None:
+            dta.DtaLogger.warn("Could not find road node near %s and %s in the stop sign file" % (stopsignlist[0]['STREET'], stopsignlist[0]['X_STREET']))
+            count_notmapped += 1
+            continue
+
+        dta.DtaLogger.debug("min_dist = %.3f roadnodeID=%d roadnode_streets=%s stopsign_streets=%s" % 
+                            (min_dist, roadnode.getId(), str(roadnode.getStreetNames(incoming=True, outgoing=False)),
+                             str(stopsign_streets)))
+
+        # streetname checking; warn if stopsign_streets are not found in the roadnode_streets
+        checkStreetnameConsistency(roadnode.getId(), roadnode.getStreetNames(incoming=True, outgoing=False),
+                                   stopsign_streets, stopsign_x_streets)
+                        
+        # if the roadnode is already a signalized intersection, move on
+        if roadnode.hasTimePlan():
+            dta.DtaLogger.warn("Roadnode %d already has signal. Ignoring stop sign info." % roadnode.getId())
+            count_hassignal += 1
+            continue
+        
+        # warn when more stops than incoming links
+        if len(stopsignlist) &gt; roadnode.getNumIncomingLinks():
+            dta.DtaLogger.warn("Roadnode %d missing incoming links?  More stop signs than incoming links" % roadnode.getId())
+            count_moreincoming += 1 # not exclusive count!
+            
+        # if the number of incoming links == the number of stop signs
+        # OR the number of stop signs is &gt;=4
+        # mark it an all way stop
+        if  len(stopsignlist) &gt;= roadnode.getNumIncomingLinks() or len(stopsignlist) &gt;= 4:
+            roadnode.setAllWayStopControl()
+            count_allway += 1
+            continue
+        
+        # two way stop -- assign custom priorities; incoming links with stops are lower priority than incoming links without stops
+        inlink_stops   = []
+        inlink_nostops = []     
+        for inlink in roadnode.iterIncomingLinks():
+            # by direction
+            if inlink.getDirection() in stopsign_dirs:
+                inlink_stops.append(inlink)
+                continue
+            # direction is there, name matches
+            is_stop = False
+            for stopsign in stopsignlist:
+                if inlink.getLabel().startswith(stopsign['STREET']) and inlink.hasDirection(stopsign['ST_FACING']):
+                    is_stop = True
+                    break
+            if is_stop:
+                inlink_stops.append(inlink)
+            else:
+                inlink_nostops.append(inlink)                    
+        
+        dta.DtaLogger.debug("inlink_stops: "+str(inlink_stops))
+        dta.DtaLogger.debug("inlink_nostops: "+str(inlink_nostops))
+        
+        # did we find all the stops?
+        if len(inlink_stops) != len(stopsignlist):
+            dta.DtaLogger.warn("RoadNode %d: stop links != stopsigns; links=[%s], stopsigns=[%s]" %
+                                (roadnode.getId(), str(inlink_stops), str(stopsignlist)))
+
+        # check if stop facilities &gt; nostop facility
+        min_stop_fac_num = 9999
+        for inlink in inlink_stops:
+            if min_stop_fac_num &gt; inlink.getFacilityType(): min_stop_fac_num = inlink.getFacilityType()
+        max_nostop_fac_num = -9999
+        for inlink in inlink_nostops:
+            if max_nostop_fac_num &lt; inlink.getFacilityType(): max_nostop_fac_num = inlink.getFacilityType()
+        dta.DtaLogger.debug("RoadNode %d: stop sign min facility num %d vs no-stop max facility num %d" % 
+                            (roadnode.getId(), min_stop_fac_num, max_nostop_fac_num))
+            
+        # if so, we're done -- no need to customize
+        if min_stop_fac_num &gt; max_nostop_fac_num:
+            roadnode.setTwoWayStopControl()
+            count_twoway += 1
+            continue
+        
+        # if not, we need to customize
+        roadnode.setPriorityTemplateNone()
+        count_twoway_custom += 1
+        
+        for inlink_stop in inlink_stops:
+            for mov_stop in inlink_stop.iterOutgoingMovements():
+                if mov_stop.isProhibitedToAllVehicleClassGroups(): continue
+                
+                # set the no-stop movements as higher priority
+                for inlink_nostop in inlink_nostops:
+                    for mov_nostop in inlink_nostop.iterOutgoingMovements():
+                        if mov_nostop.isProhibitedToAllVehicleClassGroups(): continue
+                        
+                        # don't mention it if they're not in conflict anyway
+                        if not mov_stop.isInConflict(mov_nostop): continue
+
+                        # these are based on the (default) project settings
+                        if mov_stop.isThruTurn():
+                            critical_gap = 6.5
+                        elif mov_stop.isLeftTurn():
+                            critical_gap = 7.10
+                        elif mov_stop.isRightTurn():
+                            critical_gap = 6.2
+                        else:
+                            dta.DtaLogger.fatal("I don't recognize the turn type of the stop-sign controled movement %s" % move_stop)
+                        mov_stop.addHigherPriorityMovement(mov_nostop, critical_gap=critical_gap, critical_wait=60)
+                                   
+    dta.DtaLogger.info("Read %d stop-sign intersections" % len(cnn_to_recordlist))
+    dta.DtaLogger.info("  %-4d: Failed to map" % count_notmapped)
+    dta.DtaLogger.info("  %-4d: Ignored because they're signalized" % count_hassignal)
+    dta.DtaLogger.info("  %-4d: Setting as allway-stop (including %d questionable, with more stop signs than incoming links)" % (count_allway, count_moreincoming))
+    dta.DtaLogger.info("  %-4d: Setting as allway-stop in lieu of custom priorities" % count_allway_fromtwo)
+    dta.DtaLogger.info("  %-4d: Setting as twoway-stop without custom priorities" % count_twoway)
+    dta.DtaLogger.info("  %-4d: Setting as twoway-stop with custom priorities" % count_twoway_custom)
+    
+    # Warn for any unsignalized intersection
+    nothing_count = 0
+    inconsistent_count = 0
+    for roadnode in net.iterRoadNodes():
+        # 1 or fewer incoming links: don't care
+        if roadnode.getNumIncomingLinks() &lt;= 1: continue
+        
+        # through movements don't conflict - ok fine
+        thru_movements = []
+        thru_conflict  = False
+        for mov in roadnode.iterMovements():
+            if mov.getTurnType() == dta.Movement.DIR_TH: thru_movements.append(mov)
+        for mov1 in thru_movements:
+            for mov2 in thru_movements:
+                if mov1 == mov2: continue
+                if mov1.isInConflict(mov2): 
+                    thru_conflict = True
+                    break
+        if not thru_conflict: continue
+        
+        # signalized, with a time plan: ok
+        if (roadnode.control == dta.RoadNode.CONTROL_TYPE_SIGNALIZED and 
+            roadnode.priority == dta.RoadNode.PRIORITY_TEMPLATE_SIGNALIZED and 
+            roadnode.hasTimePlan()):
+            continue
+        
+        # stop control of some sort: ok
+        if (roadnode.control == dta.RoadNode.CONTROL_TYPE_UNSIGNALIZED and 
+            roadnode.priority != dta.RoadNode.PRIORITY_TEMPLATE_NONE): continue
+        
+        # it's either inconsistent or not set
+        if (roadnode.control == dta.RoadNode.CONTROL_TYPE_UNSIGNALIZED and 
+            roadnode.priority == dta.RoadNode.PRIORITY_TEMPLATE_NONE):
+            dta.DtaLogger.warn("No stop control or signal   at node %8d: control=%d priority=%2d streets=%s" %
+                               (roadnode.getId(), roadnode.control, roadnode.priority, 
+                                roadnode.getStreetNames(incoming=True, outgoing=False)))
+            nothing_count += 1
+
+        else:
+             dta.DtaLogger.warn("Inconsistent control/signal at node %8d: control=%d priority=%2d streets=%s" %
+                               (roadnode.getId(), roadnode.control, roadnode.priority, 
+                                roadnode.getStreetNames(incoming=True, outgoing=False)))
+             inconsistent_count += 1
+    dta.DtaLogger.info("Found %4d road nodes with no stop control or signals" % nothing_count)
+    dta.DtaLogger.info("Found %4d road nodes with inconsistent stop control or signals" % inconsistent_count)
+    
+    net.write(".", "sf_stops")
+
+    net.writeNodesToShp("sf_stops_nodes")
+    net.writeLinksToShp("sf_stops_links")         
+    
+
+            
+            
+
+</pre>
+</div>
+</div>
+</div>
+
+
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar">
+        <div class="sphinxsidebarwrapper">
+  <h3><a href="index.html">Table Of Contents</a></h3>
+  <ul>
+<li><a class="reference internal" href="#">Importing Stop Signs</a><ul>
+<li><a class="reference internal" href="#main">Main</a></li>
+</ul>
+</li>
+</ul>
+
+  <h4>Previous topic</h4>
+  <p class="topless"><a href="script_importExcelSignals.html"
+                        title="previous chapter">Importing Excel Signals</a></p>
+  <h4>Next topic</h4>
+  <p class="topless"><a href="script_importCubeDemand.html"
+                        title="next chapter">Importing Static Demand</a></p>
+  <h3>This Page</h3>
+  <ul class="this-page-menu">
+    <li><a href="_sources/script_importUnsignalizedIntersections.txt"
+           rel="nofollow">Show Source</a></li>
+  </ul>
+<div id="searchbox" style="display: none">
+  <h3>Quick search</h3>
+    <form class="search" action="search.html" method="get">
+      <input type="text" name="q" />
+      <input type="submit" value="Go" />
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+    <p class="searchtip" style="font-size: 90%">
+    Enter search terms or a module, class or function name.
+    </p>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="genindex.html" title="General Index"
+             >index</a></li>
+        <li class="right" >
+          <a href="py-modindex.html" title="Python Module Index"
+             >modules</a> |</li>
+        <li class="right" >
+          <a href="script_importCubeDemand.html" title="Importing Static Demand"
+             >next</a> |</li>
+        <li class="right" >
+          <a href="script_importExcelSignals.html" title="Importing Excel Signals"
+             >previous</a> |</li>
+        <li><a href="index.html">DTA Anyway 1.0 documentation</a> &raquo;</li> 
+      </ul>
+    </div>
+    <div class="footer">
+        &copy; Copyright 2011-2012, SFCTA Modeling Crew.
+      Created using <a href="http://sphinx.pocoo.org/">Sphinx</a> 1.1.3.
+    </div>
+  </body>
+</html>

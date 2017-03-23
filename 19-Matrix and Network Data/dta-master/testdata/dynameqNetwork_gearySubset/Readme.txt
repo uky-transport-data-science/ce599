@@ -1,0 +1,1 @@
+smallTestNet is a SubArea from the Geary dynameq network.  Created for testing purposes, 2011.07.20.
