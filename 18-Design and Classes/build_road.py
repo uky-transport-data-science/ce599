@@ -20,7 +20,11 @@ import sys
 import time
 
 # make sure we can find our class files
+<<<<<<< HEAD
 sys.path.append('C:/Users/Owner/Documents/0Senior Uk/CE599/ce599-s17/18-Design and Classes/transport')
+=======
+sys.path.append('C:/WORKSPACE/uky-transport-data-science/ce599-s17/18-Design and Classes/transport')
+>>>>>>> refs/remotes/uky-transport-data-science/master
 
 # now our own specific imports
 from Road import Road
