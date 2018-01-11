@@ -16,9 +16,9 @@ Main topics to be covered include:
 - Fundamentals of programming and data wrangling in Python
 - Data visualization
 - Applied statistical modelling and interpretation 
-- Written and oral “data storytelling”
+- Identifying and perpetuating intellectually honest analysis
 
-The syllabus is available [here](ce599-002_syllabus_s17.pdf).
+The syllabus is available [here](ce599-002_syllabus_s18.pdf).
 
 **Acknowledgements**
 
