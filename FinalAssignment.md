@@ -2,7 +2,7 @@
 
 CE 599-002: Data Science in Transportation
 
-Spring 2017
+Spring 2018
 
 Oral Proposals:  March 22, 2018 (discuss with Dr. Erhardt first)
 
