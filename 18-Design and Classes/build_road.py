@@ -20,7 +20,7 @@ import sys
 import time
 
 # make sure we can find our class files
-sys.path.append('C:/WORKSPACE/uky-transport-data-science/ce599-s17/18-Design and Classes/transport')
+sys.path.append('./transport')
 
 # now our own specific imports
 from Road import Road
