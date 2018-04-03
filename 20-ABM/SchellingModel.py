@@ -6,7 +6,7 @@ but changed to run stand-alone.
 """ 
 
 import random
-import SchellingAgent
+from SchellingAgent import SchellingAgent
 
 class SchellingModel():
     '''
@@ -15,6 +15,12 @@ class SchellingModel():
 
     def __init__(self, height, width, density, minority_pc):
         '''
+        Create a new SchellingModel. 
+        
+        height - rows in the city
+        width - columns in the city
+        density - share of cells that are occupied housing units
+        minority_pc - share of agents that are of the minority type
         '''
 
         self.height = height
@@ -27,7 +33,7 @@ class SchellingModel():
         self.grid = [[0] * self.height] * self.width
         
         # this is the list of all agents in the model
-        agents = []
+        self.agents = []
         
         # Set up agents
         for x in range(0,self.width): 
@@ -38,19 +44,25 @@ class SchellingModel():
                     else:
                         agent_type = 2
 
-                    self.grid[x][y] = agent_type
-                    a = SchellingAgent((x, y), self, agent_type)
+                    a = SchellingAgent((x, y), self.grid, agent_type)
                     self.agents.append(a)
 
-    def __str__(self):
+    def print_status(self):
         '''
-        This method gets called when you print the object.  
+        Print relevant information about the current state of affairs.  
         '''
-        return('Implement __str__()')
+        return('Implement print_status()')
         
     def step(self):
         '''
-        Run one step of the model. If All agents are happy, halt the model.
+        Run one step of the model.  Let unhappy agents move to an empty square. 
         '''
         print('Implement step')
         
+    def run(self, max_iter=30): 
+        '''
+        Runs all iterations of the model. 
+        max_iters - the maximum number of iterations to run. 
+        If All agents are happy, halt the model.
+        '''
+        print('Implement run')

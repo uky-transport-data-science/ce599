@@ -11,23 +11,32 @@ class SchellingAgent():
     '''
     Schelling segregation agent
     '''
-    def __init__(self, pos, model, agent_type):
+    def __init__(self, pos, grid, agent_type):
         '''
          Create a new Schelling agent.
 
          Args:
             pos: (x, y) Agent initial location.
-            model: a SchellingModel to tell the agent its environment. 
+            grid: a grid of the city, where 0=empty, 1=minority, 2=majority 
             agent_type: Indicator for the agent's type (minority=1, majority=2)
         '''
         self.pos = pos
-        self.model = model
+        self.grid = grid
         self.type = agent_type
         
+        self.grid[pos[0]][pos[1]] = self.type
+        
+    
+    def calculate_similarity(self):
+        '''
+        Calculates the similarity ratio for the agent.  Defined as:
+            similarity = neighbors of same type / total (non-empty) neighbors
+        '''
+        print('Implement calculate_similarity()')
 
     def is_happy(self): 
         '''
-        The agent is happy if at least 3 of its neighbors are of the same type. 
+        The agent is happy if at least 30% of its neighbors are of the same type. 
         '''
         print('Implement is_happy()')
         
