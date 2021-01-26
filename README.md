@@ -18,7 +18,7 @@ Main topics to be covered include:
 - Applied statistical modelling and interpretation 
 - Identifying and perpetuating intellectually honest analysis
 
-The syllabus is available [here](ce599_syllabus_s20.pdf).
+The syllabus is available [here](syllabus.pdf), along [appendices](appendices.pdf). 
 
 **Acknowledgements**
 
