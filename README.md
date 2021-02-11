@@ -18,7 +18,7 @@ Main topics to be covered include:
 - Applied statistical modelling and interpretation 
 - Identifying and perpetuating intellectually honest analysis
 
-The syllabus is available [here](syllabus.pdf), along [appendices](appendices.pdf). 
+The syllabus is available [here](Syllabus.pdf), along with [appendices](Appendices.pdf). 
 
 **Acknowledgements**
 
