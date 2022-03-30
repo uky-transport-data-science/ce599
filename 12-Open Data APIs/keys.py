@@ -1,5 +1,5 @@
-# these keys and tokens are for the Twitter account named @cp255demo2
-consumer_key = 'Bv0IwVzDqMTvWwrrDznsltjth'
-consumer_secret = '6hhd8FSjgOD0j8gWt7D0AUNzAPolT4LguTQrsEYXQZYzNhGzDD'
-access_token = '3788395579-Sze621y2fEBLxeP7Tk4gfZU0K8GHtGwaGvWvMRG'
-access_token_secret = 'aLxGudchDv0lwjpSAR9JOw2Npsv5A9qLn2rZFxq6f2oXc'
+# these keys and tokens are for the Twitter account named @ce599
+consumer_key = '3DhLphKmy2WuA1uuo7vWRNwuQ'
+consumer_secret = 'YjfJ5sydzLcbfTLwlHjGJmwYfcA72OIIw6afaBxyg3TIudXTiJ'
+access_token = '1509161815984463877-w68FJhMuX2LllNNf4R8Sq0asK9eIkd'
+access_token_secret = '53iA5fZw4mmZOydONt8QrCKSFQhXjJHkXmOBw3XdWzS5B'
